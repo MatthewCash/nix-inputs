@@ -1,0 +1,4 @@
+/examples/*/flake.lock
+result*
+target/
+/extra-tests/*/flake.lock

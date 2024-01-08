@@ -1,0 +1,7 @@
+# Data Directories
+.direnv
+
+# Build Outputs
+bin/
+obj/
+result

@@ -1,0 +1,6 @@
+[dependencies]
+byteorder = "1"
+
+[package]
+name = "barebones"
+version = "0.1.0"

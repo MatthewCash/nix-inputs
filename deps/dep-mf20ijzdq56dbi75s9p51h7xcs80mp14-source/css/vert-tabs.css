@@ -1,0 +1,90 @@
+@-moz-document regexp("^moz-extension:\/\/.*\/sidebar\/sidebar\.html.*$") {
+    :root {
+        --hue: var(--system-hue);
+        --saturation: var(--system-saturation);
+        --lightness: var(--system-lightness);
+        --tabs-accent-color: hsl(var(--hue), var(--saturation), var(--lightness));
+        --tabs-accent-color-dark: hsl(var(--hue), var(--saturation), calc(var(--lightness) - 5%));
+        --tabs-accent-color-darker: hsl(var(--hue), var(--saturation), calc(var(--lightness) - 10%));
+    }
+
+    div#tabbar-container {
+        background-color: black;
+    }
+
+    #tabbar {
+        justify-content: space-between;
+    }
+
+    .newtab-action-selector-anchor {
+        display: none !important;
+        height: 0;
+        width: 0;
+    }
+
+    div.newtab-button-box {
+        display: none;
+    }
+
+    tab-item {
+        border-radius: 0.5em;
+        height: 37.9px;
+    }
+
+    tab-item-substance {
+        padding: 9.95px 0px;
+    }
+
+    tab-item:hover {
+        background-color: #303030;
+    }
+
+    tab-item.active {
+        background-color: var(--tabs-accent-color);
+        transition: background-color 0.2s ease-in;
+    }
+
+    tab-favicon {
+        margin-right: 5px !important;
+    }
+
+    span.highlighter {
+        display: none;
+    }
+
+    tab-closebox {
+        position: absolute !important;
+        left: 15px;
+        opacity: 0 !important;
+    }
+
+    tab-item:hover tab-closebox {
+        opacity: 1 !important;
+    }
+
+    tab-item:hover tab-favicon {
+        opacity: 0;
+    }
+
+    tab-label {
+        line-height: normal;
+    }
+
+    tab-sound-button {
+        margin-right: 4px !important;
+    }
+    
+    .newtab-button-box {
+        display: none !important;
+    }
+
+    /* change font to Aurebesh */
+    span {
+        font-family: "Aurebesh", sans-serif !important;
+    }
+
+    /* align tab title with icon */
+    span.label-content {
+        vertical-align: baseline !important;
+    }
+}

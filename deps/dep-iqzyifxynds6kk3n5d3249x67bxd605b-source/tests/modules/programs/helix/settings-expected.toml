@@ -1,0 +1,9 @@
+theme = "base16"
+
+[keys.normal.space]
+q = ":q"
+space = "file_picker"
+w = ":w"
+
+[lsp]
+display-messages = true

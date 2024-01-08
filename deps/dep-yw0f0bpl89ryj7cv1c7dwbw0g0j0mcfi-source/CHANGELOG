@@ -1,0 +1,173 @@
+2022-08-24
+- Major changes to `homebrew` module
+  `homebrew.cleanup` was renamed to `homebrew.onActivation.cleanup`.
+
+  `homebrew.autoUpdate` was renamed to `homebrew.onActivation.autoUpdate`.
+
+  `homebrew.onActivation.upgrade` was added, and the default behavior of the
+  module was changed to not upgrade installed formulae and apps.
+
+  `homebrew.global.autoUpdate` was added.
+
+  `homebrew.global.noLock` was replaced with `hombrew.global.lockfiles`.
+
+  `homebrew.caskArgs` submodule was added for configuring arguments to be used
+  for all casks.
+
+  `homebrew.{taps,brews,casks}` were reimplemented as lists of submodules,
+  instead of lists of strings, with well documented options for all available
+  arguments for these Brewfile entry types, while preserving backwards
+  compatibility with the previous implementation.
+
+2022-08-14
+- nix module updated to bring it back in sync with it's NixOS counterpart
+  It should now be much more fiesable to share code for this module between
+  `nix-darwin` and NixOS configs.
+
+  `nix-darwin` now requires Nix >= 2.2.
+
+  `nix.package` can no longer be a path to a profile.
+
+  `nix.version` option has been removed. Use `nix.package.version` if you want
+  to reference the version Nix installed/used by your config.
+
+  Many options moved/renamed from `nix.*` to `nix.settings.*`. For example
+  `nix.binaryCaches` is now `nix.settings.substituters`.
+
+  You can use `nix.settings` to set any option in `nix.conf`.
+
+  `users.nix.*` options moved to `nix.*`.
+
+  `nix.daemonIONice` was renamed to `nix.daemonIOLowPriority`, and
+  `nix.daemonNiceLevel` was removed in favor a new option
+  `nix.nix.daemonProcessType`.
+
+2021-01-16
+- Added `homebrew` module, to manage formulas installed by Homebrew via `brew bundle`.
+
+2020-10-25
+- The option environment.variables.SHELL is no longer set automatically when,
+  eg. programs.zsh.enable is configured.
+
+2020-09-12
+- Options using the deprecated loaOf where removed, see https://github.com/NixOS/nixpkgs/pull/96042
+
+    The following options no longer accept lists:
+    environment.etc, environment.launchAgents.*, environment.launchDaemons.*,
+    users.users, programs.ssh.knownHosts
+
+2019-05-04
+- A configuration.nix manpage is now included by default, run
+  `man 5 configuration.nix` or `darwin-help`. The documentation option can be
+  disabled to exclude the manual and it's extra build dependencies.
+
+    documentation.enable = false;
+
+2019-05-01
+- nix.nixPath entries are now merged by default
+  system.stateVersion > 3
+
+    For the original behaviour, override the option using a higher priority.
+
+    nix.nixPath = lib.mkForce [ "darwin-config=/configuration.nix" ... ];
+
+  This option also supports specifying named NIX_PATH entries using an
+  attribute set now.
+
+    nix.nixPath = [{ darwin = "/src/darwin"; }];
+
+2019-02-23
+- The users module now supports declarative per-user packages similar to nixos.
+  eg.
+
+    users.users.<name>.packages = [ pkgs.hello ];
+
+2019-01-02
+- The NIX_PATH validation can be disabled now, this is particularly useful if
+  the darwin configuration is deployed from another machine in which case it
+  often doesn't matter that darwin-rebuild won't work on the host itself.
+
+    system.checks.verifyNixPath = false;
+
+2018-03-29
+- default nix.package no longer uses the default profile.
+  system.stateVersion > 2
+
+    For the original behaviour configure nix.package
+
+    nix.package = "/nix/var/nix/profiles/default";
+
+2018-03-06
+- added ssh.knownHosts, to manage global known_hosts.
+
+2018-01-16
+- fixed issue for single-user installs, be careful when rolling back to a
+  revision after 9792b08fdf049524742143f4f788e3eb61a769fda.
+
+    If you run into trouble try NIX_REMOTE= darwin-rebuild switch.
+
+2018-01-13
+- added users.users and users.groups to manage user accounts.
+  Changes will not be applied to existing users or groups.
+
+2018-01-08
+- added networking.networkservices, to manage dns servers and searchdomains.
+  This will clear existing values when enabled.
+
+2018-01-06
+- added nixpkgs.overlays, there is a chapter on overlays in the nixpkgs manual
+  https://nixos.org/nixpkgs/manual/#chap-overlays with more information.
+
+2018-01-04
+- the nix.useDaemon/services.nix-daemon.enable options now automatically
+  reload the daemon for you when nix.conf changes.
+
+2017-11-29
+- the security.enableAccessibilityAccess option was removed since it
+  no longer works on macOS 10.12 and later.
+
+2017-11-06
+- the programs.fish module was rewritten based on improvements from
+  NixOS. This might have some incompatible changes compared to the
+  previous implementation.
+
+2017-10-06
+- loeOf was removed from nixpkgs in 10881bbe11b2f66ebfa880795e5bc01a04158da4
+
+    Using single items instead of a list no longer works for
+    environment.systemPath and launchd.<serviceType>.<name>.path
+
+2017-10-01
+- added system.stateVersion option, add this to your configuration to
+  avoid breaking changes.  This changelog and the activation checks
+  will show instructions on what to do to safely increment this value.
+
+2017-07-06
+- added user channels to the default nix.nixPath
+
+    Using a user channel now works without any custom configuration.
+    See https://github.com/NixOS/nix/issues/1548 if you are running into
+    issues when updating your channel.
+
+2017-07-28
+- added support for command-not-found, using nix-index
+
+    programs.nix-index.enable = true;
+
+2017-07-23
+- darwin entry in the default nix.nixPath was removed for
+  system.stateVersion > 1
+
+    Use a channel for nix-darwin or configure nix.nixPath
+
+    sudo nix-channel --add https://github.com/LnL7/nix-darwin/archive/master.tar.gz darwin
+    sudo nix-channel --update
+
+    nix.nixPath =
+      [ "darwin=$HOME/.nix-defexpr/darwin"
+        "darwin-config=$HOME/.nixpkgs/darwin-configuration.nix"
+        "/nix/var/nix/profiles/per-user/root/channels"
+      ];
+
+2017-01-09
+- nix.profile was renamed to nix.package

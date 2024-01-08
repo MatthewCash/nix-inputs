@@ -1,0 +1,193 @@
+
+= `runNixOps2`
+
+_runNixOps2 {two-colons} AttrSet -> Effect_
+
+Provision interrelated machine configurations and other cloud resources.
+
+NOTE: NixOps 2 is pre-release software, so this function is also subject to change.
+
+[[parameters]]
+== `Parameters`
+
+[[param-flake]]
+=== `flake`
+
+Optional flake (outputs) containing `nixopsConfigurations.default`.
+
+If you do not use a flake to specify the deployment, set <<param-src>> instead.
+
+If `nix` is older than `2.4`, set <<param-nix>> to a `nix` package with flake support.
+
+[[param-name]]
+=== `name`
+
+Optional NixOps deployment name.
+
+If your NixOps state file contains a single deployment and you want to select
+it automatically, you should leave this unset or `null`.
+
+[[param-src]]
+=== `src`
+
+Use when <<param-flake>> is not set.
+
+This should contain the NixOps network expressions and other files required for
+the deployment. Unlike some other deployment methods, NixOps needs access to
+the actual expression files, because it needs to evaluate with non-static
+arguments like secrets and IP adresses.
+
+Confidential information should not be committed and included here, but inserted via
+`secrets.json` and xref:reference/nix-functions/mkEffect.adoc#param-userSetupScript[`userSetupScript`].
+
+[[param-networkFiles]]
+=== `networkFiles`
+
+Use when <<param-flake>> is not set.
+
+A list of relative file path strings in `src` that are used as network expressions.
+
+Default: `null`
+
+Example: `["nixops.nix"]`
+
+[[param-prebuild]]
+=== `prebuild`
+
+Default: `true`
+
+Whether to build the network during the Hercules CI build phase. This ensures
+that all packages are in the cache and avoids attempting a deployment when
+some packages can't be built.
+
+
+[[param-prebuildOnlyNetworkFiles]]
+=== `prebuildOnlyNetworkFiles`
+
+Default: `[]`
+
+xref:param-prebuild[Prebuild] runs outside of NixOps, which means that some info may be missing.
+Specify extra network expressions here to fill in or override the missing definitions.
+
+[[param-prebuildNetworkArgs]]
+=== `prebuildNetworkArgs`
+
+Default: `[]`
+
+xref:param-prebuild[Prebuild] runs outside of NixOps, which means that some info may be missing.
+
+This lets you fill in arguments like those set witih `nixops set-args`.
+
+[[param-secretsMap]]
+=== `secretsMap`
+
+See xref:reference/nix-functions/mkEffect.adoc#param-secretsMap[`secretsMap` in `mkEffect`]
+
+[[param-userSetupScript]]
+=== `userSetupScript`
+
+See xref:reference/nix-functions/mkEffect.adoc#param-userSetupScript[`userSetupScript` in `mkEffect`]
+
+[[param-NIX_PATH]]
+=== `NIX_PATH`
+
+Default: `"nixpkgs=${pkgs.path}"`, where `pkgs` is the Nixpkgs invocation that included the effects overlay.
+
+Necessary for looking up `<nixpkgs>` or potentially other locations using angle bracket syntax.
+
+[[param-action]]
+=== `action`
+
+Default: `"switch"`; performing a full deployment, analogous to `nixos-rebuild switch` but on all nodes and including resources.
+
+Other valid values besides `"switch"` are `"dry-run"`, `"plan"`, `"build"`*, `"create"`, `"copy"`, `"dry-activate"`, `"test"`, `"boot"`.
+
+Note that your agent will not automatically push to the cache for `build`. <<param-prebuild>> (enabled by default) does take care of this. See also xref:guide/deploy-a-nixops-network.adoc#prebuild[the NixOps deployment guide] on prebuilding.
+
+[[param-allowReboot]]
+=== `allowReboot`
+
+Default: `true`.
+
+Set to `false` to make the `deploy` command fail when a reboot is necessary.
+
+[[param-allowRecreate]]
+=== `allowRecreate`
+
+Default: `true`.
+
+Whether to create cloud resources when they appear to have gone missing.
+
+[[param-extraDeployArgs]]
+=== `extraDeployArgs`
+
+Default: `[]`
+
+A list of strings that will be passed as extra arguments to `nixops deploy`.
+
+[[param-nix]]
+=== `nix`
+
+Default: `pkgs.nix`
+
+The Nix package to use.
+
+[[param-nixops]]
+=== `nixops`
+
+Default: `pkgs.nixopsUnstable`
+
+The NixOps package to use.
+
+[[param-forgetState]]
+=== `forgetState`
+
+Default: false
+
+Whether it's ok to delete the state. Only use this on stateless deployments;
+not on deployments that need the state file to remember IP addresses,
+cloud resource ids, etc.
+
+This disables an assertion intended to prevent mistakes with cloud deployments.
+
+[[extra-params]]
+=== `...` -- remaining arguments
+
+Other attributes are passed to xref:reference/nix-functions/mkEffect.adoc[mkEffect], which passes its remaining arguments to `mkDerivation`.
+
+[[return-value]]
+== Return value
+
+An effect that performs the specified action on the NixOps deployment.
+
+The effect has the following attributes in addition to the attributes returned
+by xref:reference/nix-functions/mkEffect.adoc#return-value[`mkEffect`].
+
+
+[[attr-prebuilt]]
+=== `prebuilt`
+
+A derivation representing the built system configuration.
+
+[[attr-prebuilt.nodes]]
+==== `prebuilt.nodes`
+
+An attribute set containing the NixOS configurations of the prebuilt `nodes`.
+
+This is primarily useful for inspection with `nix repl`.
+
+[[attr-prebuilt.machineInfo]]
+==== `prebuilt.machineInfo`
+
+An attribute set with various attributes, including `resources`.
+
+This is primarily useful for inspection with `nix repl`.
+
+[discrete]
+== See also
+
+* xref:reference/nix-functions/runNixOps.adoc[`runNixOps`] -- similar function for NixOps 1.x
+
+* xref:reference/nix-functions/runNixOS.adoc[`runNixOS`] -- a simpler solution for single pre-existing machines
+
+* xref:reference/nix-functions/runArion.adoc[`runArion`] -- deploy services to Docker using NixOS, Nix or Docker-based images

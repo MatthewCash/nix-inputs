@@ -1,0 +1,58 @@
+@-moz-document regexp("^https:\/\/(www|preview)\.duolingo\.com.*$") {
+    :root {
+        --site-hue: var(--global-hue);
+        --site-saturation: var(--global-saturation);
+        --site-lightness: var(--global-lightness);
+        --site-accent-color: hsl(var(--site-hue), var(--site-saturation), var(--site-lightness));
+        --site-accent-color-dark: hsl(var(--site-hue), var(--site-saturation), calc(var(--site-lightness) - 5%));
+        --site-accent-color-darker: hsl(var(--site-hue), var(--site-saturation), calc(var(--site-lightness) - 10%));
+    }
+
+    * {
+        --web-ui_button-color: white !important;
+        --color-snow: 0, 0, 0 !important;
+        --color-walking-fish: 10, 0, 0 !important;
+    }
+
+    :link {
+        color: initial !important;
+    }
+
+    .-oI84 {
+        color: var(--site-accent-color) !important;
+    }
+
+    ._1D8II, .jTP0E, ._3e9O1 {
+        color: white !important;
+    }
+
+    /* (in)correct bottom banner */
+    ._3e9O1 {
+        background-color: unset !important;
+    }
+
+    /* check button */
+    ._3HhhB {
+        background-color: var(--site-accent-color-dark) !important;
+        color: white !important;
+    }
+    ._3HhhB::before {
+        display: none;
+    }
+
+    .dSeUH, /* correct icon */
+    ._29maR /* report, discuss icons*/ {
+        filter: hue-rotate(220deg);
+    }
+
+    /* hide super ads */
+    a._3E4oM._3jIW4._3zucw,
+    .Ekspr {
+        display: none !important;
+    }
+
+    /* progressbar messages */
+    ._26kJ0._2FR4x {
+        color: var(--site-accent-color-dark) !important;
+    }
+}

@@ -1,0 +1,178 @@
+
+= `runNixDarwin`
+
+_runNixDarwin {two-colons} AttrSet -> Effect_
+
+Deploys a nix-darwin configuration, to maintain a macOS machine.
+
+Use the nix-darwin installer first, then base the configuration off the generated ~/.nixpkgs/darwin-configuration.nix.
+
+== Examples:
+
+In a flake, or other code that calls `darwin.lib.darwinSystem`,
+
+```nix
+hci-effects.runNixDarwin {
+  ssh.destination = "jane.local";
+  configuration = self.darwinConfigurations."Janes-MacBook";
+}
+```
+
+or without explicitly using the nix-darwin library,
+
+```nix
+hci-effects.runNixDarwin {
+  ssh.destination = "jane.local";
+
+  configuration = ./configuration.nix;
+  system = "x86_64-darwin";
+  nix-darwin = sources.nix-darwin;
+  nixpkgs = sources.nixpkgs;
+}
+```
+
+[[parameters]]
+== Parameters
+
+
+[[param-buildOnDestination]]
+=== `buildOnDestination`
+
+Default: value of `ssh.buildOnDestination`, which defaults to `false`.
+
+Overrides xref:reference/nix-functions/ssh.adoc#param-buildOnDestination[`ssh.buildOnDestination`]. Defer builds to the destination host instead of pre-building in CI.
+
+
+[[param-config]]
+=== `config`
+
+Legacy parameter. Use `configuration` instead.
+
+[[param-configuration]]
+=== `configuration`
+
+Either
+ - An evaluated configuration to deploy, such as returned by `darwin.lib.darwinSystem`.
+ - A module (path or module expression) assuming you also pass <<param-nix-darwin>> and <<param-nixpkgs>> or <<param-pkgs>>.
+
+[[param-nix-darwin]]
+=== `nix-darwin`
+
+Optional, mutually exclusive with <<param-config>>.
+
+Path of the nix-darwin sources to use.
+
+
+[[param-nixpkgs]]
+=== `nixpkgs`
+
+Optional. Pass only when <<param-configuration>> is a module (path or module expression).
+
+Path of the Nixpkgs sources to use.
+
+Default: `pkgs.path`, where `pkgs` is the Nixpkgs invocation that included the effects overlay.
+
+NOTE: This should match `pkgs.path` if both are set explicitly.
+
+[[param-pkgs]]
+=== `pkgs`
+
+Optional. Pass only when <<param-configuration>> is a module (path or module expression).
+
+An evaluated Nixpkgs invocation to use.
+
+
+[[param-secretsMap]]
+=== `secretsMap`
+
+See xref:reference/nix-functions/mkEffect.adoc#param-secretsMap[`secretsMap` in `mkEffect`]
+
+Example:
+
+```nix
+    secretsMap.ssh = "myuser-ssh";
+```
+
+
+[[param-ssh]]
+=== `ssh`
+
+See the named arguments in xref:reference/nix-functions/ssh.adoc[]. Example:
+
+```nix
+  ssh.destination = "root@example.com";
+```
+
+[[param-system]]
+=== `system`
+
+Optional, mutually exclusive with <<param-config>>.
+
+The Nix `system` of the machine to deploy.
+
+Example: `x86_64-darwin`
+
+Example: `aarch64-darwin`
+
+See https://nixos.org/manual/nix/stable/#ch-supported-platforms[Nix supported platforms,role=external]
+
+[[param-userSetupScript]]
+=== `userSetupScript`
+
+Example:
+
+```nix
+    userSetupScript = ''
+      writeSSHKey
+      cat >>~/.ssh/known_hosts <<EOF
+      203.0.113.2 ecdsa-sha2-nistp256 AA.....pw=
+      EOF
+    '';
+```
+
+See:
+
+* xref:reference/bash-functions/writeSSHKey.adoc[]
+* xref:reference/nix-functions/mkEffect.adoc#param-userSetupScript[`userSetupScript` in `mkEffect`]
+
+[[extra-params]]
+=== `...` -- remaining arguments
+
+Other attributes are passed to xref:reference/nix-functions/mkEffect.adoc[mkEffect], which passes its remaining arguments to `mkDerivation`.
+
+
+[[return-value]]
+== Return value
+
+An effect that switches the nix-darwin system as configured.
+
+The effect has the following attributes in addition to the attributes returned
+by xref:reference/nix-functions/mkEffect.adoc#return-value[`mkEffect`].
+
+[[attr-config]]
+=== `config`
+
+The `config` parameter of the module system. This can be used to inspect the
+system configuration before committing it. For example:
+
+```
+nix repl --file ci.nix
+nix-repl> my-host.prebuilt.config.services.postgresql.enable
+false
+```
+
+[[attr-prebuilt]]
+=== `prebuilt`
+
+A derivation representing the built system configuration.
+
+[[attr-prebuilt.config]]
+==== `prebuilt.config`
+
+Same as <<attr-config>>.
+
+
+[discrete]
+== See also
+
+* xref:reference/nix-functions/runNixOS.adoc[`runNixOS`]

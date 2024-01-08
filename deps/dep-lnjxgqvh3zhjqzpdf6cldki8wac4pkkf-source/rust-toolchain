@@ -1,0 +1,5 @@
+[toolchain]
+profile = "minimal"
+channel = "stable"
+components = [ "rust-src", "clippy-preview", "rustfmt-preview" ]
+targets = [ ]

@@ -1,0 +1,10 @@
+@import "../colors.css";
+
+:root {
+    /* new tab page */
+    --newtab-primary-action-background: var(--global-accent-color) !important;
+    --newtab-textbox-focus-color: var(--global-accent-color) !important;
+    .search-handoff-button {
+        box-shadow: none !important;
+    }
+}

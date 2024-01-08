@@ -1,0 +1,13 @@
+[package]
+name = "features"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = []
+foo = ["libc"]
+bar = ["byteorder"]
+
+[dependencies]
+libc = { version = "*", optional = true }
+byteorder = { version = "*", optional = true }
