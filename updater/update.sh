@@ -21,7 +21,7 @@ mkdir -p "$SCRIPTPATH/../deps/"
 rm -rf "$SCRIPTPATH/../deps/"*
 for key in $(echo "$inputs_json" | jq -r 'keys[]'); do
     value=$(echo "$inputs_json" | jq -r ".\"$key\".url")
-    cp -r --no-preserve=all "$value" "$SCRIPTPATH/../deps/$key"
+    cp -a "$value" "$SCRIPTPATH/../deps/$key"
 done
 
 echo "Generating output flake.nix"
