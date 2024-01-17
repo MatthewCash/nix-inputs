@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p bash nix coreutils jq python3 git
+#!nix-shell -i bash -p bash nix coreutils jq python3 diffutils git
 
 # TODO: The nix expressions in this script are very bad and need to be cleaned up
 
@@ -10,6 +10,12 @@ python -c "print(open('$SCRIPTPATH/bare-flake.nix').read().replace('{/*inputs*/}
 
 echo "Updating inputs"
 nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update "path:$SCRIPTPATH"
+
+if cmp -s "$SCRIPTPATH/../resolved-flake.lock" "$SCRIPTPATH/flake.lock"; then
+    echo "flake.lock has not changed, no updates needed!"
+    exit 0
+fi
+
 cp "$SCRIPTPATH/flake.lock" "$SCRIPTPATH/../resolved-flake.lock"
 
 echo "Resolving dependencies"
