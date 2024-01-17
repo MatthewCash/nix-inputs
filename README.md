@@ -2,9 +2,13 @@
 
 Flake inputs for (https://github.com/MatthewCash/nixos-config)[nixos-config]
 
+Current inputs size: `<!---size-->970M<!---/size-->`
+
 ## Why
 
-Many of my flake's inputs use the `github:` fetcher, but GitHub aggressively rate-limits their API for unauthenticated users to [60](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-unauthenticated-users) requests / hour. To prevent errors when performing flake-related operations, dependencies are consolidated in this repository automatically and loaded as a single input.
+Many of my flake's inputs use the `github:` fetcher, but GitHub aggressively rate-limits their API for unauthenticated users to [60](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-unauthenticated-users) requests / hour.
+
+To prevent a rate-limit error when performing flake-related operations, dependencies are automatically consolidated in this repository and loaded as a single input.
 
 ## How
 
