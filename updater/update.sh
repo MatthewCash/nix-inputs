@@ -1,6 +1,8 @@
 #!/usr/bin/env nix-shell
 #!nix-shell -i bash -p bash nix coreutils jq python3 diffutils git
 
+set -e
+
 # TODO: The nix expressions in this script are very bad and need to be cleaned up
 
 SCRIPTPATH=$(dirname $(realpath -s $0))
