@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p bash nix coreutils jq python3
+#!nix-shell -i bash -p bash nix coreutils jq python3 git
 
 # TODO: The nix expressions in this script are very bad and need to be cleaned up
 
@@ -23,6 +23,7 @@ for key in $(echo "$inputs_json" | jq -r 'keys[]'); do
     value=$(echo "$inputs_json" | jq -r ".\"$key\".url")
     cp -a "$value" "$SCRIPTPATH/../deps/$key"
 done
+git -C "$SCRIPTPATH/.." add -N deps
 
 echo "Generating output flake.nix"
 nix eval --impure --expr "let lib = (import <nixpkgs> {}).lib; fixInputs = i: f: builtins.mapAttrs (n: v: { \${if f then \"follows\" else \"url\"} = \"\${if !f then \"./deps/\" else \"\"}dep-\${lib.removePrefix \"/nix/store/\" v.outPath}\"; } // { inputs = if v ? inputs then fixInputs v.inputs true else {}; }) i; in lib.recursiveUpdate (import ./inputs.nix) (lib.recursiveUpdate (fixInputs (builtins.getFlake \"path:$SCRIPTPATH\").inputs false) (builtins.mapAttrs (n: v: { inherit (v) flake; inputs = if v ? inputs then v.inputs else {}; url = \"./deps/\${n}\"; }) (builtins.fromJSON (builtins.readFile $TMPDIR/inputs.json))))" > $TMPDIR/resolved_inputs.nix
