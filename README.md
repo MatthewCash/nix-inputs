@@ -1,6 +1,6 @@
 # nix-inputs
 
-Flake inputs for (https://github.com/MatthewCash/nixos-config)[nixos-config]
+Flake inputs for [nixos-config](https://github.com/MatthewCash/nixos-config)
 
 Current inputs size: <!---size-->`976M`<!---/size-->
 
