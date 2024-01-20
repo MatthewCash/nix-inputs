@@ -38,9 +38,6 @@ nix eval --impure --expr "let lib = (import <nixpkgs> {}).lib; fixInputs = i: f:
 
 python -c "print(open('$SCRIPTPATH/../bare-flake.nix').read().replace('{/*inputs*/}', open('$TMPDIR/resolved_inputs.nix').read()))" > "$SCRIPTPATH/../flake.nix"
 
-echo "Generating output flake.lock"
-nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update "path:$SCRIPTPATH/.."
-
 sed -i -e "s/<\!---size-->.*<\!---\/size-->/<\!---size-->\`$(du -sh "$SCRIPTPATH/../deps" | cut -f1)\`<\!---\/size-->/g" "$SCRIPTPATH/../README.md"
 
 rm "$SCRIPTPATH/flake.nix"

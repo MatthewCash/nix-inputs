@@ -15,4 +15,4 @@ To prevent a rate-limit error when performing flake-related operations, dependen
 1. A dummy flake is created and its dependencies are solved using the provided [`inputs.nix`](inputs.nix)
 2. The sources for the dummy flake's inputs and all of the input's dependencies are copied to [`deps/`](deps)
 3. The output flake, [`flake.nix`](flake.nix), is generated with all inputs redirected to [`deps`](deps)
-4. A [`flake.lock`](flake.lock) is generated along with [`resolved-flake.lock`](resolved-flake.lock) better for dependency tracking
+4. The dummy flake's lockfile is copied to [`resolved-flake.lock`](resolved-flake.lock) for simpler dependency tracking
