@@ -1,18 +1,16 @@
 {
-    nixpkgsStable.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    flake-utils.url = "github:numtide/flake-utils";
-
-    home-manager = {
-        url = "github:nix-community/home-manager";
-        inputs.nixpkgs.follows = "nixpkgsUnstable";
+    asus-wmi-screenpad = {
+        url = "github:MatthewCash/asus-wmi-screenpad-module";
+        inputs.nixpkgs.follows = "nixpkgsStable";
     };
 
-    impermanence.url = "github:nix-community/impermanence";
+    aurebesh-fonts = {
+        url = "github:MatthewCash/aurebesh-fonts";
+        inputs.nixpkgs.follows = "nixpkgsStable";
+    };
 
-    ragenix = {
-        url = "github:yaxitech/ragenix";
+    codium-theme = {
+        url = "github:MatthewCash/codium-theme";
         inputs.nixpkgs.follows = "nixpkgsStable";
     };
 
@@ -21,33 +19,27 @@
         flake = false;
     };
 
-    zsh-nix-shell = {
-        url = "github:MatthewCash/zsh-nix-shell";
-        flake = false;
-    };
-
-    nixos-generators = {
-        url = "github:nix-community/nixos-generators";
-        inputs.nixpkgs.follows = "nixpkgsUnstable";
-    };
-
-    aurebesh-fonts = {
-        url = "github:MatthewCash/aurebesh-fonts";
-        inputs.nixpkgs.follows = "nixpkgsStable";
-    };
-
     firefox-mods = {
         url = "github:MatthewCash/firefox-mods";
         flake = false;
     };
 
-    tpm-fido = {
-        url = "github:MatthewCash/tpm-fido";
-        inputs.nixpkgs.follows = "nixpkgsStable";
-    };
+    flake-utils.url = "github:numtide/flake-utils";
 
     gnome-accent-colors = {
         url = "github:demiskp/custom-accent-colors/v6";
+        flake = false;
+    };
+
+    home-manager = {
+        url = "github:nix-community/home-manager";
+        inputs.nixpkgs.follows = "nixpkgsUnstable";
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
+
+    kvlibadwaita = {
+        url = "github:GabePoel/KvLibadwaita";
         flake = false;
     };
 
@@ -61,19 +53,22 @@
         inputs.nixpkgs.follows = "nixpkgsStable";
     };
 
-    kvlibadwaita = {
-        url = "github:GabePoel/KvLibadwaita";
-        flake = false;
+    nixos-generators = {
+        url = "github:nix-community/nixos-generators";
+        inputs.nixpkgs.follows = "nixpkgsUnstable";
     };
 
-    asus-wmi-screenpad = {
-        url = "github:MatthewCash/asus-wmi-screenpad-module";
-        inputs.nixpkgs.follows = "nixpkgsStable";
+    nixpkgsStable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    nixpak = {
+        url = "github:MatthewCash/nixpak";
+        inputs.nixpkgs.follows = "nixpkgsUnstable";
     };
 
-    codium-theme = {
-        url = "github:MatthewCash/codium-theme";
-        inputs.nixpkgs.follows = "nixpkgsStable";
+    owl-patched = {
+        url = "github:MatthewCash/owl-patched";
+        inputs.nixpkgs.follows = "nixpkgsUnstable";
     };
 
     plasma-manager = {
@@ -81,13 +76,23 @@
         inputs.nixpkgs.follows = "nixpkgsUnstable";
     };
 
+    ragenix = {
+        url = "github:yaxitech/ragenix";
+        inputs.nixpkgs.follows = "nixpkgsStable";
+    };
+
     sweet-kde = {
         url = "github:EliverLara/Sweet-kde";
         flake = false;
     };
 
-    nixpak = {
-        url = "github:MatthewCash/nixpak";
-        inputs.nixpkgs.follows = "nixpkgsUnstable";
+    tpm-fido = {
+        url = "github:MatthewCash/tpm-fido";
+        inputs.nixpkgs.follows = "nixpkgsStable";
+    };
+
+    zsh-nix-shell = {
+        url = "github:MatthewCash/zsh-nix-shell";
+        flake = false;
     };
 }
