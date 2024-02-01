@@ -36,7 +36,7 @@ git -C "$SCRIPTPATH/.." add -N deps
 echo "Generating output flake.nix"
 nix eval --impure --expr "let lib = (import <nixpkgs> {}).lib; fixInputs = i: f: builtins.mapAttrs (n: v: { \${if f then \"follows\" else \"url\"} = \"\${if !f then \"./deps/\" else \"\"}dep-\${lib.removePrefix \"/nix/store/\" v.outPath}\"; } // { inputs = if v ? inputs then fixInputs v.inputs true else {}; }) i; in lib.recursiveUpdate (import ./inputs.nix) (lib.recursiveUpdate (fixInputs (builtins.getFlake \"path:$SCRIPTPATH\").inputs false) (builtins.mapAttrs (n: v: { inherit (v) flake; inputs = if v ? inputs then v.inputs else {}; url = \"./deps/\${n}\"; }) (builtins.fromJSON (builtins.readFile $TMPDIR/inputs.json))))" > $TMPDIR/resolved_inputs.nix
 
-python -c "print(open('$SCRIPTPATH/../bare-flake.nix').read().replace('{/*inputs*/}', open('$TMPDIR/resolved_inputs.nix').read()))" > "$SCRIPTPATH/../flake.nix"
+python -c "print(open('$SCRIPTPATH/bare-flake.nix').read().replace('{/*inputs*/}', open('$TMPDIR/resolved_inputs.nix').read()))" > "$SCRIPTPATH/../flake.nix"
 
 sed -i -e "s/<\!---size-->.*<\!---\/size-->/<\!---size-->\`$(du -sbh "$SCRIPTPATH/../deps" | cut -f1)\`<\!---\/size-->/g" "$SCRIPTPATH/../README.md"
 

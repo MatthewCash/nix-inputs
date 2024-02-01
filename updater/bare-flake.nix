@@ -1,4 +1,4 @@
 {
     inputs = {/*inputs*/};
-    outputs = _: {};
+    outputs = inputs: { inherit inputs; };
 }
