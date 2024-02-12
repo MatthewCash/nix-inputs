@@ -1,0 +1,8 @@
+[workspace]
+members = [
+  "all-types",
+  "only-cdylib",
+  "only-dylib",
+  "only-staticlib",
+]
+exclude = ["some-dep"]
