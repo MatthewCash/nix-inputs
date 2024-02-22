@@ -1,1 +1,0 @@
-{ nushell-settings = ./settings.nix; }
