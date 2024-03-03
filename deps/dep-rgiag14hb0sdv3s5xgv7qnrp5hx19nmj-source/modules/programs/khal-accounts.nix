@@ -4,20 +4,13 @@ with lib;
 
 {
   options.khal = {
-    type = mkOption {
-      type = types.nullOr (types.enum [ "calendar" "discover" ]);
-      default = null;
-      description = ''
-        Either a single calendar (calendar which is the default) or a directory with multiple calendars (discover).
-      '';
-    };
+    enable = lib.mkEnableOption "khal access";
 
-    glob = mkOption {
-      type = types.str;
-      default = "*";
+    readOnly = mkOption {
+      type = types.bool;
+      default = false;
       description = ''
-        The glob expansion to be searched for events or birthdays when
-        type is set to discover.
+        Keep khal from making any changes to this account.
       '';
     };
 
@@ -51,7 +44,7 @@ with lib;
       type = types.int;
       default = 10;
       description = ''
-        Priority of a calendar used for coloring.
+        Priority of a calendar used for coloring (calendar with highest priority is preferred).
       '';
     };
   };
