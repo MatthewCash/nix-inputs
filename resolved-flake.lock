@@ -811,11 +811,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709634318,
-        "narHash": "sha256-4jZRGyPYShyLocUnE0kqDoitqxqBCkuJ6w6/QX4bjYk=",
+        "lastModified": 1709977899,
+        "narHash": "sha256-v8YrAK8v7bGuAFSorna6ATB2L6hDHCQdoJAboGcWPL4=",
         "owner": "pjones",
         "repo": "plasma-manager",
-        "rev": "9bac5925cf7716979535eed9c88e307fa9744169",
+        "rev": "e2d10c1389fd594c0d9707488ea664d37554c920",
         "type": "github"
       },
       "original": {
