@@ -324,11 +324,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1709126324,
-        "narHash": "sha256-q6EQdSeUZOG26WelxqkmR7kArjgWCdw5sfJVHPH/7j8=",
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "d465f4819400de7c8d874d50b982301f28a84605",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
         "type": "github"
       },
       "original": {
@@ -375,11 +375,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1709126324,
-        "narHash": "sha256-q6EQdSeUZOG26WelxqkmR7kArjgWCdw5sfJVHPH/7j8=",
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "d465f4819400de7c8d874d50b982301f28a84605",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
         "type": "github"
       },
       "original": {
@@ -790,11 +790,11 @@
         "original-owl": "original-owl"
       },
       "locked": {
-        "lastModified": 1710061609,
-        "narHash": "sha256-0YGMHGCHyvrkzY51b1o06DPJp2marfyycSY0BQnzgfw=",
+        "lastModified": 1710148134,
+        "narHash": "sha256-x24b1L6nlIXKo9f7iDd0lZUHj93TsDcYLUXrKZApZZw=",
         "owner": "MatthewCash",
         "repo": "owl-patched",
-        "rev": "fd8a6b918790738620496c7a4a57bacfd16c4722",
+        "rev": "5d06433ac998c6c1d98fe92f4bb03f40b9aaebd3",
         "type": "github"
       },
       "original": {
