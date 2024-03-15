@@ -1,1 +1,0 @@
-{ generators-tokdl = ./tokdl.nix; }
