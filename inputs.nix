@@ -14,6 +14,11 @@
         inputs.nixpkgs.follows = "nixpkgsStable";
     };
 
+    discord-css = {
+        url = "github:MatthewCash/discord-css";
+        flake = false;
+    };
+
     firefox-gnome-theme = {
         url = "github:rafaelmardojai/firefox-gnome-theme/beta";
         flake = false;
