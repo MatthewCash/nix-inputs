@@ -1,0 +1,108 @@
+/* hide friends search box */
+#online-tab > .searchBar_ff8800 {
+    display: none;
+}
+
+/* remove nitro channel */
+a[href="/store"] {
+    display: none;
+}
+
+/* remove Friends channel when selected */
+.selected_d94cf9 > a[href="/channels/@me"] {
+    display: none;
+}
+
+/* remove Shop channel */
+a[href="/shop"] {
+    display: none;
+}
+
+/* remove direct messages list header */
+.privateChannelsHeaderContainer_ddcec6 {
+    display: none !important;
+}
+
+/* remove green from Add Friend button */
+div[aria-label="Add Friend"] {
+    background-color: unset !important;
+    color: unset !important;
+}
+
+/* remove top seach bar */
+.searchBar_e4ea2a {
+    display: none !important;
+}
+
+/* hide interact buttons on friends list */
+.actions_c08157 {
+    display: none !important;
+}
+
+/* hide empty active now card */
+.emptyCard_f82dde {
+    display: none !important;
+}
+
+/* remove active now title */
+.header__123bf {
+    display: none
+}
+
+/* remove Follow button background */
+.followButton-1N-GGp {
+    background-color: unset !important;
+}
+
+/* remove separators from friends list */
+.peopleListItem_d14722 {
+    border: none !important;
+}
+
+.scroller__00e7e {
+    border: none !important;
+}
+
+/* make activity now details transparent */
+.theme-dark .inset__0bfb3 {
+    background-color: transparent;
+}
+
+/* hide friends list scrollbar */
+div[data-list-id="people"]::-webkit-scrollbar {
+    display: none;
+}
+
+/* remove avatar decoration */
+.avatarDecoration_ae35e3 {
+    display: none !important;
+}
+
+/* remove list count label */
+.peopleColumn__51df3 .sectionTitle__69d2d {
+    display: none;
+}
+/*
+.avatarHoverTarget-1zzfRL > div,
+.avatar-1HDIsL > div,
+.avatar-6qzftW > div,
+.avatar-1EWyVD,
+.avatar-2MSPKk {
+    > svg > rect:not([mask="url(#svg-mask-status-online-mobile)"]) {
+        width: 15 !important;
+        mask: url(#svg-mask-status-online);
+    }
+    & svg rect:is([height="2.5"],[x="6.25"])[fill="black"] {
+        display: none;
+    }
+}
+
+/* hide offline status icons */
+div[role="img"][aria-label$=", Offline"] {
+    & rect {
+        display: none;
+    }
+    & foreignObject {
+        mask: url(#svg-mask-avatar-default);
+    }
+}

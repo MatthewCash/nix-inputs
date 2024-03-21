@@ -1,0 +1,89 @@
+html {
+    background-color: #40404040;
+}
+
+/* set accent color */
+html {
+    --brand-460: var(--site-accent-color) !important;
+    --brand-500: var(--site-accent-color) !important;
+    --brand-560: var(--site-accent-color) !important;
+    --brand-experiment-360: var(--site-accent-color) !important;
+    --brand-experiment-560: var(--site-accent-color) !important;
+    --brand-experiment-600: var(--site-accent-color-darker) !important;
+    --text-link: var(--site-accent-color) !important;
+    --text-positive: var(--site-accent-color);
+    --green-360: var(--site-accent-color) !important;
+    --background-mentioned: hsla(var(--site-hue), var(--site-saturation), var(--site-lightness), 0.2) !important;
+    --background-mentioned-hover: hsla(var(--site-hue), var(--site-saturation), var(--site-lightness), 0.3) !important;
+    --profile-body-background-color: transparent !important;
+}
+
+.theme-dark {
+    /* chat background */
+    --background-primary: transparent;
+
+    /* main+guilds background */
+    --background-tertiary: transparent;
+
+    /* sidebar and guild folder background */
+    --background-secondary: transparent;
+
+    /* status and roles area background */
+    --background-secondary-alt: transparent;
+
+    /* icon background */
+    --background-accent: #00000020;
+
+    /* user popout background */
+    --background-floating: #00000090;
+
+    /* chat input box background */
+    --channeltextarea-background: #00000020;
+
+    /* nav button selected */
+    --background-modifier-selected: #00000010;
+}
+
+/* hide top bar */
+.titleBar__01af6 {
+    display: none;
+}
+
+/* make scrollbars translucent */
+.scroller-kQBbkU::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* remove dark borders */
+.content__1a4fe::before,
+.tabBody_b3d268::before {
+    display: none !important;
+}
+.header__104ca {
+    box-shadow: none !important;
+}
+
+/* hide useless scrollbars */
+div[data-jump-section="global"] {
+    overflow-y: initial !important;
+}
+
+/* changle selection color */
+*::selection {
+    background-color: var(--site-accent-color-dark);
+}
+
+/* change update icon color */
+.updateIconForeground-2V_zo4 {
+    fill: var(--site-accent-color) !important;
+}
+
+/* hide nitro feature popups */
+.contentPremium-_Y0-cX {
+    display: none !important;
+}
+
+/* hide nitro banners */
+.colorPremium-1VK7r6 {
+    display: none;
+}

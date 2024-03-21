@@ -1,0 +1,31 @@
+/* remove browse channel background */
+.container__10dc7,
+.header__60bef,
+.container__7590f {
+    background-color: transparent !important;
+}
+
+/* hide gift button in message box */
+button[aria-label="Send a gift"] {
+    display: none;
+}
+
+/* prevent user popout from darkening twice */
+.overlayBackground__86b78 {
+    background-color: transparent !important;
+}
+
+/* remove members list background */
+.container__037ed, .content__4bf10 > .page__0b66e, .container__11d72 {
+    background-color: transparent !important;
+}
+
+/* remove nitro advertising */
+.container-34SFyU {
+    display: none;
+}
+
+/* mentioned message */
+.mentioned__58017::before {
+    background-color: var(--site-accent-color) !important;
+}

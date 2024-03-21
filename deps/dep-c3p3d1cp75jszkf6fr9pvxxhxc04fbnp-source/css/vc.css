@@ -1,0 +1,29 @@
+/* remove black background from vc */
+.callContainer_cbde45 {
+    background: transparent !important;
+}
+
+/* remove black gradient from vc */
+.gradientContainer__9a5a6,
+.gradientBottom__19035 {
+    background-image: unset !important;
+}
+
+.divider-2keupe {
+    background: unset !important;
+}
+
+/* remove black background from stages */
+.callContainer-BGIngG,
+.scroller-35tvpe,
+.rowContainer-jDvyA4,
+.participants-3hk3ND,
+.participants-3hk3ND > div,
+.avatar-rC0Atp {
+    background: transparent !important;
+}
+
+/* make popout background black */
+.popout-2Is9aQ {
+    background-color: black;
+}

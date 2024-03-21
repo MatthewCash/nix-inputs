@@ -177,6 +177,22 @@
         "type": "github"
       }
     },
+    "discord-css": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709426504,
+        "narHash": "sha256-K04lRCQuDufy6rMWxtg9tNMvORksz7WGQFU3dHYPaes=",
+        "owner": "MatthewCash",
+        "repo": "discord-css",
+        "rev": "31b0cdc987a78b1d53352e54fbfeb336235b7d8f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MatthewCash",
+        "repo": "discord-css",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -884,6 +900,7 @@
         "asus-wmi-screenpad": "asus-wmi-screenpad",
         "aurebesh-fonts": "aurebesh-fonts",
         "codium-theme": "codium-theme",
+        "discord-css": "discord-css",
         "firefox-gnome-theme": "firefox-gnome-theme",
         "firefox-mods": "firefox-mods",
         "flake-utils": "flake-utils_4",
