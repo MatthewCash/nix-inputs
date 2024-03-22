@@ -2,7 +2,7 @@
 
 Flake inputs for [nixos-config](https://github.com/MatthewCash/nixos-config)
 
-Current inputs size: <!---size-->`618M`<!---/size-->
+Current inputs size: <!---size-->`619M`<!---/size-->
 
 ## Why
 
