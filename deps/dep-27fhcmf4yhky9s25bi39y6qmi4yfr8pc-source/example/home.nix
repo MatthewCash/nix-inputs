@@ -14,8 +14,7 @@
       wallpaper = "${pkgs.libsForQt5.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
     };
 
-    hotkeys.commands."launch-konsole" = {
-      name = "Launch Konsole";
+    hotkeys.commands."Launch Konsole" = {
       key = "Meta+Alt+K";
       command = "konsole";
     };
@@ -65,13 +64,8 @@
     # Some low-level settings:
     #
     configFile = {
-      "baloofilerc"."Basic Settings"."Indexing-Enabled".value = false;
-      "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft".value = "SF";
-      "kwinrc"."Desktops"."Number" = {
-        value = 8;
-        # Forces kde to not change this value (even through the settings app).
-        immutable = true;
-      };
+      "baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
+      "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "SF";
     };
   };
 }

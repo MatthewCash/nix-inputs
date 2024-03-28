@@ -2,12 +2,12 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (import ../lib/writeconfig.nix { inherit lib pkgs; }) writeConfig;
-  inherit (import ../lib/types.nix { inherit lib; }) advancedSettingsType;
+  inherit (import ../lib/writeconfig.nix { inherit lib pkgs; })
+    writeConfig;
 
   # Helper function to prepend the appropriate path prefix (e.g. XDG_CONFIG_HOME) to file
   prependPath = prefix: attrset:
-    lib.mapAttrs'
+    lib.attrsets.mapAttrs'
       (path: config: { name = "${prefix}/${path}"; value = config; })
       attrset;
   plasmaCfg = config.programs.plasma;
@@ -16,34 +16,38 @@ let
     (prependPath config.xdg.configHome plasmaCfg.configFile) //
     (prependPath config.xdg.dataHome plasmaCfg.dataFile);
 
+  # Flatten nested sections
+  flatten = config: builtins.listToAttrs (lib.flatten (lib.mapAttrsToList
+    (n: v:
+      let
+        keySet = lib.filterAttrs (n: v: !builtins.isAttrs v) v;
+        sectionSet = flatten (lib.filterAttrs (n: v: builtins.isAttrs v) v);
+      in
+      lib.optionals (keySet != { }) [{
+        name = n;
+        value = keySet;
+      }] ++ lib.mapAttrsToList
+        (group: v: {
+          name = "${n}][${group}";
+          value = v;
+        })
+        sectionSet)
+    config));
+
+  flatCfg = builtins.mapAttrs (file: flatten) cfg;
+
   ##############################################################################
-  # Modify the settings to respect the different options in advancedSettingsType.
-  # Checks if "value" represents the final value.
-  isFinalValue = value: (builtins.hasAttr "value" value) && (!builtins.isAttrs value.value);
-  # Calculates the "marking" we should add to the keys, which for example may be
-  # [$i] if we want immutability, or [$e] if we want to expand variables. See
-  # https://api.kde.org/frameworks/kconfig/html/options.html for some options.
-  calculateKeyMarking = value:
-    if !(value.immutable || value.shellExpand) then "" else
-    (
-      if (value.immutable && value.shellExpand) then "[$ei]" else
-      (
-        # Here we know that exactly one of immutable or shellExpand is enabled.
-        if value.immutable then "[$i]" else "[$e]"
-      )
-    );
-  fileSettingsModify =
-    (name: value: (if (!isFinalValue value) then
-      (lib.nameValuePair name (lib.mapAttrs' fileSettingsModify value)) else
-      (lib.nameValuePair "${name}${calculateKeyMarking value}" value.value)));
-
-
-  fileSettingsType = with lib.types; attrsOf (attrsOf (attrsOf advancedSettingsType));
+  # A type for storing settings.
+  settingsFileType = with lib.types; let
+    valueType = attrsOf (nullOr (oneOf [ bool float int str valueType ])) //
+      { description = "Plasma settings"; };
+  in
+  attrsOf (attrsOf (valueType));
 
   ##############################################################################
   # Generate a script that will use write_config.py to update all
   # settings.
-  script = pkgs.writeScript "plasma-config" (writeConfig (lib.mapAttrs' fileSettingsModify cfg));
+  script = pkgs.writeScript "plasma-config" (writeConfig flatCfg);
 
   ##############################################################################
   # Generate a script that will remove all the current config files.
@@ -102,7 +106,7 @@ in
 {
   options.programs.plasma = {
     file = lib.mkOption {
-      type = fileSettingsType;
+      type = settingsFileType;
       default = { };
       description = ''
         An attribute set where the keys are file names (relative to
@@ -111,7 +115,7 @@ in
       '';
     };
     configFile = lib.mkOption {
-      type = fileSettingsType;
+      type = settingsFileType;
       default = { };
       description = ''
         An attribute set where the keys are file names (relative to
@@ -120,7 +124,7 @@ in
       '';
     };
     dataFile = lib.mkOption {
-      type = fileSettingsType;
+      type = settingsFileType;
       default = { };
       description = ''
         An attribute set where the keys are file names (relative to
@@ -163,8 +167,7 @@ in
     home.activation.configure-plasma = (lib.hm.dag.entryAfter [ "writeBoundary" ]
       ''
         $DRY_RUN_CMD ${if plasmaCfg.overrideConfig then (createResetScript plasmaCfg) else ""}
-        $DRY_RUN_CMD ${script} 
+        $DRY_RUN_CMD ${script}
       '');
   };
 }
-
