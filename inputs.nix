@@ -77,7 +77,7 @@
     };
 
     plasma-manager = {
-        url = "github:pjones/plasma-manager";
+        url = "github:MatthewCash/plasma-manager";
         inputs.nixpkgs.follows = "nixpkgsUnstable";
     };
 
