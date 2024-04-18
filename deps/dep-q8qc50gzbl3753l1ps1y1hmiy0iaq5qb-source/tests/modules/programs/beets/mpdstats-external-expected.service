@@ -1,8 +1,0 @@
-[Install]
-WantedBy=default.target
-
-[Service]
-ExecStart=@beets@/bin/beet mpdstats
-
-[Unit]
-Description=Beets MPDStats daemon

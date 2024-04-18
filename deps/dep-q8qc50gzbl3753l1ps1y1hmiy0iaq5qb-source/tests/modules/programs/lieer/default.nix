@@ -1,1 +1,0 @@
-{ lieer = ./lieer.nix; }

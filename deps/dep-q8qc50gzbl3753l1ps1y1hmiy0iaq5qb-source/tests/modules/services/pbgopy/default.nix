@@ -1,1 +1,0 @@
-{ pbgopy = import ./service.nix; }

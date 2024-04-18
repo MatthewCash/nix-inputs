@@ -1,1 +1,0 @@
-{ pqiv-settings = ./settings.nix; }

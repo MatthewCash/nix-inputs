@@ -1,1 +1,0 @@
-{ cachix = ./basic-setup.nix; }

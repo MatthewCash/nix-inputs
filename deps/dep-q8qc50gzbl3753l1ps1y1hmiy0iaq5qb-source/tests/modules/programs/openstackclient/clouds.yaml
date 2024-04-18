@@ -1,8 +1,0 @@
-clouds:
-  my-infra:
-    auth:
-      project_id: 0123456789abcdef0123456789abcdef
-      username: openstack
-    cloud: example-cloud
-    interface: internal
-    region_name: XXX

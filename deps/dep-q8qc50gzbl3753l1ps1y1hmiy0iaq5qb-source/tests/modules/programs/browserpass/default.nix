@@ -1,1 +1,0 @@
-{ browserpass = ./browserpass.nix; }

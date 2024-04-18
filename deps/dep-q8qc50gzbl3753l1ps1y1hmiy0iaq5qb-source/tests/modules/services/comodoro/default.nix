@@ -1,1 +1,0 @@
-{ comodoro-service = ./comodoro.nix; }

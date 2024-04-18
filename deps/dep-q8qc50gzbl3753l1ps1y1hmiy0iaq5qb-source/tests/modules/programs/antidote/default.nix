@@ -1,1 +1,0 @@
-{ antidote-program = ./antidote.nix; }

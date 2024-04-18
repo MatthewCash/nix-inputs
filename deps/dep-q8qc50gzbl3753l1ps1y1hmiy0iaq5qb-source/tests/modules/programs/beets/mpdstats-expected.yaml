@@ -1,5 +1,0 @@
-mpd:
-  host: localhost
-  port: 4242
-plugins:
-- mpdstats

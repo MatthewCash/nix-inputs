@@ -1,1 +1,0 @@
-{ sagemath = ./sagemath.nix; }

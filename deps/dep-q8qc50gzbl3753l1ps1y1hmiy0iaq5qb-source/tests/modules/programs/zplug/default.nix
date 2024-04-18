@@ -1,1 +1,0 @@
-{ zplug-modules = ./modules.nix; }

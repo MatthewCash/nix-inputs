@@ -1,4 +1,0 @@
-db_path = "~/.atuin-history.db"
-dialect = "us"
-auto_sync = true
-search-mode = "fulltext"

@@ -1,1 +1,0 @@
-{ taskwarrior = ./taskwarrior.nix; }

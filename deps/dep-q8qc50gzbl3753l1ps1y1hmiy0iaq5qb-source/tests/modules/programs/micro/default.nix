@@ -1,1 +1,0 @@
-{ micro = ./micro.nix; }
