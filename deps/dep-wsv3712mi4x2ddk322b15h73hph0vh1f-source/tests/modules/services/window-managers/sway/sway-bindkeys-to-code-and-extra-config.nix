@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [ ./sway-stubs.nix ];
@@ -6,19 +6,21 @@
   wayland.windowManager.sway = {
     enable = true;
     package = config.lib.test.mkStubPackage { outPath = "@sway@"; };
+    checkConfig = false;
     # overriding findutils causes issues
-    config = {
-      menu = "${pkgs.dmenu}/bin/dmenu_run";
-
-      input = { "*" = { xkb_variant = "dvorak"; }; };
-      output = { "HDMI-A-2" = { bg = "~/path/to/background.png fill"; }; };
-      seat = { "*" = { hide_cursor = "when-typing enable"; }; };
-    };
+    config.menu = "${pkgs.dmenu}/bin/dmenu_run";
+    config.bindkeysToCode = true;
+    extraConfigEarly = ''
+      import $HOME/.cache/wal/colors-sway
+    '';
+    extraConfig = ''
+      exec_always pkill flashfocus; flasfocus &
+    '';
   };
 
   nmt.script = ''
     assertFileExists home-files/.config/sway/config
     assertFileContent $(normalizeStorePaths home-files/.config/sway/config) \
-      ${./sway-modules.conf}
+      ${./sway-bindkeys-to-code-and-extra-config.conf}
   '';
 }

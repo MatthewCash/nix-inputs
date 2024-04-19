@@ -6,17 +6,14 @@
   wayland.windowManager.sway = {
     enable = true;
     package = config.lib.test.mkStubPackage { outPath = "@sway@"; };
-    # overriding findutils causes issues
-    config.menu = "${pkgs.dmenu}/bin/dmenu_run";
+    checkConfig = false;
+    config = null;
+    systemd.enable = false;
   };
 
   nmt.script = ''
     assertFileExists home-files/.config/sway/config
     assertFileContent $(normalizeStorePaths home-files/.config/sway/config) \
-      ${./sway-default.conf}
-
-    assertFileExists home-files/.config/systemd/user/sway-session.target
-    assertFileContent home-files/.config/systemd/user/sway-session.target \
-      ${./sway-default.target}
+      ${pkgs.writeText "expected" ""}
   '';
 }

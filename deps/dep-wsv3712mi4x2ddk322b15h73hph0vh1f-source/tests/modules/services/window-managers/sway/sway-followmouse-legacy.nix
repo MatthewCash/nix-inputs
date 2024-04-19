@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [ ./sway-stubs.nix ];
@@ -6,19 +6,18 @@
   wayland.windowManager.sway = {
     enable = true;
     package = config.lib.test.mkStubPackage { outPath = "@sway@"; };
-    # overriding findutils causes issues
-    config.menu = "${pkgs.dmenu}/bin/dmenu_run";
+    checkConfig = false;
 
-    config.bars = [{
-      colors.focusedBackground = "#ffffff";
-      colors.focusedStatusline = "#000000";
-      colors.focusedSeparator = "#999999";
-    }];
+    config = {
+      focus.followMouse = false;
+      menu = "${pkgs.dmenu}/bin/dmenu_run";
+      bars = [ ];
+    };
   };
 
   nmt.script = ''
     assertFileExists home-files/.config/sway/config
     assertFileContent $(normalizeStorePaths home-files/.config/sway/config) \
-      ${./sway-bar-focused-colors.conf}
+      ${./sway-followmouse-legacy-expected.conf}
   '';
 }
