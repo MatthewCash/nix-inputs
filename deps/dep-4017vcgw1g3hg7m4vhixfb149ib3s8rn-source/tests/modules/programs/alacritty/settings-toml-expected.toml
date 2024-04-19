@@ -1,5 +1,12 @@
+[font]
+[font.bold]
+family = "SFMono"
+
+[font.normal]
+family = "SFMono"
+
 [[keyboard.bindings]]
-chars = "\x0c"
+chars = "\u000c"
 key = "K"
 mods = "Control"
 
