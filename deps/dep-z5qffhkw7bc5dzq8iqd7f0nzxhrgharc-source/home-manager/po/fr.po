@@ -8,25 +8,25 @@ msgstr ""
 "Project-Id-Version: Home Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/nix-community/home-manager/issues\n"
 "POT-Creation-Date: 2024-04-17 23:19+0200\n"
-"PO-Revision-Date: 2024-02-16 22:01+0000\n"
-"Last-Translator: Robert Helgesson <robert@rycee.net>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/home-manager/"
-"cli/ja/>\n"
-"Language: ja\n"
+"PO-Revision-Date: 2024-04-29 18:07+0000\n"
+"Last-Translator: Michael Thomas <michaelhthomas@outlook.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/home-manager/cli/"
+"fr/>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.5.2\n"
 
 #. translators: For example: "home-manager: missing argument for --cores"
 #: home-manager/home-manager:16
 msgid "%s: missing argument for %s"
-msgstr ""
+msgstr "%s : argument manquant pour %s"
 
 #: home-manager/home-manager:64
 msgid "No configuration file found at %s"
-msgstr "%s に設定ファイルが見つかりません"
+msgstr "Aucun fichier de configuration trouvé à l'emplacement %s"
 
 #. translators: The first '%s' specifier will be replaced by either
 #. 'home.nix' or 'flake.nix'.
@@ -36,16 +36,18 @@ msgid ""
 "Keeping your Home Manager %s in %s is deprecated,\n"
 "please move it to %s"
 msgstr ""
-"Home Managerの %s の %s への保管は非推奨となりました\n"
-"%s へ移動させてください"
+"Garder votre Home Manager %s dans %s est obsolète,\n"
+"Veuillez le déplacer à %s"
 
 #: home-manager/home-manager:92
 msgid "No configuration file found. Please create one at %s"
-msgstr "設定ファイルがありません。ファイルを %s に作ってください"
+msgstr ""
+"Aucun fichier de configuration trouvé. Veuillez en créer un à l'emplacement "
+"%s"
 
 #: home-manager/home-manager:107
 msgid "Home Manager not found at %s."
-msgstr ""
+msgstr "Home Manager indisponible à %s."
 
 #. translators: This message will be seen by very few users that likely are familiar with English. So feel free to leave this untranslated.
 #: home-manager/home-manager:115
@@ -53,6 +55,8 @@ msgid ""
 "The fallback Home Manager path %s has been deprecated and a file/directory "
 "was found there."
 msgstr ""
+"Le chemin d'accès de secours vers Home Manager %s est obsolète et un fichier/"
+"dossier y a été trouvé."
 
 #. translators: This message will be seen by very few users that likely are familiar with English. So feel free to leave this untranslated.
 #: home-manager/home-manager:118
@@ -75,41 +79,55 @@ msgid ""
 "\n"
 "     $ rm -r \"%s\""
 msgstr ""
+"Pour supprimer cet avertissement, exécutez l'une des actions suivantes :\n"
+"\n"
+"1. Préciser explicitement à Home Manager d'utiliser le chemin d'accès, par "
+"exemple en ajoutant ceci à votre configuration :\n"
+"\n"
+"\t{ programs.home-manager.path = \"%s\" ; }\n"
+"\n"
+"Si vous importez Home Manager directement, vous pouvez utiliser le paramètre "
+"`path` au lancement du package :\n"
+"\n"
+"\tpkgs.callPackage /path/to/home-manager-package { path = \"%s\" ; }\n"
+"\n"
+"2. Supprimez le chemin d'accès obsolète.\n"
+"\n"
+"\t$ rm -r \"%s\""
 
 #: home-manager/home-manager:146
 msgid "Sanity checking Nix"
-msgstr "Nixの健全性検査中です"
+msgstr "Vérification de Nix"
 
 #: home-manager/home-manager:166
 msgid "Could not find suitable profile directory, tried %s and %s"
-msgstr ""
-"適切なプロファイル ディレクトリが見つかりませんでした。%s と %s を試しました"
+msgstr "Impossible de trouver le dossier de profil approprié, essayé %s et %s"
 
 #. translators: Here "flake" is a noun that refers to the Nix Flakes feature.
 #: home-manager/home-manager:221
 msgid "Can't inspect options of a flake configuration"
-msgstr "flake設定のオプションを検査できません"
+msgstr "Impossible d'inspecter les options de la configuration d'un flake"
 
 #: home-manager/home-manager:296 home-manager/home-manager:319
 #: home-manager/home-manager:1051
 msgid "%s: unknown option '%s'"
-msgstr "%s: 不明なオプション '%s'"
+msgstr "%s : option inconnue '%s'"
 
 #: home-manager/home-manager:301 home-manager/home-manager:1052
 msgid "Run '%s --help' for usage help"
-msgstr "'%s --help' でヘルプを参照することができます"
+msgstr "Exécuter « %s --help » pour de l'aide sur l'utilisation"
 
 #: home-manager/home-manager:327 home-manager/home-manager:431
 msgid "The file %s already exists, leaving it unchanged..."
-msgstr "%s は既に存在します。変更せずに続行しています..."
+msgstr "Le fichier %s existe déjà, il sera laissé inchangé..."
 
 #: home-manager/home-manager:329 home-manager/home-manager:433
 msgid "Creating %s..."
-msgstr "%s を作成中です..."
+msgstr "Création de %s ..."
 
 #: home-manager/home-manager:475
 msgid "Creating initial Home Manager generation..."
-msgstr "Home Managerの世代を初期化しています..."
+msgstr "Création de la génération initiale de Home Manager..."
 
 #. translators: The "%s" specifier will be replaced by a file path.
 #: home-manager/home-manager:480
@@ -121,13 +139,13 @@ msgid ""
 "to configure Home Manager. Run 'man home-configuration.nix' to\n"
 "see all available options."
 msgstr ""
-"全てが完了しました！ Home-managerはインストール済みで、\n"
+"Tout est fait! Home Manager devrait désormais être installé et vous pouvez "
+"éditer\n"
 "\n"
-"    %s\n"
+"     %s\n"
 "\n"
-"でHome Managerの設定を編集することができるはずです。利用可能なオプションを参"
-"照するには\n"
-"'man home-configuration.nix' を実行してください。"
+"pour configurer Home Manager. Pour avoir une liste des options disponibles,\n"
+"essayez 'man home-configuration.nix'."
 
 #. translators: The "%s" specifier will be replaced by a URL.
 #: home-manager/home-manager:485
@@ -138,17 +156,17 @@ msgid ""
 "\n"
 "if the error seems to be the fault of Home Manager."
 msgstr ""
-"おっと、インストールに失敗しました！このエラーがHome Managerの欠陥によって生"
-"じたと考えられる場合は、\n"
+"Uh oh, l'installation n'a pas réussi! Veuillez signaler cette erreur à "
+"l'adresse suivante\n"
 "\n"
-"    %s\n"
+"     %s\n"
 "\n"
-"というissueを立ててください。"
+"si l'erreur semble être liée à Home Manager."
 
 #. translators: Here "flake" is a noun that refers to the Nix Flakes feature.
 #: home-manager/home-manager:496
 msgid "Can't instantiate a flake configuration"
-msgstr "flake設定を初期化できません"
+msgstr "Impossible d'instancier une configuration flake"
 
 #: home-manager/home-manager:572
 msgid ""
@@ -158,103 +176,106 @@ msgid_plural ""
 "There are %d unread and relevant news items.\n"
 "Read them by running the command \"%s news\"."
 msgstr[0] ""
-"未読のお知らせが%d件あります。\n"
-"\"%s news\"コマンドで確認できます。"
+"Il y a %d nouvel élément non lu et pertinent.\n"
+"Vous pouvez le lire en exécutant la commande \"%s news\"."
+msgstr[1] ""
+"Il y a %d nouveaux éléments non lus et pertinents.\n"
+"Vous pouvez les lire en exécutant la commande \"%s news\"."
 
 #: home-manager/home-manager:586
 msgid "Unknown \"news.display\" setting \"%s\"."
-msgstr "\"news.display\"に\"%s\"という設定は存在しません。"
+msgstr "Configuration \"news.display\" inconnue \"%s\"."
 
 #: home-manager/home-manager:594
 #, sh-format
 msgid "Please set the $EDITOR or $VISUAL environment variable"
-msgstr ""
+msgstr "Veuillez remplir la variable d'environnement $EDITOR ou VISUAL"
 
 #: home-manager/home-manager:612
 msgid "Cannot run build in read-only directory"
-msgstr "読み込み専用ディレクトリ内ではbuild（作成）できません"
+msgstr "Impossible de lancer une compilation dans un dossier en écriture seule"
 
 #: home-manager/home-manager:693
 msgid "No generation with ID %s"
-msgstr "ID %s を持つ世代はありません"
+msgstr "Aucune génération avec l'ID %s"
 
 #: home-manager/home-manager:695
 msgid "Cannot remove the current generation %s"
-msgstr "現在使用中の世代 %s は削除できません"
+msgstr "Impossible de supprimer la génération courante %s"
 
 #: home-manager/home-manager:697
 msgid "Removing generation %s"
-msgstr "世代 %s を削除中です"
+msgstr "Suppression de la génération %s"
 
 #: home-manager/home-manager:718
 msgid "No generations to expire"
-msgstr "期限切れで削除される世代はありません"
+msgstr "Aucune génération expirée"
 
 #: home-manager/home-manager:729
 msgid "No home-manager packages seem to be installed."
-msgstr "home-managerパッケージがインストールされていないようです。"
+msgstr "Aucun package home-manager ne semble être installé."
 
 #: home-manager/home-manager:811
 msgid "Unknown argument %s"
-msgstr "不明な引数 %s"
+msgstr "Argument inconnu %s"
 
 #: home-manager/home-manager:835
 msgid "This will remove Home Manager from your system."
-msgstr "この操作によってHome Managerはシステムから削除されます。"
+msgstr "Cela va supprimer Home Manager de votre système."
 
 #: home-manager/home-manager:838
 msgid "This is a dry run, nothing will actually be uninstalled."
-msgstr "これはdry run （予行練習）で、実際にはアンインストールは行われません。"
+msgstr "C'est un essai, rien ne sera réellement désinstallé."
 
 #: home-manager/home-manager:842
 msgid "Really uninstall Home Manager?"
-msgstr "本当にHome Managerをアンインストールしますか？"
+msgstr "Voulez-vous vraiment désinstaller Home Manager ?"
 
 #: home-manager/home-manager:848
 msgid "Switching to empty Home Manager configuration..."
-msgstr "空のHome Managerの設定に切り替えています..."
+msgstr "Changement vers une configuration vierge de Home Manager..."
 
 #: home-manager/home-manager:863
 msgid "Yay!"
-msgstr "イェイ！"
+msgstr "Yay !"
 
 #: home-manager/home-manager:868
 msgid "Home Manager is uninstalled but your home.nix is left untouched."
-msgstr ""
-"Home Managerはアンインストールされましたが、home.nixはそのまま残してありま"
-"す。"
+msgstr "Home Manager est désinstallé mais votre home.nix reste intact."
 
 #: home-manager/home-manager:1091
 msgid "expire-generations expects one argument, got %d."
-msgstr ""
-"expire-generations は一つしか引数を取らないところ、%d 個が与えられました。"
+msgstr "expire-generations attend un argument, a obtenu %d."
 
 #: home-manager/home-manager:1113
 msgid "Unknown command: %s"
-msgstr "不明なコマンド: %s"
+msgstr "Commande inconnue : %s"
 
 #: home-manager/install.nix:18
 msgid "This derivation is not buildable, please run it using nix-shell."
-msgstr "この派生はビルドできません。nix-shellを使って実行してください。"
+msgstr "Cette dérivation ne peut être construite, essayez avec nix-shell."
 
 #, sh-format
 #~ msgid "Please set the $EDITOR environment variable"
-#~ msgstr "$EDITOR環境変数を設定してください"
+#~ msgstr "Veuillez définir la variable d'environnement $EDITOR"
 
 #~ msgid "Sorry, this command is not yet supported in flake setup"
 #~ msgstr ""
-#~ "申し訳ありませんが、このコマンドはflake設定ではまだ対応されていません"
+#~ "Désolé, cette commande n'est pas encore prise en charge dans la "
+#~ "configuration du flake"
 
 #~ msgid "Creating initial Home Manager configuration..."
-#~ msgstr "Home Managerの設定を初期化しています..."
+#~ msgstr "Création de la configuration initiale de Home Manager..."
 
 #~ msgid "Remove all Home Manager generations?"
-#~ msgstr "Home-managerの全ての世代を削除しますか？"
+#~ msgstr "Supprimer toutes les générations de Home Manager ?"
 
 #~ msgid "All generations are now eligible for garbage collection."
-#~ msgstr "全ての世代がガベージコレクションの対象になりました。"
+#~ msgstr ""
+#~ "Toutes les générations sont maintenant éligibles pour la collecte des "
+#~ "ordures."
 
 #~ msgid "Leaving generations but they may still be garbage collected."
 #~ msgstr ""
-#~ "世代を残すようにしますが、やはりガベージコレクションで回収されるかもしれま"
-#~ "せん。"
+#~ "Les générations sortantes mais elles peuvent encore être collectées par "
+#~ "les ordures."
