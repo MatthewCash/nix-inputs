@@ -8,6 +8,7 @@ html {
     --brand-500: var(--site-accent-color) !important;
     --brand-560: var(--site-accent-color) !important;
     --brand-experiment-360: var(--site-accent-color) !important;
+    --brand-experiment-530: var(--site-accent-color) !important;
     --brand-experiment-560: var(--site-accent-color) !important;
     --brand-experiment-600: var(--site-accent-color-darker) !important;
     --text-link: var(--site-accent-color) !important;
@@ -45,7 +46,7 @@ html {
 }
 
 /* hide top bar */
-.titleBar__01af6 {
+.titleBar__710b0 {
     display: none;
 }
 
