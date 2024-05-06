@@ -6,7 +6,8 @@ with lib;
   imports = [ ../../accounts/email-test-accounts.nix ];
 
   config = {
-    accounts.email.accounts."hm@example.com".msmtp.enable = true;
+    accounts.email.accounts.hm-account.smtp.tls.certificatesFile =
+      "/etc/test/certificates.crt";
     programs.git = {
       enable = true;
       package = pkgs.gitMinimal;
@@ -15,8 +16,6 @@ with lib;
     };
 
     home.stateVersion = "20.09";
-
-    test.stubs.msmtp = { };
 
     nmt.script = ''
       function assertGitConfig() {
@@ -30,13 +29,12 @@ with lib;
       }
 
       assertFileExists home-files/.config/git/config
-      assertFileContent home-files/.config/git/config \
-        ${./git-with-msmtp-expected.conf}
+      assertFileContent home-files/.config/git/config ${
+        ./git-with-email-expected.conf
+      }
 
-      assertGitConfig "sendemail.hm@example.com.from" "hm@example.com"
-      assertGitConfig "sendemail.hm-account.from" "hm@example.org"
-      assertGitConfig "sendemail.hm@example.com.smtpServer" "${pkgs.msmtp}/bin/msmtp"
-      assertGitConfig "sendemail.hm@example.com.envelopeSender" "auto"
+      assertGitConfig "sendemail.hm@example.com.from" "H. M. Test <hm@example.com>"
+      assertGitConfig "sendemail.hm-account.from" "H. M. Test Jr. <hm@example.org>"
     '';
   };
 }
