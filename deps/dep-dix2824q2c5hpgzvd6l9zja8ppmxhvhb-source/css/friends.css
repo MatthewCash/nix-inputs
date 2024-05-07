@@ -35,17 +35,17 @@ div[aria-label="Add Friend"] {
 }
 
 /* hide interact buttons on friends list */
-.actions_c08157 {
+.actions_bd37ed {
     display: none !important;
 }
 
 /* hide empty active now card */
-.emptyCard_f82dde {
+.emptyCard__204d9 {
     display: none !important;
 }
 
 /* remove active now title */
-.header__123bf {
+.header_c56a27 {
     display: none
 }
 
@@ -55,7 +55,7 @@ div[aria-label="Add Friend"] {
 }
 
 /* remove separators from friends list */
-.peopleListItem_d14722 {
+.peopleListItem_dab480 {
     border: none !important;
 }
 
