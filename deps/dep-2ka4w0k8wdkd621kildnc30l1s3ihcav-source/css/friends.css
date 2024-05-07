@@ -1,5 +1,5 @@
 /* hide friends search box */
-#online-tab > .searchBar_ff8800 {
+#online-tab > .searchBar__310d8 {
     display: none;
 }
 
@@ -9,7 +9,7 @@ a[href="/store"] {
 }
 
 /* remove Friends channel when selected */
-.selected_d94cf9 > a[href="/channels/@me"] {
+.selected__37292 > a[href="/channels/@me"] {
     display: none;
 }
 
@@ -19,7 +19,7 @@ a[href="/shop"] {
 }
 
 /* remove direct messages list header */
-.privateChannelsHeaderContainer_ddcec6 {
+.privateChannelsHeaderContainer_b22dc9 {
     display: none !important;
 }
 
@@ -30,7 +30,7 @@ div[aria-label="Add Friend"] {
 }
 
 /* remove top seach bar */
-.searchBar_e4ea2a {
+.searchBar__621ec {
     display: none !important;
 }
 
