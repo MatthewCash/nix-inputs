@@ -50,9 +50,15 @@ html {
     display: none;
 }
 
+/* remove help button */
+a[href="https://support.discord.com"]
+{
+    display: none;
+}
+
 /* make scrollbars translucent */
-.scroller-kQBbkU::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.3) !important;
+.scroller-kQBbkU {
+    scrollbar-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 /* remove dark borders */

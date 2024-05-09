@@ -59,18 +59,30 @@ div[aria-label="Add Friend"] {
     border: none !important;
 }
 
-.scroller__00e7e {
+.scroller__7c25e {
     border: none !important;
 }
 
+.itemCard_b64118 {
+    border-width: 0 !important;
+}
+
+.separator_fc3370 {
+    display: none;
+}
+
 /* make activity now details transparent */
-.theme-dark .inset__0bfb3 {
+.theme-dark .inset__61d5b {
     background-color: transparent;
 }
 
 /* hide friends list scrollbar */
-div[data-list-id="people"]::-webkit-scrollbar {
-    display: none;
+div[data-list-id='people-list'] {
+    scrollbar-width: none;
+}
+
+div[data-list-id='people']::-webkit-scrollbar {
+    width: 0 !important;
 }
 
 /* remove avatar decoration */
