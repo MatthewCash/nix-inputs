@@ -1618,6 +1618,30 @@ in {
           https://github.com/fastfetch-cli/fastfetch for more.
         '';
       }
+
+      {
+        time = "2024-05-10T11:48:34+00:00";
+        condition = hostPlatform.isLinux;
+        message = ''
+          A new module is available: 'programs.hyprlock'.
+
+          Hyprland's simple, yet multi-threaded and GPU-accelerated screen
+          locking utility. See https://github.com/hyprwm/hyprlock for more.
+        '';
+      }
+
+      {
+        time = "2024-05-10T13:35:19+00:00";
+        condition = hostPlatform.isLinux;
+        message = ''
+          A new module is available: 'services.hyprpaper'.
+
+          Hyprpaper is a blazing fast wallpaper utility for Hyprland with the
+          ability to dynamically change wallpapers through sockets. It will work
+          on all wlroots-based compositors, though. See
+          https://github.com/hyprwm/hyprpaper for more.
+        '';
+      }
     ];
   };
 }

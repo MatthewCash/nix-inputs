@@ -118,6 +118,7 @@ let
     ./programs/hstr.nix
     ./programs/htop.nix
     ./programs/hyfetch.nix
+    ./programs/hyprlock.nix
     ./programs/i3blocks.nix
     ./programs/i3status-rust.nix
     ./programs/i3status.nix
@@ -305,6 +306,7 @@ let
     ./services/home-manager-auto-upgrade.nix
     ./services/hound.nix
     ./services/hypridle.nix
+    ./services/hyprpaper.nix
     ./services/imapnotify.nix
     ./services/kanshi.nix
     ./services/kbfs.nix
