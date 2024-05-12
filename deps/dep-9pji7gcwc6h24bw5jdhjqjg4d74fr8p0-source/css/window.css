@@ -14,8 +14,18 @@ html {
     --text-link: var(--site-accent-color) !important;
     --text-positive: var(--site-accent-color);
     --green-360: var(--site-accent-color) !important;
-    --background-mentioned: hsla(var(--site-hue), var(--site-saturation), var(--site-lightness), 0.2) !important;
-    --background-mentioned-hover: hsla(var(--site-hue), var(--site-saturation), var(--site-lightness), 0.3) !important;
+    --background-mentioned: hsla(
+        var(--site-hue),
+        var(--site-saturation),
+        var(--site-lightness),
+        0.2
+    ) !important;
+    --background-mentioned-hover: hsla(
+        var(--site-hue),
+        var(--site-saturation),
+        var(--site-lightness),
+        0.3
+    ) !important;
     --profile-body-background-color: transparent !important;
 }
 
@@ -72,7 +82,7 @@ a[href="https://support.discord.com"]
 }
 
 /* hide useless scrollbars */
-div[data-jump-section="global"] {
+div[data-jump-section='global'] {
     overflow-y: initial !important;
 }
 

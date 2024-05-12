@@ -4,17 +4,17 @@
 }
 
 /* remove nitro channel */
-a[href="/store"] {
+a[href='/store'] {
     display: none;
 }
 
 /* remove Friends channel when selected */
-.selected__37292 > a[href="/channels/@me"] {
+.selected__37292 > a[href='/channels/@me'] {
     display: none;
 }
 
 /* remove Shop channel */
-a[href="/shop"] {
+a[href='/shop'] {
     display: none;
 }
 
@@ -24,7 +24,7 @@ a[href="/shop"] {
 }
 
 /* remove green from Add Friend button */
-div[aria-label="Add Friend"] {
+div[aria-label='Add Friend'] {
     background-color: unset !important;
     color: unset !important;
 }
@@ -46,7 +46,7 @@ div[aria-label="Add Friend"] {
 
 /* remove active now title */
 .header_c56a27 {
-    display: none
+    display: none;
 }
 
 /* remove Follow button background */
@@ -91,29 +91,32 @@ div[data-list-id='people']::-webkit-scrollbar {
 }
 
 /* remove list count label */
-.peopleColumn__51df3 .sectionTitle__69d2d {
+.peopleColumn__0c784 .sectionTitle_b622ce {
     display: none;
 }
-/*
+
+/* make all status icons round */
 .avatarHoverTarget-1zzfRL > div,
 .avatar-1HDIsL > div,
 .avatar-6qzftW > div,
 .avatar-1EWyVD,
 .avatar-2MSPKk {
-    > svg > rect:not([mask="url(#svg-mask-status-online-mobile)"]) {
+    > svg > rect:not([mask='url(#svg-mask-status-online-mobile)']) {
         width: 15 !important;
         mask: url(#svg-mask-status-online);
     }
-    & svg rect:is([height="2.5"],[x="6.25"])[fill="black"] {
+
+    & svg rect:is([height='2.5'], [x='6.25'])[fill='black'] {
         display: none;
     }
 }
 
 /* hide offline status icons */
-div[role="img"][aria-label$=", Offline"] {
+div[role='img'][aria-label$=', Offline'] {
     & rect {
         display: none;
     }
+
     & foreignObject {
         mask: url(#svg-mask-avatar-default);
     }

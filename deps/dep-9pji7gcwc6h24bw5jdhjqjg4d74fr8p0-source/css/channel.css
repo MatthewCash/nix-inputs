@@ -6,7 +6,7 @@
 }
 
 /* hide gift button in message box */
-button[aria-label="Send a gift"] {
+button[aria-label='Send a gift'] {
     display: none;
 }
 
@@ -16,7 +16,9 @@ button[aria-label="Send a gift"] {
 }
 
 /* remove members list background */
-.container__037ed, .content__4bf10 > .page__0b66e, .container__11d72 {
+.container__037ed,
+.content__4bf10 > .page__0b66e,
+.container__11d72 {
     background-color: transparent !important;
 }
 

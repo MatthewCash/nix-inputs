@@ -1,7 +1,7 @@
 /* remove background from forums */
 .container-3wLKDe,
 .textContentFooter-2JnNv8,
-section[aria-label="Channel header"],
+section[aria-label='Channel header'],
 .divider-AZrXIA,
 .children-3xh0VB:after {
     background: transparent !important;
