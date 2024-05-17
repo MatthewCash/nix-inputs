@@ -17,6 +17,7 @@ in {
     maintainers.lucasew
     maintainers.bobvanderlinden
     lib.hm.maintainers.liyangau
+    maintainers.n8henrie
   ];
   options = {
     services.espanso = {
@@ -137,7 +138,6 @@ in {
           Crashed = true;
           SuccessfulExit = false;
         };
-        ProcessType = "Background";
         RunAtLoad = true;
       };
     };
