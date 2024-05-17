@@ -180,11 +180,11 @@
     "discord-css": {
       "flake": false,
       "locked": {
-        "lastModified": 1715548549,
-        "narHash": "sha256-nuaCfyFRiGDY759SfGOB9QwWE4nb75YFoSaAMp6xLq8=",
+        "lastModified": 1715920090,
+        "narHash": "sha256-wsyea5GqtqEM2TkO+II82aIzlE7YtcRFoArxV8xiPHg=",
         "owner": "MatthewCash",
         "repo": "discord-css",
-        "rev": "f19b30bf09ae4c0d87f84848b663a8c648bcfc3b",
+        "rev": "2575c4cbaf39b45c39c88e9eb8349c86e3019633",
         "type": "github"
       },
       "original": {
@@ -213,11 +213,11 @@
     "firefox-mods": {
       "flake": false,
       "locked": {
-        "lastModified": 1711799444,
-        "narHash": "sha256-9j5uI9/9FHQmeAeFB5cBMaUorkq9wVY/MaU/PG73D2M=",
+        "lastModified": 1715920131,
+        "narHash": "sha256-XduWpyI/5x0RiMlfFyUjAyyAP4LZBJv3+ztrJzNng8I=",
         "owner": "MatthewCash",
         "repo": "firefox-mods",
-        "rev": "66744734f9098351931f6cf98e47ef79351dc623",
+        "rev": "bf8cef5cb7b69ea3d8ac0dcfaff3c61ca0fe62fb",
         "type": "github"
       },
       "original": {
