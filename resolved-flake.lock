@@ -806,11 +806,11 @@
         "original-owl": "original-owl"
       },
       "locked": {
-        "lastModified": 1716419394,
-        "narHash": "sha256-n0kH0VjG8K4dzycWTQ05yXMdTVaDD2lF1CgZqkeQ/6Y=",
+        "lastModified": 1716642444,
+        "narHash": "sha256-BqmXz5npCmhRSAm22GAOvOF8BQLG5rok21+bHLv/JLs=",
         "owner": "MatthewCash",
         "repo": "owl-patched",
-        "rev": "00fe9263c1cf47e4d71ea55c2975be7b08faaea1",
+        "rev": "ddfc47934ede9451d2fc32debf2aaf5b2f6750f9",
         "type": "github"
       },
       "original": {
