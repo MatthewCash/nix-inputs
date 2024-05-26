@@ -8,25 +8,25 @@ msgstr ""
 "Project-Id-Version: Home Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/nix-community/home-manager/issues\n"
 "POT-Creation-Date: 2024-04-17 23:19+0200\n"
-"PO-Revision-Date: 2024-02-16 22:01+0000\n"
-"Last-Translator: Robert Helgesson <robert@rycee.net>\n"
-"Language-Team: Danish <https://hosted.weblate.org/projects/home-manager/cli/"
-"da/>\n"
-"Language: da\n"
+"PO-Revision-Date: 2024-05-21 18:02+0000\n"
+"Last-Translator: halbGefressen <chzi@pm.me>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/home-manager/cli/"
+"de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 #. translators: For example: "home-manager: missing argument for --cores"
 #: home-manager/home-manager:16
 msgid "%s: missing argument for %s"
-msgstr ""
+msgstr "%s: Fehlendes Argument für %s"
 
 #: home-manager/home-manager:64
 msgid "No configuration file found at %s"
-msgstr "Ingen konfigurationsfiler fundet ved %s"
+msgstr "Keine Konfigurationsdatei unter %s gefunden"
 
 #. translators: The first '%s' specifier will be replaced by either
 #. 'home.nix' or 'flake.nix'.
@@ -36,16 +36,16 @@ msgid ""
 "Keeping your Home Manager %s in %s is deprecated,\n"
 "please move it to %s"
 msgstr ""
-"At have din Home Manager %s i %s er forældet,\n"
-"flyt den venligst til %s"
+"Das Beibehalten Ihres Home Manager %s in %s ist veraltet.\n"
+"Bitte verschieben Sie es nach %s"
 
 #: home-manager/home-manager:92
 msgid "No configuration file found. Please create one at %s"
-msgstr "Ingen konfigurationsfiler fundet. Venligst lav en ved %s"
+msgstr "Keine Konfigurationsdatei gefunden. Bitte erstellen Sie eine unter %s"
 
 #: home-manager/home-manager:107
 msgid "Home Manager not found at %s."
-msgstr "Home Manager kan ikke findes under %s."
+msgstr "Home Manager nicht gefunden unter %s."
 
 #. translators: This message will be seen by very few users that likely are familiar with English. So feel free to leave this untranslated.
 #: home-manager/home-manager:115
@@ -53,8 +53,8 @@ msgid ""
 "The fallback Home Manager path %s has been deprecated and a file/directory "
 "was found there."
 msgstr ""
-"Fallback-stien til Home Manager %s er blevet forældet, og en fil/mappe blev "
-"fundet der."
+"Der Ausweichpfad für Home-Manager unter %s ist veraltet. Es wurde jedoch "
+"eine Datei/ein Verzeichnis dort gefunden."
 
 #. translators: This message will be seen by very few users that likely are familiar with English. So feel free to leave this untranslated.
 #: home-manager/home-manager:118
@@ -77,58 +77,59 @@ msgid ""
 "\n"
 "     $ rm -r \"%s\""
 msgstr ""
-"For at fjerne denne advarsel, gør en af følgende:\n"
+"Um diese Warnung zu entfernen, führen Sie einen der folgenden Schritte aus.\n"
 "\n"
-"1. Fortæl eksplicit at Home Manager skal bruge stien, for eksempel ved at "
-"tilføje\n"
+"1. Weisen Sie Home Manager explizit an, den Pfad zu verwenden, indem Sie z. "
+"B. :\n"
 "\n"
 "     { programs.home-manager.path = \"%s\"; }\n"
 "\n"
-"   til din konfiguration.\n"
+"   zu Ihrer Konfiguration hinzufügen.\n"
 "\n"
-"   Hvis du importerer Home Manager direkte, kan du bruge `path` parameteren\n"
+"   Sollten Sie Home Manager direkt importieren, können Sie den Parameter "
+"`path` verwenden, wenn Sie das Home Manager-Paket aufrufen:\n"
 "\n"
-"      pkgs.callPackage /sti/til/home-manager-pakke { path = \"%s\"; }\n"
+"     pkgs.callPackage /path/to/home-manager-package { path = \"%s\"; }\n"
 "\n"
-"    når du kalder Home Manager pakken.\n"
+"2. Entfernen Sie den veralteten Pfad:\n"
 "\n"
-"2. Fjern den forældede sti.\n"
-"\n"
-"      $ rm -r \"%s\""
+"     $ rm -r \"%s\""
 
 #: home-manager/home-manager:146
 msgid "Sanity checking Nix"
-msgstr "Tjekker fornuften af Nix"
+msgstr "Überprüfe zur Sicherheit Nix"
 
 #: home-manager/home-manager:166
 msgid "Could not find suitable profile directory, tried %s and %s"
-msgstr "Kunne ikke finde en passende profilmappe, forsøgte %s og %s"
+msgstr ""
+"Es konnte kein passendes Profilverzeichnis gefunden werden, %s und %s wurden "
+"versucht"
 
 #. translators: Here "flake" is a noun that refers to the Nix Flakes feature.
 #: home-manager/home-manager:221
 msgid "Can't inspect options of a flake configuration"
-msgstr "Kan ikke inspicere indstillinger af en flake konfiguration"
+msgstr "Die Optionen einer Flake-Konfiguration können nicht inspiziert werden"
 
 #: home-manager/home-manager:296 home-manager/home-manager:319
 #: home-manager/home-manager:1051
 msgid "%s: unknown option '%s'"
-msgstr "%s: ukendt indstilling '%s'"
+msgstr "%s: unbekannte Option '%s'"
 
 #: home-manager/home-manager:301 home-manager/home-manager:1052
 msgid "Run '%s --help' for usage help"
-msgstr "Kør '%s --help' for brugsvejledning"
+msgstr "Führe '%s --help' aus, um Hilfe zur Verwendung zu erhalten"
 
 #: home-manager/home-manager:327 home-manager/home-manager:431
 msgid "The file %s already exists, leaving it unchanged..."
-msgstr "Filen %s findes allerede, lader den være uændret..."
+msgstr "Die Datei %s existiert bereits, sie bleibt unverändert..."
 
 #: home-manager/home-manager:329 home-manager/home-manager:433
 msgid "Creating %s..."
-msgstr "Opretter %s..."
+msgstr "Erstelle %s..."
 
 #: home-manager/home-manager:475
 msgid "Creating initial Home Manager generation..."
-msgstr "Laver initial Home Manager generation..."
+msgstr "Erstelle initiale Home Manager Generation..."
 
 #. translators: The "%s" specifier will be replaced by a file path.
 #: home-manager/home-manager:480
@@ -140,13 +141,13 @@ msgid ""
 "to configure Home Manager. Run 'man home-configuration.nix' to\n"
 "see all available options."
 msgstr ""
-"Alt er færdigt! Home-manager værktøjet burde nu være installeret, og du kan "
-"ændre\n"
+"Alles fertig! Das Home Manager Tool sollte nun installiert sein. Sie können\n"
 "\n"
 "    %s\n"
-" \n"
-"For at konfigurere Home Manager. Kør 'man home-configuration.nix' for at \n"
-"se alle de mulige indstillinger."
+"\n"
+"bearbeiten um Home Manager zu konfigurieren. Führen Sie\n"
+"'man home-configuration.nix' aus, um alle verfügbaren Optionen zu\n"
+"sehen."
 
 #. translators: The "%s" specifier will be replaced by a URL.
 #: home-manager/home-manager:485
@@ -157,16 +158,16 @@ msgid ""
 "\n"
 "if the error seems to be the fault of Home Manager."
 msgstr ""
-"Åh nej, installationen fejlede! Venligst opret en fejlrapport ved\n"
+"Ups, die Installation schlug fehl. Bitte erstellen Sie ein Issue unter\n"
 "\n"
-"    %s\n"
-" \n"
-"hvis fejlen fremstår som forskyldt af Home Manager."
+"     %s\n"
+"\n"
+"falls der Fehler auf Home Manager zurückzuführen ist."
 
 #. translators: Here "flake" is a noun that refers to the Nix Flakes feature.
 #: home-manager/home-manager:496
 msgid "Can't instantiate a flake configuration"
-msgstr "Kan ikke instantiere en flake konfiguration"
+msgstr "Kann eine Flake-Konfiguration nicht instanziieren"
 
 #: home-manager/home-manager:572
 msgid ""
@@ -176,101 +177,104 @@ msgid_plural ""
 "There are %d unread and relevant news items.\n"
 "Read them by running the command \"%s news\"."
 msgstr[0] ""
-"Der er %d ulæst og relavante nyheder.\n"
-"Læs den ved at køre \"%s news\"."
+"Es gibt eine ungelesene und relevante Nachricht.\n"
+"Lesen Sie sie, indem Sie den Befehl \"%s news\" ausführen."
 msgstr[1] ""
-"Der er %d ulæste og relavante nyheder.\n"
-"Læs dem ved at køre \"%s news\"."
+"Es gibt %d ungelesene und relevante Nachrichten.\n"
+"Lesen Sie sie, indem Sie den Befehl \"%s news\" ausführen."
 
 #: home-manager/home-manager:586
 msgid "Unknown \"news.display\" setting \"%s\"."
-msgstr "Ubekændt \"news.display\" indstilling \"%s\"."
+msgstr "Unbekannte \"news.display\" Einstellung \"%s\"."
 
 #: home-manager/home-manager:594
 #, sh-format
 msgid "Please set the $EDITOR or $VISUAL environment variable"
-msgstr ""
+msgstr "Bitte definieren Sie die $EDITOR oder $VISUAL Umgebungsvariable"
 
 #: home-manager/home-manager:612
 msgid "Cannot run build in read-only directory"
-msgstr "Kan ikke bygge i en læs-kun folder"
+msgstr "Build kann nicht im schreibgeschützten Ordner ausgeführt werden"
 
 #: home-manager/home-manager:693
 msgid "No generation with ID %s"
-msgstr "Ingen generation med ID %s"
+msgstr "Keine Generation mit ID %s"
 
 #: home-manager/home-manager:695
 msgid "Cannot remove the current generation %s"
-msgstr "Kan ikke fjerne den nuværende generation %s"
+msgstr "Die jetzige Generation %s kann nicht entfernt werden"
 
 #: home-manager/home-manager:697
 msgid "Removing generation %s"
-msgstr "Fjern generation %s"
+msgstr "Entferne Generation %s"
 
 #: home-manager/home-manager:718
 msgid "No generations to expire"
-msgstr "Ingen generationer som skal udløbes"
+msgstr "Keine ablaufenden Generationen"
 
 #: home-manager/home-manager:729
 msgid "No home-manager packages seem to be installed."
-msgstr ""
-"Det virker ikke som om der er nogle home-manager pakker der er installeret."
+msgstr "Es scheint, als ob keine Home Manager Pakete installiert sind."
 
 #: home-manager/home-manager:811
 msgid "Unknown argument %s"
-msgstr "Ubekendt argument %s"
+msgstr "Unbekannte Argumente %s"
 
 #: home-manager/home-manager:835
 msgid "This will remove Home Manager from your system."
-msgstr "Dette vil fjerne Home Manager fra dit system."
+msgstr "Dies wird Home Manager von Ihrem System entfernen."
 
 #: home-manager/home-manager:838
 msgid "This is a dry run, nothing will actually be uninstalled."
-msgstr "Dette er en tør kørsel, intet vil rent faktisk blive uinstalleret."
+msgstr "Dies ist ein Probelauf, es wird nichts vom System deinstalliert."
 
 #: home-manager/home-manager:842
 msgid "Really uninstall Home Manager?"
-msgstr "Virkelig uinstaller Home Manager?"
+msgstr "Möchten Sie wirklich Home Manager deinstallieren?"
 
 #: home-manager/home-manager:848
 msgid "Switching to empty Home Manager configuration..."
-msgstr "Skifter til tom Home Manager konfiguration..."
+msgstr "Wechsle zu einer leeren Home Manager Konfiguration..."
 
 #: home-manager/home-manager:863
 msgid "Yay!"
-msgstr "Juhuu!"
+msgstr "Juhu!"
 
 #: home-manager/home-manager:868
 msgid "Home Manager is uninstalled but your home.nix is left untouched."
 msgstr ""
-"Home Manager bliver uinstalleret, men din home.nix bliver forladt uberørt."
+"Home Manager ist installiert, aber Ihre home.nix Datei bleibt unberührt."
 
 #: home-manager/home-manager:1091
 msgid "expire-generations expects one argument, got %d."
-msgstr "expire-generations forventer et argument, fik %d."
+msgstr "expire-generations erwartet ein Argument, hat aber %d erhalten."
 
 #: home-manager/home-manager:1113
 msgid "Unknown command: %s"
-msgstr "Ubekendt kommando: %s"
+msgstr "Unbekannter Befehl: %s"
 
 #: home-manager/install.nix:18
 msgid "This derivation is not buildable, please run it using nix-shell."
-msgstr "Denne derivation er ikke bygbar, venligst kør den gennem nix-shell."
+msgstr ""
+"Diese Derivation ist nicht kompilierbar. Bitte führen Sie nix-shell aus."
 
 #, sh-format
 #~ msgid "Please set the $EDITOR environment variable"
-#~ msgstr "Venligst sæt $EDITOR miljøvariablen"
+#~ msgstr "Bitte legen Sie die $EDITOR Variable fest"
+
+#~ msgid "Sorry, this command is not yet supported in flake setup"
+#~ msgstr "Dieser Befehl wird im Flake-Setup leider noch nicht unterstützt"
 
 #~ msgid "Creating initial Home Manager configuration..."
-#~ msgstr "Laver initial Home Manager konfiguration..."
+#~ msgstr "Erstelle initiale Home Manager Konfiguration..."
 
 #~ msgid "Remove all Home Manager generations?"
-#~ msgstr "Fjern alle Home Manager generationer?"
+#~ msgstr "Entferne alle Home Manager Generationen?"
 
 #~ msgid "All generations are now eligible for garbage collection."
-#~ msgstr "Alle generationer kan nu blive tjekket for overflødige filer."
+#~ msgstr "Alle Generationen kommen nun für die Garbage Collection in Frage."
 
 #~ msgid "Leaving generations but they may still be garbage collected."
 #~ msgstr ""
-#~ "Forlad generationer, men de kan stadig bliver fjernet som overflødige "
-#~ "filer."
+#~ "Ignoriere Generationen, aber diese könnten immer noch mittels des Garbage "
+#~ "Collectors aufgeräumt werden."
