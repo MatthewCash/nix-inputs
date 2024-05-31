@@ -66,9 +66,18 @@
         display: none !important;
     }
 
-    /* make header, background black */
+    /* make header transparent */
     * {
-        --yt-spec-base-background: black !important;
+        --yt-spec-base-background: transparent !important;
+    }
+
+    /* make background transparent */
+    html,
+    ytd-app,
+    #full-bleed-container,
+    #container,
+    .ytd-playlist-panel-renderer {
+        background-color: transparent !important;
     }
 
     /* hide search button */
@@ -127,5 +136,10 @@
     /* hide View Products overlay */
     button[aria-label='View products'] {
         display: none !important;
+    }
+
+    /* round video player */
+    video {
+        border-radius: 10px !important;
     }
 }
