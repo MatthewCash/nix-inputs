@@ -63,7 +63,7 @@
         inputs.nixpkgs.follows = "nixpkgsUnstable";
     };
 
-    nixpkgsStable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgsStable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpak = {
