@@ -213,11 +213,11 @@
     "firefox-mods": {
       "flake": false,
       "locked": {
-        "lastModified": 1717480798,
-        "narHash": "sha256-3oUJAR/sc/0pdQZX4CDmGavJi0sJVc1zoeOgLypElts=",
+        "lastModified": 1717567662,
+        "narHash": "sha256-SXRG6apOgcB4KMvBWEB+Hv0LMgjASlWK2OHR2Ltf1Qg=",
         "owner": "MatthewCash",
         "repo": "firefox-mods",
-        "rev": "1d752fc2668308fb6390d79a8b273c3bdab8aff2",
+        "rev": "cecf7d96ea1f02937c8ee35e8fe20615800b976c",
         "type": "github"
       },
       "original": {
