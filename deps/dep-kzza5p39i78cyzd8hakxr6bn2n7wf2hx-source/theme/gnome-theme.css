@@ -24,6 +24,7 @@
 
 @import "colors/light.css";
 @import "colors/dark.css";
+@import "colors/black.css" screen and (-moz-bool-pref: "gnomeTheme.oledBlack"); 
 
 @import "system-icons.css";
 @import "symbolic-tab-icons.css";
@@ -33,6 +34,6 @@
 #customization-footer::before {
 	background: url(../icon.svg) no-repeat;
 	background-size: contain;
-	content: "Firefox GNOME theme v126";
+	content: "Firefox GNOME theme v127";
 	padding: 9px 9px 9px 50px;
 }
