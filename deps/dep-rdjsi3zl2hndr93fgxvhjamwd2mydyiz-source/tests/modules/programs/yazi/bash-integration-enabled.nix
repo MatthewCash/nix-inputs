@@ -2,7 +2,7 @@
 
 let
   shellIntegration = ''
-    function ya() {
+    function yy() {
       local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
       yazi "$@" --cwd-file="$tmp"
       if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -12,7 +12,7 @@ let
     }
   '';
 in {
-  programs.zsh.enable = true;
+  programs.bash.enable = true;
 
   programs.yazi = {
     enable = true;
@@ -22,6 +22,6 @@ in {
   test.stubs.yazi = { };
 
   nmt.script = ''
-    assertFileContains home-files/.zshrc '${shellIntegration}'
+    assertFileContains home-files/.bashrc '${shellIntegration}'
   '';
 }
