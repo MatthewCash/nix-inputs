@@ -57,4 +57,4 @@ mkShell {
 ```
 
 For more details about these different kinds of dependencies,
-see also [Nix Wiki - Cross Compiling](https://nixos.wiki/wiki/Cross_Compiling#How_to_specify_dependencies).
+see also [Nix Wiki - Cross Compiling](https://wiki.nixos.org/wiki/Cross_Compiling#How_to_specify_dependencies).
