@@ -56,7 +56,7 @@ html {
 }
 
 /* hide top bar */
-.titleBar__710b0 {
+.titleBar_a934d8 {
     display: none;
 }
 
@@ -73,7 +73,7 @@ a[href="https://support.discord.com"]
 
 /* remove dark borders */
 .content__01e65::before,
-.tabBody_a90ea8::before {
+.tabBody_c2739c::before {
     display: none !important;
 }
 
@@ -92,7 +92,7 @@ div[data-jump-section='global'] {
 }
 
 /* change update icon color */
-.updateIconForeground-2V_zo4 {
+.updateIconForeground_ff5f90 {
     fill: var(--site-accent-color) !important;
 }
 
