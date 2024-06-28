@@ -19,6 +19,11 @@
         flake = false;
     };
 
+    disko = {
+        url = "github:nix-community/disko";
+        inputs.nixpkgs.follows = "nixpkgsStable";
+    };
+
     firefox-gnome-theme = {
         url = "github:rafaelmardojai/firefox-gnome-theme/beta";
         flake = false;
