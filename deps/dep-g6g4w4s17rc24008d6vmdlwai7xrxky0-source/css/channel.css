@@ -28,12 +28,12 @@ button[aria-label='Send a gift'] {
 }
 
 /* mentioned message */
-.mentioned_fa6fd2::before {
+.mentioned_d5deea::before {
     background-color: var(--site-accent-color) !important;
 }
 
 /* change name color */
-.memberInner__4dac6:has(img[src^="https://cdn.discordapp.com/avatars/192035055584018435"]) .username__4a6f7
+.memberInner_a31c43:has(img[src^="https://cdn.discordapp.com/avatars/192035055584018435"]) .username_de3235
 {
     color: #c0a962 !important;
 }
