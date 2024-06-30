@@ -55,15 +55,15 @@ div[aria-label='Add Friend'] {
 }
 
 /* remove separators from friends list */
-.peopleListItem_dab480 {
+.peopleListItem_d51464 {
     border: none !important;
 }
 
-.scroller__7c25e {
+.scroller_bf550a {
     border: none !important;
 }
 
-.itemCard_b64118 {
+.itemCard_f02fcf {
     border-width: 0 !important;
 }
 
@@ -72,7 +72,8 @@ div[aria-label='Add Friend'] {
 }
 
 /* make activity now details transparent */
-.theme-dark .inset__61d5b {
+.itemCard_f02fcf,
+.theme-dark .inset_c0f6a6 {
     background-color: transparent;
 }
 
@@ -91,7 +92,7 @@ div[data-list-id='people']::-webkit-scrollbar {
 }
 
 /* remove list count label */
-.peopleColumn__0c784 .sectionTitle_b622ce {
+.peopleColumn_c2739c .sectionTitle_e0840f {
     display: none;
 }
 
