@@ -37,18 +37,18 @@ button[aria-label='Send a gift'] {
 {
     color: #c0a962 !important;
 }
-.memberInner__4dac6:has(img[src^="https://cdn.discordapp.com/avatars/340987464602615809"]) .username__4a6f7
+.memberInner_a31c43:has(img[src^="https://cdn.discordapp.com/avatars/340987464602615809"]) .username_de3235
 {
     color: #dc86d7 !important;
 }
 
 /* change status color */
-.avatar__6337f:has(img[src^="https://cdn.discordapp.com/avatars/192035055584018435"]) rect:is([fill="#23a55a"],[mask="url(#svg-mask-status-online)"])
+.avatar_e9f61e:has(img[src^="https://cdn.discordapp.com/avatars/192035055584018435"]) rect:is([fill="#23a55a"],[mask="url(#svg-mask-status-online)"])
 {
     fill: #c0a962 !important;
 }
 
-.avatar__6337f:has(img[src^="https://cdn.discordapp.com/avatars/340987464602615809"]) rect[mask="url(#svg-mask-status-online)"]
+.avatar_e9f61e:has(img[src^="https://cdn.discordapp.com/avatars/340987464602615809"]) rect[mask="url(#svg-mask-status-online)"]
 {
     fill: #dc86d7 !important;
 }
