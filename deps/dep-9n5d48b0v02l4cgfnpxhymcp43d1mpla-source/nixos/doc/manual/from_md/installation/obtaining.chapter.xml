@@ -10,7 +10,7 @@
     <xref linkend="sec-booting-from-usb" /> describes the preferred
     method to prepare a USB stick. A number of alternative methods are
     presented in the
-    <link xlink:href="https://nixos.wiki/wiki/NixOS_Installation_Guide#Making_the_installation_media">NixOS
+    <link xlink:href="https://wiki.nixos.org/wiki/NixOS_Installation_Guide#Making_the_installation_media">NixOS
     Wiki</link>.
   </para>
   <para>

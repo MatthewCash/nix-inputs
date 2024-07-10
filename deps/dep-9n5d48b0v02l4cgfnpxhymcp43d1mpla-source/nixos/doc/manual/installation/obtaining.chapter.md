@@ -7,7 +7,7 @@ CD, burning the image to CD and booting from that is probably the
 easiest option. Most people will need to prepare a USB stick to boot
 from. [](#sec-booting-from-usb) describes the preferred method to
 prepare a USB stick. A number of alternative methods are presented in
-the [NixOS Wiki](https://nixos.wiki/wiki/NixOS_Installation_Guide#Making_the_installation_media).
+the [NixOS Wiki](https://wiki.nixos.org/wiki/NixOS_Installation_Guide#Making_the_installation_media).
 
 As an alternative to installing NixOS yourself, you can get a running
 NixOS system through several other means:

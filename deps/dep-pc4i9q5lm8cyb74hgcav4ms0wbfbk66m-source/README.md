@@ -7,7 +7,7 @@
 A compatible but better replacement for rust overlay of [nixpkgs-mozilla].
 
 Hashes of toolchain components are pre-fetched in tree, so the evaluation is *pure* and
-no need to have network access. It also works well with [Nix Flakes](https://nixos.wiki/wiki/Flakes).
+no need to have network access. It also works well with [Nix Flakes](https://wiki.nixos.org/wiki/Flakes).
 
 - The toolchain hashes are auto-updated daily using GitHub Actions.
 - Current oldest supported version is stable 1.29.0 and beta/nightly 2018-09-13

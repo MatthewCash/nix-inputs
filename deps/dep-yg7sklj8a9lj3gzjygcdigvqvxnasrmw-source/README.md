@@ -205,7 +205,7 @@ You can run the CLI tool ad-hoc without installing it:
 nix run github:ryantm/agenix -- --help
 ```
 
-But you can also add it permanently into a [NixOS module](https://nixos.wiki/wiki/NixOS_modules) 
+But you can also add it permanently into a [NixOS module](https://wiki.nixos.org/wiki/NixOS_modules) 
 (replace system "x86_64-linux" with your system):
 
 ```nix
@@ -304,7 +304,7 @@ e.g. inside your `flake.nix` file:
    ```
    You can reference the mount path to the (later) unencrypted secret already in your other configuration.
    So `config.age.secrets.secret1.path` will contain the path `/run/agenix/secret1` by default.
-7. Use `nixos-rebuild` or [another deployment tool](https://nixos.wiki/wiki/Applications#Deployment") of choice as usual.
+7. Use `nixos-rebuild` or [another deployment tool](https://wiki.nixos.org/wiki/Applications#Deployment") of choice as usual.
 
    The `secret1.age` file will be copied over to the target machine like any other Nix package. 
    Then it will be decrypted and mounted as described before.
