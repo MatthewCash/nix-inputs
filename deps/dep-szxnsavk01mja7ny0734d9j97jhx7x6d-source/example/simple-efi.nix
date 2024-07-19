@@ -1,9 +1,8 @@
 {
   disko.devices = {
     disk = {
-      vdb = {
+      main = {
         device = "/dev/disk/by-id/some-disk-id";
-        name = "this-is-some-super-long-name-to-test-what-happens-when-the-name-is-too-long";
         type = "disk";
         content = {
           type = "gpt";

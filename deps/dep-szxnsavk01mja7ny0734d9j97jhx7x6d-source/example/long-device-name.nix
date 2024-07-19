@@ -1,15 +1,16 @@
 {
   disko.devices = {
     disk = {
-      vdb = {
-        device = "/dev/disk/by-path/pci-0000:02:00.0-nvme-1";
+      main = {
+        device = "/dev/disk/by-id/some-disk-id";
+        name = "this-is-some-super-long-name-to-test-what-happens-when-the-name-is-too-long";
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              end = "500M";
               type = "EF00";
+              size = "500M";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -17,11 +18,10 @@
               };
             };
             root = {
-              name = "root";
-              end = "-0";
+              size = "100%";
               content = {
                 type = "filesystem";
-                format = "bcachefs";
+                format = "ext4";
                 mountpoint = "/";
               };
             };
@@ -31,3 +31,4 @@
     };
   };
 }
+

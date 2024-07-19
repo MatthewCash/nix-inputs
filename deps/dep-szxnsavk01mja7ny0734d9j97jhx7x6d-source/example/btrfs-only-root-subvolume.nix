@@ -1,15 +1,18 @@
 {
   disko.devices = {
     disk = {
-      vdb = {
-        device = "/dev/disk/by-id/some-disk-id";
+      main = {
         type = "disk";
+        device = "/dev/disk/by-diskseq/1";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
+              priority = 1;
+              name = "ESP";
+              start = "1M";
+              end = "128M";
               type = "EF00";
-              size = "500M";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -19,9 +22,10 @@
             root = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
+                type = "btrfs";
+                extraArgs = [ "-f" ]; # Override existing partition
                 mountpoint = "/";
+                mountOptions = [ "compress=zstd" "noatime" ];
               };
             };
           };

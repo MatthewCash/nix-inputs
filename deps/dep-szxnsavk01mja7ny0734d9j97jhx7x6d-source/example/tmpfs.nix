@@ -1,9 +1,9 @@
 {
   disko.devices = {
     disk = {
-      vdb = {
-        type = "disk";
+      main = {
         device = "/dev/vdb";
+        type = "disk";
         content = {
           type = "gpt";
           partitions = {
@@ -16,23 +16,26 @@
                 mountpoint = "/boot";
               };
             };
-            luks = {
+            root = {
               size = "100%";
               content = {
-                type = "luks";
-                name = "crypted";
-                settings.allowDiscards = true;
-                passwordFile = "/tmp/secret.key";
-                content = {
-                  type = "filesystem";
-                  format = "ext4";
-                  mountpoint = "/";
-                };
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
               };
             };
           };
         };
       };
     };
+    nodev = {
+      "/tmp" = {
+        fsType = "tmpfs";
+        mountOptions = [
+          "size=200M"
+        ];
+      };
+    };
   };
 }
+

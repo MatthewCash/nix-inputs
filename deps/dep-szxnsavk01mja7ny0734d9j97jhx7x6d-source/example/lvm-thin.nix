@@ -1,7 +1,7 @@
 {
   disko.devices = {
     disk = {
-      vdb = {
+      main = {
         type = "disk";
         device = "/dev/vdb";
         content = {
@@ -19,23 +19,11 @@
                 ];
               };
             };
-            luks = {
+            primary = {
               size = "100%";
               content = {
-                type = "luks";
-                name = "crypted";
-                extraOpenArgs = [ ];
-                settings = {
-                  # if you want to use the key for interactive login be sure there is no trailing newline
-                  # for example use `echo -n "password" > /tmp/secret.key`
-                  keyFile = "/tmp/secret.key";
-                  allowDiscards = true;
-                };
-                additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
-                content = {
-                  type = "lvm_pv";
-                  vg = "pool";
-                };
+                type = "lvm_pv";
+                vg = "mainpool";
               };
             };
           };
@@ -43,11 +31,17 @@
       };
     };
     lvm_vg = {
-      pool = {
+      mainpool = {
         type = "lvm_vg";
         lvs = {
-          root = {
+          thinpool = {
             size = "100M";
+            lvm_type = "thin-pool";
+          };
+          root = {
+            size = "10M";
+            lvm_type = "thinlv";
+            pool = "thinpool";
             content = {
               type = "filesystem";
               format = "ext4";
@@ -59,6 +53,8 @@
           };
           home = {
             size = "10M";
+            lvm_type = "thinlv";
+            pool = "thinpool";
             content = {
               type = "filesystem";
               format = "ext4";

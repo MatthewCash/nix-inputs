@@ -1,20 +1,16 @@
+# Example to create a bios compatible gpt partition
 {
   disko.devices = {
     disk = {
-      vdb = {
+      main = {
         device = "/dev/vdb";
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
-            ESP = {
-              size = "500M";
-              type = "EF00";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-              };
+            boot = {
+              size = "1M";
+              type = "EF02"; # for grub MBR
             };
             root = {
               size = "100%";
@@ -28,14 +24,5 @@
         };
       };
     };
-    nodev = {
-      "/tmp" = {
-        fsType = "tmpfs";
-        mountOptions = [
-          "size=200M"
-        ];
-      };
-    };
   };
 }
-
