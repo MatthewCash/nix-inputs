@@ -84,6 +84,16 @@
         }
     }
 
+    /* hide join button */
+    button[data-context='video'] {
+        display: none !important;
+    }
+
+    /* round video player */
+    video {
+        border-radius: 10px;
+    }
+
     /* remove borders */
     #theaterVideoPlayer {
         border-width: 0 !important;
