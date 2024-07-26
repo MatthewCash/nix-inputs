@@ -844,11 +844,11 @@
         "original-owl": "original-owl"
       },
       "locked": {
-        "lastModified": 1721920132,
-        "narHash": "sha256-ZGxcEkpsSYYcUd3JyMTHhUhshXhZQhasVU9A9qlkv1I=",
+        "lastModified": 1721992086,
+        "narHash": "sha256-DNyp+3hoG1MEU+PXm/OPPy9ML4CpYQlIca2/YK/sD5A=",
         "owner": "MatthewCash",
         "repo": "owl-patched",
-        "rev": "c51bb3130204e64d8f694535bd00f998313005ca",
+        "rev": "0c18a9b1fe5cb564d7124bb7e4a02e387fa0302d",
         "type": "github"
       },
       "original": {
