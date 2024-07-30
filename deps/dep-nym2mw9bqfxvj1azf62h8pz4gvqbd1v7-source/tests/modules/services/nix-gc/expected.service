@@ -1,5 +1,0 @@
-[Service]
-ExecStart=@nix@/bin/nix-collect-garbage --delete-older-than 30d
-
-[Unit]
-Description=Nix Garbage Collector
