@@ -1,0 +1,19 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "stub",
+    "pio",
+    "linux-bootloader",
+]
+
+default-members = [
+    "stub"
+]
+
+[workspace.package]
+version = "0.4.1"
+
+[profile.release]
+opt-level = "s"
+lto = true

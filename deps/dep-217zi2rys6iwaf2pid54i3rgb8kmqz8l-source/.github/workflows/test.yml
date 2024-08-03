@@ -1,0 +1,142 @@
+name: "Run test suite"
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - 'master'
+      - 'ci*' # Allow testing CI fixes without opening a PR
+
+permissions:
+  contents: read
+
+jobs:
+  tests-pass:
+    name: all systems go
+    runs-on: ubuntu-latest
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
+    steps:
+      - run: exit 1
+    needs:
+      - check-dead-code
+      - check-fmt
+      - examples-darwin
+      - examples-linux
+      - tests
+
+  tests:
+    strategy:
+      # Allow other jobs to finish building and cache properly before bailing
+      fail-fast: false
+      matrix:
+        include:
+            # Latest and greatest release of Nix
+          - install_url: https://nixos.org/nix/install
+            # The 24.05 branch ships with Nix 2.18.2
+          - install_url: https://releases.nixos.org/nix/nix-2.18.2/install
+            nixpkgs-override: "--override-input nixpkgs $(./ci/ref-from-lock.sh ./test#nixpkgs)"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@V27
+      with:
+        install_url: ${{ matrix.install_url }}
+    - uses: cachix/cachix-action@v15
+      with:
+        name: crane
+        authToken: ${{ github.ref == 'refs/heads/master' && secrets.CACHIX_AUTH_TOKEN || '' }}
+    - name: flake checks
+      run: nix develop --accept-flake-config --command ./ci/fast-flake-check.sh . ${{ matrix.nixpkgs-override }}
+    - name: extra tests
+      run: nix develop --accept-flake-config ${{ matrix.nixpkgs-override }} --command ./extra-tests/test.sh
+
+  examples-linux:
+    strategy:
+      # Allow other jobs to finish building and cache properly before bailing
+      fail-fast: false
+      matrix:
+        example:
+          - alt-registry
+          - build-std
+          - cross-musl
+          - cross-rust-overlay
+          - cross-windows
+          - custom-toolchain
+          - end-to-end-testing
+          - quick-start
+          - quick-start-simple
+          - quick-start-workspace
+          - sqlx
+          - trunk-workspace
+          - trunk
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@V27
+      with:
+        install_url: https://nixos.org/nix/install
+    - uses: cachix/cachix-action@v15
+      with:
+        name: crane
+        authToken: ${{ github.ref == 'refs/heads/master' && secrets.CACHIX_AUTH_TOKEN || '' }}
+    - name: validate examples
+      # Nix won't write a lockfile when --override-input is used (which is good because it will
+      # complain that the lock file is .gitignored), but nix-eval-jobs doesn't, so we'll have to
+      # "opt-out" of our lockfile .gitignore
+      run: |
+        rm ./examples/.gitignore
+        nix develop .# --accept-flake-config --command ./ci/check-example.sh ./examples/${{ matrix.example }} ".#nixpkgs"
+
+  examples-darwin:
+    strategy:
+      # Allow other jobs to finish building and cache properly before bailing
+      fail-fast: false
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@V27
+      with:
+        install_url: https://nixos.org/nix/install
+    - uses: cachix/cachix-action@v15
+      with:
+        name: crane
+        authToken: ${{ github.ref == 'refs/heads/master' && secrets.CACHIX_AUTH_TOKEN || '' }}
+    - name: validate examples
+      # Nix won't write a lockfile when --override-input is used (which is good because it will
+      # complain that the lock file is .gitignored), but nix-eval-jobs doesn't, so we'll have to
+      # "opt-out" of our lockfile .gitignore
+      run: |
+        rm ./examples/.gitignore
+        nix develop .# --accept-flake-config --command bash -c '
+          set -euo pipefail
+          chosenNixpkgs="$(./ci/ref-from-lock.sh ./test#nixpkgs-darwin)"
+          for f in $(find ./examples -maxdepth 1 -mindepth 1 -type d -not -name build-std -not -name cross-musl -not -name cross-rust-overlay | sort -u); do
+            # NB: nix-eval-jobs appears broken on darwin atm?
+            # /nix/store/2419grj384lg233jqchamm73il9iyjxg-libcxx-16.0.6-dev/include/c++/v1/optional:962: assertion this->has_value() failed: optional operator* called on a disengaged valueerror: error: while checking worker process, evaluation worker got killed by signal 6 (Abort trap: 6)
+            nix flake check \
+              --accept-flake-config \
+              --print-build-logs \
+              --reference-lock-file ./test/flake.lock \
+              --override-input crane ./. \
+              --override-input nixpkgs "${chosenNixpkgs}" \
+              "${f}"
+          done
+        '
+
+  check-dead-code:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@V27
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+    - name: check for dead code
+      run: nix run github:astro/deadnix -- .
+
+  check-fmt:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@V27
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+    - name: check formatting
+      run: nix fmt --accept-flake-config -- --check .
