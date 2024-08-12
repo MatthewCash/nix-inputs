@@ -72,12 +72,12 @@ a[href="https://support.discord.com"]
 }
 
 /* remove dark borders */
-.content__01e65::before,
+.content_a7d72e::before,
 .tabBody_c2739c::before {
     display: none !important;
 }
 
-.header__77c95 {
+.header_fd6364 {
     box-shadow: none !important;
 }
 
