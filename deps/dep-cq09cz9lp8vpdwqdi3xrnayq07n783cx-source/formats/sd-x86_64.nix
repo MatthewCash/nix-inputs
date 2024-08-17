@@ -6,8 +6,9 @@
   ...
 }: {
   imports = [
-    "${toString modulesPath}/installer/sd-card/sd-image-aarch64.nix"
+    "${toString modulesPath}/installer/sd-card/sd-image-x86_64.nix"
   ];
 
   formatAttr = "sdImage";
+  fileExtension = ".img.*";
 }
