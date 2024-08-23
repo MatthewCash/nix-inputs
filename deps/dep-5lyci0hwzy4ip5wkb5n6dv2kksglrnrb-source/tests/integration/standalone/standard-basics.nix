@@ -1,19 +1,12 @@
 { pkgs, ... }:
 
 {
-  name = "standalone-flake-basics";
+  name = "standalone-standard-basics";
   meta.maintainers = [ pkgs.lib.maintainers.rycee ];
 
   nodes.machine = { ... }: {
     imports = [ "${pkgs.path}/nixos/modules/installer/cd-dvd/channel.nix" ];
-    virtualisation.memorySize = 3072;
-    nix = {
-      registry.home-manager.to = {
-        type = "path";
-        path = ../../..;
-      };
-      settings.extra-experimental-features = [ "nix-command" "flakes" ];
-    };
+    virtualisation.memorySize = 2048;
     users.users.alice = {
       isNormalUser = true;
       description = "Alice Foobar";
@@ -24,15 +17,17 @@
 
   testScript = ''
     start_all()
-    machine.wait_for_unit("network-online.target")
+    machine.wait_for_unit("network.target")
     machine.wait_for_unit("multi-user.target")
+
+    home_manager = "${../../..}"
 
     def login_as_alice():
       machine.wait_until_tty_matches("1", "login: ")
       machine.send_chars("alice\n")
       machine.wait_until_tty_matches("1", "Password: ")
       machine.send_chars("foobar\n")
-      machine.wait_until_tty_matches("1", "alice\@machine")
+      machine.wait_until_tty_matches("1", "alice\\@machine")
 
     def logout_alice():
       machine.send_chars("exit\n")
@@ -49,20 +44,22 @@
     # Create a persistent login so that Alice has a systemd session.
     login_as_alice()
 
+    # Set up a home-manager channel.
+    succeed_as_alice(" ; ".join([
+      "mkdir -p /home/alice/.nix-defexpr/channels",
+      f"ln -s {home_manager} /home/alice/.nix-defexpr/channels/home-manager"
+    ]))
+
     with subtest("Home Manager installation"):
-      succeed_as_alice("nix run home-manager -- init --home-manager-url home-manager --nixpkgs-url nixpkgs --switch")
+      succeed_as_alice("nix-shell \"<home-manager>\" -A install")
 
       actual = machine.succeed("ls /home/alice/.config/home-manager")
-      expected = "flake.lock\nflake.nix\nhome.nix\n"
-      assert actual == expected, \
+      assert actual == "home.nix\n", \
         f"unexpected content of /home/alice/.config/home-manager: {actual}"
 
       machine.succeed("diff -u ${
         ./alice-home-init.nix
       } /home/alice/.config/home-manager/home.nix")
-      machine.succeed("diff -u ${
-        ./alice-flake-init.nix
-      } /home/alice/.config/home-manager/flake.nix")
 
       # The default configuration creates this link on activation.
       machine.succeed("test -L /home/alice/.cache/.keep")
