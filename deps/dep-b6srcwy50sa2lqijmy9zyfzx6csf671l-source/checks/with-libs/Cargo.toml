@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+package.version = "0.0.1"
+metadata.crane.name = "with-libs"
+members = [
+  "all-types",
+  "only-cdylib",
+  "only-dylib",
+  "only-staticlib",
+]
+exclude = ["some-dep"]

@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+# NB: hello and world are intentionally left out cargo will
+# promote them to members since they are listed as path deps
+members = ["print"]
+package.version = "0.1.0"
+metadata.crane.name = "workspace"
+
+[workspace.lints.rust]
+rust_2018_idioms = "deny"

@@ -1,6 +1,0 @@
-[workspace]
-members = ["print"]
-
-[workspace.package]
-edition = "2021"
-version = "0.2.0"

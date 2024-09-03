@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+
+[package]
+name = "print"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hello = { version = "*", path = "./hello" }
+world = { version = "*", path = "./world" }
