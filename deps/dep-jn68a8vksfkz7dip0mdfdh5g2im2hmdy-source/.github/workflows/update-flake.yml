@@ -3,7 +3,7 @@ name: Update internal flake dependencies
 on:
   workflow_dispatch: # for allowing manual triggers of the workflow
   schedule:
-    - cron: '37 16 9,24 * *'
+    - cron: '37 16 3,18 * *'
 
 permissions:
   contents: read
@@ -26,9 +26,9 @@ jobs:
       uses: DeterminateSystems/update-flake-lock@v23
       with:
         token: ${{ secrets.PAT_FLAKE_UPDATE }}
-        branch: "automation/flake-update-internal"
-        path-to-flake-dir: ./test
+        branch: "automation/flake-update"
         pr-title: "Update internal flake.lock"
+        path-to-flake-dir: ./test
         pr-labels: |
           automated
           dependencies
@@ -37,4 +37,3 @@ jobs:
       run: gh pr merge --squash --delete-branch --auto ${{ steps.flakeupdate.outputs.pull-request-number }}
       env:
         GH_TOKEN: ${{ secrets.PAT_FLAKE_UPDATE }}
-
