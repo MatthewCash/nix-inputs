@@ -141,6 +141,11 @@
         color: var(--darkreader-text--ic-brand-button--primary-text) !important;
     }
 
+    .css-ynb68u-text,
+    .css-3akiw1-view-link:is(button) {
+        color: var(--site-accent-color-dark) !important;
+    }
+
     /* fix invisible menu item text */
     *[role='menuitem'].ui-state-focus {
         color: white !important;
@@ -155,5 +160,22 @@
     /* new activity badge */
     .StickyButton-styles__root {
         background-color: var(--site-accent-color-dark) !important;
+    }
+
+    /* focus outlines */
+    .css-1mg6tgv-toggleDetails__toggle::before,
+    .css-h2cvja-view--inlineBlock-baseButton::before {
+        border-color: var(--site-accent-color) !important;
+    }
+    .css-3akiw1-view-link:is(a):focus {
+        outline-color: var(--site-accent-color) !important;
+    }
+
+    /* unread badge */
+    .css-nriu7q-view--inlineBlock-badge {
+        background-color: var(--site-accent-color) !important;
+    }
+    .css-31gkb3-baseButton__iconSVG path {
+        fill: var(--site-accent-color) !important;
     }
 }
