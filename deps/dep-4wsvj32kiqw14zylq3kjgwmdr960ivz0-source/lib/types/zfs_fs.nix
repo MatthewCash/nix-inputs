@@ -52,6 +52,12 @@
       description = "Metadata";
     };
 
+    _createFilesystem = lib.mkOption {
+      internal = true;
+      type = lib.types.bool;
+      default = true;
+    };
+
     _create = diskoLib.mkCreateOption
       {
         inherit config options;
@@ -73,32 +79,24 @@
               "pbkdf2salt"
               "keyformat"
             ];
-            updateOptions = builtins.removeAttrs config.options (onetimeProperties ++ [ "mountpoint" ]);
-            mountpoint = config.options.mountpoint or config.mountpoint;
+            updateOptions = builtins.removeAttrs createOptions onetimeProperties;
           in
           ''
             if ! zfs get type ${config._name} >/dev/null 2>&1; then
-              zfs create -up ${config._name} \
-                ${lib.concatStringsSep " " (lib.mapAttrsToList (n: v: "-o ${n}=${v}") (createOptions))}
+              ${if config._createFilesystem then ''
+                zfs create -up ${config._name} \
+                  ${lib.concatStringsSep " " (lib.mapAttrsToList (n: v: "-o ${n}=${v}") (createOptions))}
+              '' else ''
+                # don't create anything for root dataset of zpools
+                true
+              ''}
             ${lib.optionalString (updateOptions != {}) ''
             else
-              zfs set ${lib.concatStringsSep " " (lib.mapAttrsToList (n: v: "${n}=${v}") updateOptions)} ${config._name}
-              ${lib.optionalString (mountpoint != null) ''
-                if [[ "$(zfs get -H -o value mountpoint ${config._name})" != "${mountpoint}" ]]; then
-                  echo "Changing mountpoint to '${mountpoint}' for ${config._name}..."
-                  # zfs will try unmount the dataset to change the mountpoint
-                  # but this might fail if the dataset is in use
-                  if ! zfs set mountpoint=${mountpoint} ${config._name}; then
-                    echo "Failed to set mountpoint to '${mountpoint}' for ${config._name}." >&2
-                    echo "You may need to run when the pool is not mounted i.e. in a recovery system:" >&2
-                    echo "  zfs set mountpoint=${mountpoint} ${config._name}" >&2
-                  fi
-                fi
-              ''}
+              zfs set -u ${lib.concatStringsSep " " (lib.mapAttrsToList (n: v: "${n}=${v}") updateOptions)} ${config._name}
             ''}
             fi
           '';
-      } // { readOnly = false; };
+      };
 
     _mount = diskoLib.mkMountOption {
       inherit config options;
