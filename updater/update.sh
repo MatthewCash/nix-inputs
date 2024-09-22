@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p bash nix coreutils jq python3 diffutils git
+#!nix-shell -i bash -p bash nixVersions.nix_2_18 coreutils jq python3 diffutils git
 
 set -e
 
@@ -11,7 +11,7 @@ TMPDIR=$(mktemp -d)
 python -c "print(open('$SCRIPTPATH/bare-flake.nix').read().replace('{/*inputs*/}', open('$SCRIPTPATH/../inputs.nix').read()))" > "$SCRIPTPATH/flake.nix"
 
 echo "Updating inputs"
-nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update --flake "path:$SCRIPTPATH"
+nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update "path:$SCRIPTPATH"
 
 if cmp -s "$SCRIPTPATH/../resolved-flake.lock" "$SCRIPTPATH/flake.lock"; then
     echo "flake.lock has not changed, no updates needed!"
