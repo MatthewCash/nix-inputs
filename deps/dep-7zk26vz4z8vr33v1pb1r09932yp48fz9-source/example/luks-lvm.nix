@@ -1,26 +1,39 @@
 {
   disko.devices = {
     disk = {
-      one = {
+      main = {
         type = "disk";
-        device = "/dev/disk/by-id/ata-VMware_Virtual_SATA_CDRW_Drive_00000000000000000001";
+        device = "/dev/vdb";
         content = {
           type = "gpt";
           partitions = {
-            boot = {
+            ESP = {
               size = "500M";
               type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
               };
             };
-            primary = {
+            luks = {
               size = "100%";
               content = {
-                type = "lvm_pv";
-                vg = "pool";
+                type = "luks";
+                name = "crypted";
+                extraOpenArgs = [ ];
+                settings = {
+                  # if you want to use the key for interactive login be sure there is no trailing newline
+                  # for example use `echo -n "password" > /tmp/secret.key`
+                  keyFile = "/tmp/secret.key";
+                  allowDiscards = true;
+                };
+                additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
+                content = {
+                  type = "lvm_pv";
+                  vg = "pool";
+                };
               };
             };
           };
@@ -31,12 +44,6 @@
       pool = {
         type = "lvm_vg";
         lvs = {
-          aaa = {
-            size = "1M";
-          };
-          zzz = {
-            size = "1M";
-          };
           root = {
             size = "100M";
             content = {
@@ -49,12 +56,15 @@
             };
           };
           home = {
-            size = "100%FREE";
+            size = "10M";
             content = {
               type = "filesystem";
               format = "ext4";
               mountpoint = "/home";
             };
+          };
+          raw = {
+            size = "10M";
           };
         };
       };

@@ -2,30 +2,28 @@
   disko.devices = {
     disk = {
       main = {
+        device = "/dev/disk/by-path/pci-0000:02:00.0-nvme-1";
         type = "disk";
-        device = "/dev/disk/by-diskseq/1";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              priority = 1;
-              name = "ESP";
-              start = "1M";
-              end = "128M";
+              end = "500M";
               type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
               };
             };
             root = {
-              size = "100%";
+              name = "root";
+              end = "-0";
               content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ]; # Override existing partition
+                type = "filesystem";
+                format = "bcachefs";
                 mountpoint = "/";
-                mountOptions = [ "compress=zstd" "noatime" ];
               };
             };
           };
@@ -34,4 +32,3 @@
     };
   };
 }
-

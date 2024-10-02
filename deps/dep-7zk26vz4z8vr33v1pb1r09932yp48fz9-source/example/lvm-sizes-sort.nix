@@ -1,29 +1,27 @@
 {
   disko.devices = {
     disk = {
-      main = {
+      one = {
         type = "disk";
-        device = "/dev/vdb";
+        device = "/dev/disk/by-id/ata-VMware_Virtual_SATA_CDRW_Drive_00000000000000000001";
         content = {
           type = "gpt";
           partitions = {
-            ESP = {
+            boot = {
               size = "500M";
               type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                ];
+                mountOptions = [ "umask=0077" ];
               };
             };
             primary = {
               size = "100%";
               content = {
                 type = "lvm_pv";
-                vg = "mainpool";
+                vg = "pool";
               };
             };
           };
@@ -31,17 +29,17 @@
       };
     };
     lvm_vg = {
-      mainpool = {
+      pool = {
         type = "lvm_vg";
         lvs = {
-          thinpool = {
-            size = "100M";
-            lvm_type = "thin-pool";
+          aaa = {
+            size = "1M";
+          };
+          zzz = {
+            size = "1M";
           };
           root = {
-            size = "10M";
-            lvm_type = "thinlv";
-            pool = "thinpool";
+            size = "100M";
             content = {
               type = "filesystem";
               format = "ext4";
@@ -52,17 +50,12 @@
             };
           };
           home = {
-            size = "10M";
-            lvm_type = "thinlv";
-            pool = "thinpool";
+            size = "100%FREE";
             content = {
               type = "filesystem";
               format = "ext4";
               mountpoint = "/home";
             };
-          };
-          raw = {
-            size = "10M";
           };
         };
       };
