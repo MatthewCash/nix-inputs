@@ -1,6 +1,5 @@
-let name = "firefox";
-
-in builtins.mapAttrs (test: module: import module [ "programs" name ]) {
+name:
+builtins.mapAttrs (test: module: import module [ "programs" name ]) {
   "${name}-deprecated-native-messenger" = ./deprecated-native-messenger.nix;
   "${name}-policies" = ./policies.nix;
   "${name}-profiles-bookmarks" = ./profiles/bookmarks;
