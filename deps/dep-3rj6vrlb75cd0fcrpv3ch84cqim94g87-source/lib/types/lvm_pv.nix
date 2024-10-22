@@ -2,18 +2,18 @@
 {
   options = {
     type = lib.mkOption {
-      type = lib.types.enum [ "zfs" ];
+      type = lib.types.enum [ "lvm_pv" ];
       internal = true;
       description = "Type";
     };
     device = lib.mkOption {
       type = lib.types.str;
-      default = device;
       description = "Device";
+      default = device;
     };
-    pool = lib.mkOption {
+    vg = lib.mkOption {
       type = lib.types.str;
-      description = "Name of the ZFS pool";
+      description = "Volume group";
     };
     _parent = lib.mkOption {
       internal = true;
@@ -24,14 +24,17 @@
       readOnly = true;
       type = lib.types.functionTo diskoLib.jsonType;
       default = dev: {
-        deviceDependencies.zpool.${config.pool} = [ dev ];
+        deviceDependencies.lvm_vg.${config.vg} = [ dev ];
       };
       description = "Metadata";
     };
     _create = diskoLib.mkCreateOption {
       inherit config options;
       default = ''
-        echo "${config.device}" >>"$disko_devices_dir"/zfs_${config.pool}
+        if ! (blkid "${config.device}" | grep -q 'TYPE='); then
+          pvcreate "${config.device}"
+        fi
+        echo "${config.device}" >>"$disko_devices_dir"/lvm_${lib.escapeShellArg config.vg}
       '';
     };
     _mount = diskoLib.mkMountOption {
@@ -48,7 +51,7 @@
       internal = true;
       readOnly = true;
       type = lib.types.functionTo (lib.types.listOf lib.types.package);
-      default = pkgs: [ pkgs.zfs ];
+      default = pkgs: [ pkgs.gnugrep pkgs.lvm2 ];
       description = "Packages";
     };
   };

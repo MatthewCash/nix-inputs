@@ -2,19 +2,18 @@
 {
   options = {
     type = lib.mkOption {
-      type = lib.types.enum [ "mdraid" ];
+      type = lib.types.enum [ "zfs" ];
       internal = true;
       description = "Type";
     };
     device = lib.mkOption {
       type = lib.types.str;
-      description = "Device";
       default = device;
+      description = "Device";
     };
-
-    name = lib.mkOption {
+    pool = lib.mkOption {
       type = lib.types.str;
-      description = "Name";
+      description = "Name of the ZFS pool";
     };
     _parent = lib.mkOption {
       internal = true;
@@ -25,14 +24,14 @@
       readOnly = true;
       type = lib.types.functionTo diskoLib.jsonType;
       default = dev: {
-        deviceDependencies.mdadm.${config.name} = [ dev ];
+        deviceDependencies.zpool.${config.pool} = [ dev ];
       };
       description = "Metadata";
     };
     _create = diskoLib.mkCreateOption {
       inherit config options;
       default = ''
-        echo "${config.device}" >>"$disko_devices_dir"/raid_${config.name}
+        echo "${config.device}" >>"$disko_devices_dir"/zfs_${lib.escapeShellArg config.pool}
       '';
     };
     _mount = diskoLib.mkMountOption {
@@ -49,7 +48,7 @@
       internal = true;
       readOnly = true;
       type = lib.types.functionTo (lib.types.listOf lib.types.package);
-      default = pkgs: [ pkgs.mdadm ];
+      default = pkgs: [ pkgs.zfs ];
       description = "Packages";
     };
   };

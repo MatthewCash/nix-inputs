@@ -2,7 +2,7 @@
 {
   options = {
     type = lib.mkOption {
-      type = lib.types.enum [ "lvm_pv" ];
+      type = lib.types.enum [ "mdraid" ];
       internal = true;
       description = "Type";
     };
@@ -11,9 +11,10 @@
       description = "Device";
       default = device;
     };
-    vg = lib.mkOption {
+
+    name = lib.mkOption {
       type = lib.types.str;
-      description = "Volume group";
+      description = "Name";
     };
     _parent = lib.mkOption {
       internal = true;
@@ -24,17 +25,14 @@
       readOnly = true;
       type = lib.types.functionTo diskoLib.jsonType;
       default = dev: {
-        deviceDependencies.lvm_vg.${config.vg} = [ dev ];
+        deviceDependencies.mdadm.${config.name} = [ dev ];
       };
       description = "Metadata";
     };
     _create = diskoLib.mkCreateOption {
       inherit config options;
       default = ''
-        if ! (blkid '${config.device}' | grep -q 'TYPE='); then
-          pvcreate ${config.device}
-        fi
-        echo "${config.device}" >>"$disko_devices_dir"/lvm_${config.vg}
+        echo "${config.device}" >>"$disko_devices_dir"/raid_${lib.escapeShellArg config.name}
       '';
     };
     _mount = diskoLib.mkMountOption {
@@ -51,7 +49,7 @@
       internal = true;
       readOnly = true;
       type = lib.types.functionTo (lib.types.listOf lib.types.package);
-      default = pkgs: [ pkgs.gnugrep pkgs.lvm2 ];
+      default = pkgs: [ pkgs.mdadm ];
       description = "Packages";
     };
   };
