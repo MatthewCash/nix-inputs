@@ -3,7 +3,6 @@
 {
   programs = {
     granted.enable = true;
-    granted.enableZshIntegration = false;
     zsh.enable = true;
   };
 
@@ -11,16 +10,16 @@
 
   nmt.script = ''
     assertFileExists home-files/.zshrc
-    assertFileNotRegex \
+    assertFileContains \
       home-files/.zshrc \
       'function assume()'
-    assertFileNotRegex \
+    assertFileContains \
       home-files/.zshrc \
       'export GRANTED_ALIAS_CONFIGURED="true"'
-    assertFileNotRegex \
+    assertFileContains \
       home-files/.zshrc \
-      'source @granted@/bin/.assume-wrapped "$@"'
-    assertFileNotRegex \
+      'source @granted@/bin/assume "$@"'
+    assertFileContains \
       home-files/.zshrc \
       'unset GRANTED_ALIAS_CONFIGURED'
   '';
