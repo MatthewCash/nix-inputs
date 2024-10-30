@@ -522,7 +522,9 @@ tab {
 
 /* Tabs manager menu */
 #alltabs-button {
-	visibility: collapse;
+	@media (not (-moz-bool-pref: "gnomeTheme.allTabsButton")) {
+		visibility: collapse;
+	}
 	
 	@media (-moz-bool-pref: "browser.tabs.tabmanager.enabled") {
 		#tabbrowser-tabs[overflow] ~ & {
@@ -569,6 +571,14 @@ tab {
 	/* Overlay is nor longer needed */
 	.tabbrowser-tab:not([pinned]) .tab-content::before {
 		display: none !important;
+	}
+}
+
+/* OPTIONAL: Align tab items left */
+@media (-moz-bool-pref: "gnomeTheme.tabAlignLeft") {
+	.tabbrowser-tab:not([pinned]) .tab-icon-stack {
+		margin-left: 0 !important;
+		padding: 0 5px !important;
 	}
 }
 
