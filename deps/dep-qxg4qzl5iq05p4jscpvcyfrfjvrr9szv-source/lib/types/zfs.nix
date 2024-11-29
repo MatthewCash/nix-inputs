@@ -2,18 +2,18 @@
 {
   options = {
     type = lib.mkOption {
-      type = lib.types.enum [ "lvm_pv" ];
+      type = lib.types.enum [ "zfs" ];
       internal = true;
       description = "Type";
     };
     device = lib.mkOption {
       type = lib.types.str;
-      description = "Device";
       default = device;
+      description = "Device";
     };
-    vg = lib.mkOption {
+    pool = lib.mkOption {
       type = lib.types.str;
-      description = "Volume group";
+      description = "Name of the ZFS pool";
     };
     _parent = lib.mkOption {
       internal = true;
@@ -24,20 +24,21 @@
       readOnly = true;
       type = lib.types.functionTo diskoLib.jsonType;
       default = dev: {
-        deviceDependencies.lvm_vg.${config.vg} = [ dev ];
+        deviceDependencies.zpool.${config.pool} = [ dev ];
       };
       description = "Metadata";
     };
     _create = diskoLib.mkCreateOption {
       inherit config options;
       default = ''
-        if ! (blkid "${config.device}" | grep -q 'TYPE='); then
-          pvcreate "${config.device}"
-        fi
-        echo "${config.device}" >>"$disko_devices_dir"/lvm_${lib.escapeShellArg config.vg}
+        echo "${config.device}" >>"$disko_devices_dir"/zfs_${lib.escapeShellArg config.pool}
       '';
     };
     _mount = diskoLib.mkMountOption {
+      inherit config options;
+      default = { };
+    };
+    _unmount = diskoLib.mkUnmountOption {
       inherit config options;
       default = { };
     };
@@ -51,7 +52,7 @@
       internal = true;
       readOnly = true;
       type = lib.types.functionTo (lib.types.listOf lib.types.package);
-      default = pkgs: [ pkgs.gnugrep pkgs.lvm2 ];
+      default = pkgs: [ pkgs.zfs ];
       description = "Packages";
     };
   };
