@@ -120,6 +120,7 @@ tabs#tabbrowser-tabs {
 	&[orient="horizontal"] {
 		/* Tab */
 		tab {
+			box-sizing: content-box;
 			border-color: transparent !important;
 			border-left-width: 1px !important;
 			border-style: solid !important;
@@ -316,10 +317,10 @@ tabs#tabbrowser-tabs {
 
 			/* Tab hover */
 			&:hover {
-				.tab-background:not(:-moz-window-inactive) {
+				.tab-background {
 					background-color: var(--gnome-tabbar-tab-hover-background) !important;
 					border-image: none !important;
-					&[selected] {
+					&[selected]:not(:-moz-window-inactive) {
 						background-color: var(--gnome-tabbar-tab-active-hover-background) !important;
 					}
 				}
@@ -381,7 +382,7 @@ tabs#tabbrowser-tabs {
 		}
 		
 		/* Tabs separators */
-		:root[dir="ltr"] {
+		:root[dir="ltr"] & {
 			tab:not(:first-of-type, [selected], :hover) {
 				--gnome-tabbar-tab-separator-hack0: var(--gnome-tabbar-background);
 				--gnome-tabbar-tab-separator-hack1: linear-gradient(

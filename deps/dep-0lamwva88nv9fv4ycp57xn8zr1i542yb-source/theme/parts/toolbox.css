@@ -10,13 +10,16 @@
 /* Toolbox colors */
 #navigator-toolbox {
 	background: var(--gnome-toolbar-background) !important;
-	border-color: var(--gnome-toolbar-border-color) !important;
+	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 }
 
 #PersonalToolbar, #toolbar-menubar, #TabsToolbar, findbar {
 	appearance: none !important;
 	border: 0 !important;
 	background: var(--gnome-toolbar-background) !important;
+	&:-moz-window-inactive {
+		opacity: 1 !important;
+	}
 }
 findbar {
 	border-top: 1px solid var(--gnome-toolbar-border-color) !important;
@@ -37,15 +40,11 @@ findbar:-moz-window-inactive label,
 findbar:-moz-window-inactive description,
 #viewButton:-moz-window-inactive dropmarker,
 .container.infobar:-moz-window-inactive {
-	opacity: 0.7 !important;
+	opacity: 0.5 !important;
 }
 
 #toolbar-menubar:not([inactive=true]) {
 	margin-bottom: 0 !important;
-}
-#PersonalToolbar {
-	padding: 2px !important;
-	--bookmarks-toolbar-overlapping-browser-height: auto;
 }
 
 /* Overrides: Remove border below the menu bar / above the header bar */
@@ -119,12 +118,36 @@ findbar:-moz-window-inactive description,
 }
 
 /* Bookmarks */
+#PersonalToolbar {
+	padding: 6px !important;
+	padding-top: 0 !important;
+	--bookmarks-toolbar-overlapping-browser-height: auto;
+}
 #PlacesToolbar toolbarseparator {
 	border-top: 0 !important;
 }
 #PlacesToolbarItems > toolbarseparator::before {
 	border-image-source: none !important;
 	border-color: var(--gnome-tabbar-tab-separator-color) !important;
+}
+@media (-moz-bool-pref: "gnomeTheme.bookmarksOnFullscreen") { /* OPTIONAL: Show bookmarks bar while in fullscreen  */
+	:root[inFullscreen] #PersonalToolbar{
+		visibility: visible !important;
+	}
+}
+
+#import-button,
+#PlacesToolbar .bookmark-item {
+	border-radius: 6px !important;	
+	color: var(--gnome-window-color) !important;
+	padding: 3px 6px !important;
+
+	&:hover {
+		background-color: var(--gnome-selected-color) !important;
+	}
+	&:active, &[open] {
+		background-color: var(--gnome-selected-active-color) !important;
+	}
 }
 
 /* Text link */
