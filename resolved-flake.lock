@@ -808,7 +808,7 @@
     "original-owl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-i0wTfoyc7QMkV/B1GQVhzPBcrCzbDpOaPF5mysqMYOU=",
+        "narHash": "sha256-Rgs/6Olne6+RVLEVSkAGuDSNE76mV64c2Xq5UfPKhF4=",
         "type": "file",
         "url": "https://www.beonex.com/owl/owl.xpi"
       },
@@ -826,11 +826,11 @@
         "original-owl": "original-owl"
       },
       "locked": {
-        "lastModified": 1734279067,
-        "narHash": "sha256-soUVo+swSQS4LfebmiXEyG45AC2akE0bmCQGyfaIiv0=",
+        "lastModified": 1734482895,
+        "narHash": "sha256-O96K6oW7IIofTxW48AkYRbMmio0FXlHSmhWHK/CDU7k=",
         "owner": "MatthewCash",
         "repo": "owl-patched",
-        "rev": "d01bfe5c236d306c02e5324c802fef70100102c6",
+        "rev": "f8af2d942d645b6db889c173734c9a698644f7b3",
         "type": "github"
       },
       "original": {
