@@ -105,3 +105,8 @@ div[data-jump-section='global'] {
 .colorPremium-1VK7r6 {
     display: none;
 }
+
+/* hide reward ad */
+.wrapper_c721cc {
+    display: none !important;
+}
