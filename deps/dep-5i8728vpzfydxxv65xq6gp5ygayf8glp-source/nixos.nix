@@ -754,6 +754,8 @@ in
                 (fs:
                   if fs.fsType == "zfs" then
                     "zfs-import.target"
+                  else if builtins.elem "bind" fs.options then
+                    "${escapeSystemdPath fs.device}.mount"
                   else
                     "${(escapeSystemdPath (getDevice fs))}.device")
                 fileSystems);
@@ -781,13 +783,14 @@ in
       }
 
       # Work around an issue with persisting /etc/machine-id where the
-      # systemd-machine-id-commit.service unit fails if
+      # systemd-machine-id-commit.service unit fails if the final
       # /etc/machine-id is bind mounted from persistent storage. For
       # more details, see
-      # https://github.com/nix-community/impermanence/issues/229
+      # https://github.com/nix-community/impermanence/issues/229 and
+      # https://github.com/nix-community/impermanence/pull/242
       (mkIf (any (f: f == "/etc/machine-id") (catAttrs "filePath" files)) {
         boot.initrd.systemd.suppressedUnits = [ "systemd-machine-id-commit.service" ];
-        systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
+        systemd.services.systemd-machine-id-commit.unitConfig.ConditionFirstBoot = true;
       })
 
       # Assertions and warnings
