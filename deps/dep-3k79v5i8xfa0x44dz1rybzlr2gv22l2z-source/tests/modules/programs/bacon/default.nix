@@ -1,1 +1,0 @@
-{ bacon-program = ./bacon.nix; }
