@@ -1,9 +1,8 @@
-# Example to create a GPT partition but doesn't format it
 {
   disko.devices = {
     disk = {
-      main = {
-        device = "/dev/vdb";
+      vdb = {
+        device = "/dev/disk/by-id/some-disk-id";
         type = "disk";
         content = {
           type = "gpt";
@@ -15,10 +14,24 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
               };
             };
-            empty = {
-              size = "1G";
+            "name with spaces" = {
+              size = "100M";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/name with spaces";
+              };
+            };
+            "name^with\\some@special#chars" = {
+              size = "100M";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/name^with\\some@special#chars";
+              };
             };
             root = {
               size = "100%";
