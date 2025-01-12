@@ -988,11 +988,11 @@
     "sweet-kde": {
       "flake": false,
       "locked": {
-        "lastModified": 1712792441,
-        "narHash": "sha256-Pp/cRLDWsOV9fFQa8KC/a52Pu3bHZmFGoklbHh5g5BI=",
+        "lastModified": 1736640415,
+        "narHash": "sha256-w5MUi9BGSmaktEkSW4th64YKIFihhhMkWS9a4KAfbLI=",
         "owner": "EliverLara",
         "repo": "Sweet-kde",
-        "rev": "bbf52879b729544a7afb3bb7b8637100ece5d92e",
+        "rev": "71436ae6494a31034cdb5bb2d0839a6d05f6997c",
         "type": "github"
       },
       "original": {
