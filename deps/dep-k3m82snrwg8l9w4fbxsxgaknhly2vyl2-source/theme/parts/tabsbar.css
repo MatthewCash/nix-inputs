@@ -31,12 +31,12 @@
 	}
 
 	/* Tabsbar buttons */
-	.toolbarbutton-1:not(#hack) {
+	.toolbarbutton-1 {
 		border-radius: 6px !important;
 		margin: 0px 3px 6px !important;
 		padding: 0 9px !important;
 		min-height: 34px !important;
-		transition: background 0.3s;
+		transition: background var(--gnome-animation-time);
 		
 		&:not([disabled]):not(:active):not([open]):hover {
 			background-color: var(--gnome-tabbar-tab-hover-background) !important;
@@ -121,7 +121,6 @@ tabs#tabbrowser-tabs {
 	&[orient="horizontal"] {
 		/* Tab */
 		tab {
-			box-sizing: content-box;
 			border-color: transparent !important;
 			border-left-width: 1px !important;
 			border-style: solid !important;
@@ -234,7 +233,7 @@ tabs#tabbrowser-tabs {
 					background-image: none !important;
 					background-color: transparent !important;
 					background-size: 24px;
-					transition: all 0.2s ease-out !important;
+					transition: all var(--gnome-animation-time) ease-out !important;
 					
 					&:not(:-moz-window-inactive) {
 						&:hover {
@@ -283,7 +282,7 @@ tabs#tabbrowser-tabs {
 					position: absolute;
 					right: 2px;
 					top: 2px;
-					transition: background 0.4s linear;
+					transition: opacity var(--gnome-tab-animation-time) linear;
 					width: 55px;
 					z-index: 99;
 				}
@@ -303,7 +302,7 @@ tabs#tabbrowser-tabs {
 				box-shadow: none !important;
 				margin-block: 0 !important;
 				border: 0 !important;
-				transition: background 0.2s linear !important;
+				transition: background var(--gnome-tab-animation-time) linear !important;
 
 				&[selected] {
 					background: none !important;
@@ -493,7 +492,7 @@ tabs#tabbrowser-tabs {
 	background-position: center bottom !important;
 	transition-property: background-size;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-duration: 150ms;
+	transition-duration: calc(var(--gnome-animation-time) / 2);
 }
 .tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected]),
 .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected]) {
@@ -605,9 +604,13 @@ tabs#tabbrowser-tabs {
 
 	#TabsToolbar {
 		/* Spacing should be removed on the side touching the URL bar */
-		.toolbarbutton-1:not(#hack),
-		.titlebar-button:not(#hack) {
+		.toolbarbutton-1,
+		.titlebar-button {
 			margin-bottom: 0 !important;
+		}
+		
+		.toolbarbutton-1{
+			margin-top: 6px !important;
 		}
 	}
 
@@ -636,25 +639,25 @@ tabs#tabbrowser-tabs {
 	}
 
 	/* Remove nav-bar rounding and padding */
-	:root[tabsintitlebar][sizemode="normal"]:not([gtktiledwindow="true"]) #nav-bar { 
+	:root[customtitlebar][sizemode="normal"]:not([gtktiledwindow="true"]) #nav-bar { 
 		border-radius: 0 !important; 
 	 } 
 	
 	/* Round and pad tab-bar */
-	:root[tabsintitlebar][sizemode="normal"]:not([gtktiledwindow="true"]) #TabsToolbar {
+	:root[customtitlebar][sizemode="normal"]:not([gtktiledwindow="true"]) #TabsToolbar {
 		border-radius: env(-moz-gtk-csd-titlebar-radius) env(-moz-gtk-csd-titlebar-radius) 0 0 !important
 	}
-	:root[tabsintitlebar]:not([inFullscreen], [sizemode="maximized"]) #TabsToolbar .toolbar-items {
+	:root[customtitlebar]:not([inFullscreen], [sizemode="maximized"]) #TabsToolbar .toolbar-items {
 		padding: 0 46px;
 	}
 	
 	/* Hide duplicate window controls from navbar */
-	:root[tabsintitlebar] #nav-bar .titlebar-buttonbox-container {
+	:root[customtitlebar] #nav-bar .titlebar-buttonbox-container {
 		display: none !important;
 	}
 	
 	/* Force displaying controls in tab-bar */
-	:root[tabsintitlebar]:not([inDOMFullscreen]) #TabsToolbar .titlebar-buttonbox-container {
+	:root[customtitlebar]:not([inDOMFullscreen]) #TabsToolbar .titlebar-buttonbox-container {
 		display: flex !important;
 		padding-top: 6px !important;
 		visibility: visible !important;
@@ -684,14 +687,6 @@ tabs#tabbrowser-tabs {
 		}
 		:root[dir="ltr"] #tabbrowser-tabs:not(:has(tab:not([hidden="true"]) ~ tab:not([hidden="true"]))) .tab-label-container[textoverflow="true"] {
 			margin-inline-end: -16px;
-		}
-		/* Override normal width tabs */
-		@media (-moz-bool-pref: "gnomeTheme.normalWidthTabs") {
-			#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]):not([style^="max-width"]),
-			#tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"][style^="max-width: 100px !important;"]:not([pinned]) {
-				max-width: 100% !important;
-				--tab-min-width: 131px !important;
-			}
 		}
 	}
 }
