@@ -26,8 +26,8 @@ let
         ++ (lib.optional configSupportsZfs "zfs")
         ++ cfg.extraRootModules;
       kernel = pkgs.aggregateModules
-        (with cfg.kernelPackages; [ kernel ]
-          ++ lib.optional (lib.elem "zfs" cfg.extraRootModules || configSupportsZfs) zfs);
+        ([ cfg.kernelPackages.kernel ]
+          ++ lib.optional (lib.elem "zfs" cfg.extraRootModules || configSupportsZfs) cfg.kernelPackages.${config.boot.zfs.package.kernelModuleAttribute});
     }
   // lib.optionalAttrs (diskoLib.vmToolsSupportsCustomQemu lib)
     {
