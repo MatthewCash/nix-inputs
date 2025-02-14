@@ -163,11 +163,11 @@
     "discord-css": {
       "flake": false,
       "locked": {
-        "lastModified": 1734664840,
-        "narHash": "sha256-KP5BjSaD/rDcOgKyqHshT5zSeb+1KiRfedWTTovITOA=",
+        "lastModified": 1739555402,
+        "narHash": "sha256-Vk2fKT0aGq514UC2XjX4SMOYIX90rYO7fLlTOUa8Ki4=",
         "owner": "MatthewCash",
         "repo": "discord-css",
-        "rev": "9f86bb8dfa5234c17a52137141d833208467ca51",
+        "rev": "99c3d8584202f0180074478b109cc029933d9d7c",
         "type": "github"
       },
       "original": {

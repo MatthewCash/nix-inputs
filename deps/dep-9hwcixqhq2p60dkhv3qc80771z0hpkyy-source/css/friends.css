@@ -1,5 +1,5 @@
 /* hide friends search box */
-#online-tab > .searchBar_e0840f {
+#online-tab > .searchBar__5ec2f {
     display: none;
 }
 
@@ -9,7 +9,7 @@ a[href='/store'] {
 }
 
 /* remove Friends channel when selected */
-.selected_f5eb4b > a[href='/channels/@me'] {
+.selected_bf202d > a[href='/channels/@me'] {
     display: none;
 }
 
@@ -19,7 +19,7 @@ a[href='/shop'] {
 }
 
 /* remove direct messages list header */
-.privateChannelsHeaderContainer_c47fa9 {
+.privateChannelsHeaderContainer__99e7c {
     display: none !important;
 }
 
@@ -30,22 +30,22 @@ div[aria-label='Add Friend'] {
 }
 
 /* remove top seach bar */
-.searchBar_f0963d {
+.searchBar__35e86 {
     display: none !important;
 }
 
 /* hide interact buttons on friends list */
-.actions_e05dae {
+.actions_fc004c {
     display: none !important;
 }
 
 /* hide empty active now card */
-.emptyCard_f02fcf {
+.emptyCard__7e549 {
     display: none !important;
 }
 
 /* remove active now title */
-.header_bf550a {
+.header__7d20c {
     display: none;
 }
 
@@ -55,15 +55,15 @@ div[aria-label='Add Friend'] {
 }
 
 /* remove separators from friends list */
-.peopleListItem_d51464 {
+.peopleListItem_cc6179 {
     border: none !important;
 }
 
-.scroller_bf550a {
+.scroller__7d20c {
     border: none !important;
 }
 
-.itemCard_f02fcf {
+.itemCard__7e549 {
     border-width: 0 !important;
 }
 
@@ -72,7 +72,7 @@ div[aria-label='Add Friend'] {
 }
 
 /* make activity now details transparent */
-.itemCard_f02fcf,
+.itemCard__7e549,
 .theme-dark .inset_c0f6a6 {
     background-color: transparent;
 }
@@ -87,12 +87,12 @@ div[data-list-id='people']::-webkit-scrollbar {
 }
 
 /* remove avatar decoration */
-.avatarDecoration_ae35e3 {
+.avatarDecoration__44b0c {
     display: none !important;
 }
 
 /* remove list count label */
-.peopleColumn_c2739c .sectionTitle_e0840f {
+.peopleColumn__133bf .sectionTitle__5ec2f {
     display: none;
 }
 

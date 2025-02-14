@@ -56,7 +56,7 @@ html {
 }
 
 /* hide top bar */
-.titleBar_a934d8 {
+.titleBar__421ed {
     display: none;
 }
 
@@ -67,17 +67,17 @@ a[href="https://support.discord.com"]
 }
 
 /* make scrollbars translucent */
-.scroller-kQBbkU {
+.scroller__36d07 {
     scrollbar-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 /* remove dark borders */
-.content_a7d72e::before,
-.tabBody_c2739c::before {
+.content_f75fb0::before,
+.tabBody__133bf::before {
     display: none !important;
 }
 
-.header_fd6364 {
+.header_f37cb1 {
     box-shadow: none !important;
 }
 
