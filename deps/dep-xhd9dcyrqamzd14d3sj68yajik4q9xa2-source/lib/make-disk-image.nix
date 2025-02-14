@@ -148,8 +148,11 @@ in
     USAGE
     }
 
-    export out=$PWD
+    # emulate basic build environment https://github.com/NixOS/nix/blob/fc83c6ccb3b300256508297bb92dd95e18a81213/src/nix-build/nix-build.cc#L541
     TMPDIR=$(mktemp -d); export TMPDIR
+    export NIX_BUILD_TOP=$TMPDIR
+    export out=$PWD
+    export stdenv=${pkgs.stdenv}
     trap 'rm -rf "$TMPDIR"' EXIT
     cd "$TMPDIR"
 
@@ -219,7 +222,7 @@ in
     QEMU_OPTS=${lib.escapeShellArg QEMU_OPTS}
     # replace quoted $out with the actual path
     QEUM_OPTS=''${QEMU_OPTS//\$out/$out}
-    QEMU_OPTS+=" -m $build_memory"
+    QEMU_OPTS+=" -m $build_memory -object memory-backend-memfd,id=mem,size=''${build_memory}M,share=on -machine memory-backend=mem"
     export QEMU_OPTS
 
     ${pkgs.bash}/bin/sh -e ${vmTools.vmRunCommand vmTools.qemuCommandLinux}
