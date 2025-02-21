@@ -30,6 +30,7 @@ let
     ./misc/fontconfig.nix
     ./misc/gtk.nix
     ./misc/lib.nix
+    ./misc/mozilla-messaging-hosts.nix
     ./misc/news.nix
     ./misc/nixgl.nix
     ./misc/numlock.nix
@@ -236,6 +237,7 @@ let
     ./programs/sqls.nix
     ./programs/ssh.nix
     ./programs/starship.nix
+    ./programs/swayimg.nix
     ./programs/swaylock.nix
     ./programs/swayr.nix
     ./programs/taskwarrior.nix
