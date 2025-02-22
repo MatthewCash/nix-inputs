@@ -1,1 +1,0 @@
-{ dircolors-settings = ./settings.nix; }
