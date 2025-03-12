@@ -4,6 +4,7 @@
 
 window {
 	padding: 0 !important;
+	width: initial !important;
 }
 
 dialog {	
@@ -49,13 +50,38 @@ dialog#handling {
 
 /* Content */
 dialog {
+	&:not(.sizeDetermined) {
+		display: grid !important;
+		justify-content: stretch;
+		min-width: fit-content;
+	}
+
 	#titleContainer {
 		justify-content: center !important;
+	}
+
+	#titleCropper {
+		&[overflown] {
+			mask-image: none !important;
+			
+			#titleText {
+				display: inline-block !important;
+				max-width: 100% !important;
+				overflow: hidden !important;
+				text-overflow: ellipsis;
+			}
+		}
+
+		&:not([nomaskfade]) {
+			display: initial !important;
+		}
 	}
 
 	#titleText {
 		font-size: 20px !important;
 		font-weight: 800 !important;
+		text-align: center !important;
+		white-space: initial !important;
 	}
 
 	.titleIcon {
@@ -73,6 +99,10 @@ dialog {
 	#infoContainer {
 		text-align: center;
 	}
+
+	#checkboxContainer {
+		align-items: center !important;
+	}
 }
 
 /* Buttons */
@@ -83,6 +113,11 @@ dialog {
 	margin-top: auto;
 	padding: 0 !important;
 	
+	/* if dialog has at least 3 buttons */
+	&:has(button:not([hidden])[dlgtype="extra1"]) {
+		min-width: 40rem;
+	}
+	
 	button {
 		min-height: 44px !important;
 		max-height: unset !important;
@@ -91,6 +126,18 @@ dialog {
 		border-radius: 12px !important;
 		flex: 1;
 		border-bottom: 0 !important;
+		
+		.button-box {
+			max-width: 100%;
+			.button-text {
+				max-width: 100%;		
+				&::before {					
+					max-width: 100% !important;
+					overflow: hidden !important;
+					text-overflow: ellipsis;
+				}
+			}
+		}
 	}
 	
 	.button-spacer {
