@@ -10,8 +10,9 @@
     { config, ... }:
     {
       documentation.enable = false;
-      system.stateVersion = config.system.nixos.version;
+      system.stateVersion = config.system.nixos.release;
+      disko.memSize = 2048;
       disko.checkScripts = true;
     }
   )
-]).config.system.build.diskoImagesScript
+]).config.system.build.diskoImages
