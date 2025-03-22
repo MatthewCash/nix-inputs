@@ -1,0 +1,87 @@
+{ config, lib, pkgs, ... }:
+
+with lib;
+
+let
+
+  cfg = config.programs.z-lua;
+
+  aliases = {
+    zz = "z -c"; # restrict matches to subdirs of $PWD
+    zi = "z -i"; # cd with interactive selection
+    zf = "z -I"; # use fzf to select in multiple matches
+    zb = "z -b"; # quickly cd to the parent directory
+    zh = "z -I -t ."; # fzf
+  };
+
+in {
+  meta.maintainers = [ ];
+
+  options.programs.z-lua = {
+    enable = mkEnableOption "z.lua";
+
+    options = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+      example = [ "enhanced" "once" "fzf" ];
+      description = ''
+        List of options to pass to z.lua.
+      '';
+    };
+
+    enableBashIntegration =
+      lib.hm.shell.mkBashIntegrationOption { inherit config; };
+
+    enableFishIntegration =
+      lib.hm.shell.mkFishIntegrationOption { inherit config; };
+
+    enableZshIntegration =
+      lib.hm.shell.mkZshIntegrationOption { inherit config; };
+
+    enableAliases = mkOption {
+      default = false;
+      type = types.bool;
+      description = ''
+        Whether to enable recommended z.lua aliases.
+      '';
+    };
+  };
+
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.z-lua ];
+
+    programs.bash.initExtra = mkIf cfg.enableBashIntegration ''
+      eval "$(${pkgs.z-lua}/bin/z --init bash ${
+        concatStringsSep " " cfg.options
+      })"
+    '';
+
+    programs.zsh.initContent = mkIf cfg.enableZshIntegration ''
+      eval "$(${pkgs.z-lua}/bin/z --init zsh ${
+        concatStringsSep " " cfg.options
+      })"
+    '';
+
+    programs.bash.shellAliases = mkIf cfg.enableAliases aliases;
+
+    programs.zsh.shellAliases = mkIf cfg.enableAliases aliases;
+
+    programs.fish = mkMerge [
+      {
+        shellInit = mkIf cfg.enableFishIntegration ''
+          source (${pkgs.z-lua}/bin/z --init fish ${
+            concatStringsSep " " cfg.options
+          } | psub)
+        '';
+      }
+
+      (mkIf (!config.programs.fish.preferAbbrs) {
+        shellAliases = mkIf cfg.enableAliases aliases;
+      })
+
+      (mkIf config.programs.fish.preferAbbrs {
+        shellAbbrs = mkIf cfg.enableAliases aliases;
+      })
+    ];
+  };
+}
