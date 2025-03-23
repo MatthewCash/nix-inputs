@@ -17,7 +17,16 @@ in {
           options = {
             config = lib.mkOption {
               type = with lib.types;
-                attrsOf (nullOr (oneOf [ bool int float str ]));
+                let
+                  baseType = attrsOf (nullOr (oneOf [ bool int float str ]));
+
+                  # Should we verify whether type constitutes a valid remote?
+                  remoteConfigType = addCheck baseType (lib.hasAttr "type") // {
+                    name = "rcloneRemoteConfig";
+                    description =
+                      "An attribute set containing a remote type and options.";
+                  };
+                in remoteConfigType;
               default = { };
               description = ''
                 Regular configuration options as described in rclone's documentation
@@ -124,7 +133,7 @@ in {
           lib.mapAttrsToList (secret: secretFile: ''
             ${lib.getExe cfg.package} config update \
               ${remote.name} config_refresh_token=false \
-              ${secret} $(cat ${secretFile}) \
+              ${secret} "$(cat ${secretFile})" \
               --quiet > /dev/null
           '') remote.value.secrets or { };
 
