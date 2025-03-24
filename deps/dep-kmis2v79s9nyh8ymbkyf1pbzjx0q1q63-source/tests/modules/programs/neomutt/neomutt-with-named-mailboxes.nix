@@ -9,15 +9,17 @@
         extraConfig = ''
           color status cyan default
         '';
+        mailboxName = "someCustomName";
+        extraMailboxes = [
+          "Sent"
+          {
+            mailbox = "Junk Email";
+            name = "Spam";
+          }
+          { mailbox = "Trash"; }
+        ];
       };
       imap.port = 993;
-      signature = {
-        showSignature = "append";
-        text = ''
-          --
-          Test Signature
-        '';
-      };
     };
   };
 
@@ -29,12 +31,11 @@
   nmt.script = ''
     assertFileExists home-files/.config/neomutt/neomuttrc
     assertFileExists home-files/.config/neomutt/hm@example.com
-    assertFileContent home-files/.config/neomutt/neomuttrc ${
-      ./neomutt-expected.conf
+    assertFileContent $(normalizeStorePaths home-files/.config/neomutt/neomuttrc) ${
+      ./neomutt-with-named-mailboxes-expected.conf
     }
-    expectedSignature=$(normalizeStorePaths "home-files/.config/neomutt/hm@example.com")
-    assertFileContent "$expectedSignature" ${
-      ./hm-example.com-signature-expected
+    assertFileContent home-files/.config/neomutt/hm@example.com ${
+      ./hm-example.com-expected
     }
   '';
 }
