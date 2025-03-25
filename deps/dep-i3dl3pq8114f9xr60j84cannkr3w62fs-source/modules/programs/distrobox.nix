@@ -47,7 +47,7 @@ in {
         }
       '';
       description = ''
-        A set of containers and all its respective configurations. Each option cat be either a
+        A set of containers and all its respective configurations. Each option can be either a
         bool, string or a list of strings. If passed a list, the option will be repeated for each element.
         See common-debian in the example config. All the available options for the containers can be found
         in the distrobox-assemble documentation at <https://github.com/89luca89/distrobox/blob/main/docs/usage/distrobox-assemble.md>.
@@ -87,7 +87,7 @@ in {
         if [[ $prev_hash != $new_hash ]]; then
           rm -rf /tmp/storage-run-1000/containers
           rm -rf /tmp/storage-run-1000/libpod/tmp
-          $HOME/.nix-profile/bin/distrobox-assemble create --file $containers_file
+          ${cfg.package}/bin/distrobox-assemble create --file $containers_file
           echo $new_hash > $prev_hash_file
         fi
       ''}";
