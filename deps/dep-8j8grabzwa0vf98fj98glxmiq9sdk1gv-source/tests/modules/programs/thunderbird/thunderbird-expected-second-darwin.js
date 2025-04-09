@@ -3,7 +3,7 @@
 user_pref("general.useragent.override", "");
 user_pref("mail.account.account_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.identities", "id_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc");
 user_pref("mail.account.account_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.server", "server_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc");
-user_pref("mail.accountmanager.accounts", "account_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc");
+user_pref("mail.accountmanager.accounts", "account1,account_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc");
 user_pref("mail.identity.id_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.autoEncryptDrafts", false);
 user_pref("mail.identity.id_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.fullName", "H. M. Test Jr.");
 user_pref("mail.identity.id_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.htmlSigText", "");
@@ -12,7 +12,7 @@ user_pref("mail.identity.id_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da5039
 user_pref("mail.identity.id_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.useremail", "hm@example.org");
 user_pref("mail.identity.id_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.valid", true);
 user_pref("mail.openpgp.allow_external_gnupg", false);
-user_pref("mail.server.server_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.directory", ".thunderbird/second/ImapMail/bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc");
+user_pref("mail.server.server_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.directory", "Library/Thunderbird/Profiles/second/ImapMail/bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc");
 user_pref("mail.server.server_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.directory-rel", "[ProfD]ImapMail/bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc");
 user_pref("mail.server.server_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.hostname", "imap.example.org");
 user_pref("mail.server.server_bcd3ace52bed41febb6cdc2fb1303aebaa573e0d993872da503950901bb6c6fc.login_at_startup", true);
