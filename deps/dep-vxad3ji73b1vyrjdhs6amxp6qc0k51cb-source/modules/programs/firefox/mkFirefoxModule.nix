@@ -869,7 +869,11 @@ in
         ++ lib.flip mapAttrsToList cfg.profiles (
           _: profile:
           let
-            chromePath = if lib.pathIsDirectory profile.userChrome then "chrome" else "chrome/userChrome.css";
+            chromePath =
+              if ((i: lib.isPath i && lib.pathIsDirectory i) profile.userChrome) then
+                "chrome"
+              else
+                "chrome/userChrome.css";
             sourcePath = if lib.types.path.check profile.userChrome then profile.userChrome else null;
           in
           # Merge the regular profile settings with extension settings
