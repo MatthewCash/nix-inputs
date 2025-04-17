@@ -18,14 +18,17 @@ in
         basic.isDefault = true;
         lines = {
           id = 1;
-          userChrome = # CSS
-            ''
-              #urlbar {
-                min-width: none !important;
-                border: none !important;
-                outline: none !important;
-              }
-            '';
+          userChrome = ''
+            /*
+              This is a simple comment that should be written inside the `chrome/userChrome.css`
+            */
+
+            #urlbar {
+              min-width: none !important;
+              border: none !important;
+              outline: none !important;
+            }
+          '';
         };
         path = {
           id = 2;
@@ -45,17 +48,23 @@ in
 
         assertDirectoryExists home-files/${cfg.configPath}/basic
 
+        assertFileNotExists \
+          home-files/${cfg.configPath}/lines/chrome/extraFile.css
         assertFileContent \
           home-files/${cfg.configPath}/lines/chrome/userChrome.css \
-          ${./expected-userchrome.css}
+          ${./chrome/userChrome.css}
 
+        assertFileNotExists \
+          home-files/${cfg.configPath}/path/chrome/extraFile.css
         assertFileContent \
           home-files/${cfg.configPath}/path/chrome/userChrome.css \
-          ${./expected-userchrome.css}
+          ${./chrome/userChrome.css}
 
+        assertFileExists \
+          home-files/${cfg.configPath}/folder/chrome/extraFile.css
         assertFileContent \
           home-files/${cfg.configPath}/folder/chrome/userChrome.css \
-          ${./expected-userchrome.css}
+          ${./chrome/userChrome.css}
       '';
     }
   );
