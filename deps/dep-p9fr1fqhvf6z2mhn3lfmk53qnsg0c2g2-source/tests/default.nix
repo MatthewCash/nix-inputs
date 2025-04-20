@@ -469,6 +469,7 @@ import nmtSrc {
       ./modules/programs/vifm
       ./modules/programs/vim-vint
       ./modules/programs/vscode
+      ./modules/programs/wallust
       ./modules/programs/watson
       ./modules/programs/wezterm
       ./modules/programs/yazi
@@ -547,6 +548,7 @@ import nmtSrc {
       ./modules/programs/swayr
       ./modules/programs/terminator
       ./modules/programs/tofi
+      ./modules/programs/vesktop
       ./modules/programs/vinegar
       ./modules/programs/waybar
       ./modules/programs/wlogout
