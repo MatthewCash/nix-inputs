@@ -86,6 +86,7 @@ let
       ./programs/cavalier.nix
       ./programs/chawan.nix
       ./programs/chromium.nix
+      ./programs/clock-rs.nix
       ./programs/cmus.nix
       ./programs/command-not-found/command-not-found.nix
       ./programs/comodoro.nix
@@ -419,6 +420,7 @@ let
       ./services/safeeyes.nix
       ./services/screen-locker.nix
       ./services/sctd.nix
+      ./services/shikane.nix
       ./services/signaturepdf.nix
       ./services/skhd.nix
       ./services/snixembed.nix
