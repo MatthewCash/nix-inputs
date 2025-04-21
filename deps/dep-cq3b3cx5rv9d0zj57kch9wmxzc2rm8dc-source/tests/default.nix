@@ -418,6 +418,7 @@ import nmtSrc {
       ./modules/programs/newsboat
       ./modules/programs/nheko
       ./modules/programs/nix-index
+      ./modules/programs/nix-init
       ./modules/programs/nix-your-shell
       ./modules/programs/nnn
       ./modules/programs/nushell
@@ -459,6 +460,7 @@ import nmtSrc {
       ./modules/programs/superfile
       ./modules/programs/taskwarrior
       ./modules/programs/tealdeer
+      ./modules/programs/television
       ./modules/programs/tex-fmt
       ./modules/programs/texlive
       ./modules/programs/thefuck
