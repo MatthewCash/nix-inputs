@@ -1,0 +1,28 @@
+diff --git a/src/core/api/CMakeLists.txt b/src/core/api/CMakeLists.txt
+index 9ca610d32..22cd74b29 100644
+--- a/src/core/api/CMakeLists.txt
++++ b/src/core/api/CMakeLists.txt
+@@ -214,7 +214,8 @@ if(QT_FEATURE_framework)
+ 
+ else()
+     install(FILES ${localeFiles}
+-        DESTINATION ${INSTALL_TRANSLATIONSDIR}/qtwebengine_locales
++        # Nixpkgs: INSTALL_TRANSLATIONSDIR points to Qt base translations store path
++        DESTINATION ${INSTALL_DATADIR}/qtwebengine_locales
+         CONFIGURATIONS ${config}
+     )
+     install(FILES ${resourceFiles}
+diff --git a/src/core/web_engine_library_info.cpp b/src/core/web_engine_library_info.cpp
+index f7ab89681..5f722b222 100644
+--- a/src/core/web_engine_library_info.cpp
++++ b/src/core/web_engine_library_info.cpp
+@@ -198,7 +198,8 @@ QString localesPath()
+             candidatePaths << getResourcesPath(frameworkBundle()) % QDir::separator()
+                             % "qtwebengine_locales"_L1;
+ #endif
+-            candidatePaths << QLibraryInfo::path(QLibraryInfo::TranslationsPath) % QDir::separator()
++            // Nixpkgs: match the changes made in CMakeLists.txt
++            candidatePaths << QLibraryInfo::path(QLibraryInfo::DataPath) % QDir::separator()
+                             % "qtwebengine_locales"_L1;
+             candidatePaths << fallbackDir();
+         } else {
