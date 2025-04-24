@@ -22,17 +22,26 @@
       "-f"
       "exwm-enable"
     ];
+    services.emacs.socketActivation.enable = true;
 
     nmt.script = ''
-      assertPathNotExists home-files/.config/systemd/user/emacs.socket
+      assertFileExists home-files/.config/systemd/user/emacs.socket
       assertFileExists home-files/.config/systemd/user/emacs.service
       assertFileExists home-path/share/applications/emacsclient.desktop
 
       assertFileContent \
+        home-files/.config/systemd/user/emacs.socket \
+        ${./emacs-socket-emacs.socket}
+
+      assertFileContent \
         home-files/.config/systemd/user/emacs.service \
-        ${pkgs.substituteAll {
-          inherit (pkgs) runtimeShell;
-          src = ./emacs-service-emacs.service;
+        ${pkgs.substitute {
+          src = ./emacs-socket-28-emacs.service;
+          substitutions = [
+            "--replace"
+            "@runtimeShell@"
+            pkgs.runtimeShell
+          ];
         }}
 
       assertFileContent \

@@ -4,7 +4,7 @@
   config = {
     nixpkgs.overlays = [
       (self: super: rec {
-        emacs = pkgs.writeShellScriptBin "dummy-emacs-28.0.5" "" // {
+        emacs = pkgs.writeShellScriptBin "dummy-emacs-27.2" "" // {
           outPath = "@emacs@";
         };
         emacsPackagesFor =
@@ -35,14 +35,21 @@
 
       assertFileContent \
         home-files/.config/systemd/user/emacs.service \
-        ${pkgs.substituteAll {
-          inherit (pkgs) runtimeShell coreutils;
-          src = ./emacs-socket-28-emacs.service;
+        ${pkgs.substitute {
+          src = ./emacs-socket-27-emacs.service;
+          substitutions = [
+            "--replace"
+            "@runtimeShell@"
+            pkgs.runtimeShell
+            "--replace"
+            "@coreutils@"
+            pkgs.coreutils
+          ];
         }}
 
       assertFileContent \
         home-path/share/applications/emacsclient.desktop \
-        ${./emacs-28-emacsclient.desktop}
+        ${./emacs-27-emacsclient.desktop}
     '';
   };
 }
