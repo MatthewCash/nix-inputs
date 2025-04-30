@@ -7,7 +7,10 @@
 
 lib.mkIf pkgs.stdenv.isLinux {
   services.gpg-agent.enable = true;
-  services.gpg-agent.pinentryPackage = pkgs.pinentry-gnome3;
+  services.gpg-agent.pinentry = {
+    package = pkgs.pinentry-all;
+    program = "pinentry-qt";
+  };
   programs.gpg.enable = true;
 
   nmt.script = ''
@@ -19,6 +22,6 @@ lib.mkIf pkgs.stdenv.isLinux {
     fi
 
     configFile=home-files/.gnupg/gpg-agent.conf
-    assertFileRegex $configFile "pinentry-program @pinentry-gnome3@/bin/pinentry"
+    assertFileRegex $configFile "pinentry-program @pinentry-all@/bin/pinentry-qt"
   '';
 }
