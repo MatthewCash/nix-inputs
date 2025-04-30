@@ -9,17 +9,20 @@
 
 buildMozillaMach rec {
   pname = "firefox";
-  version = "128.9.0esr";
+  version = "138.0";
   src = fetchurl {
     url = "mirror://mozilla/firefox/releases/${version}/source/firefox-${version}.source.tar.xz";
-    sha512 = "c0c8ac8374291cc93279064c73c17786c6f4fba7505ebc2cbd7a4ce7c82710620abdae7be15f60c43f9d10c3614fc9fd31f094e787105d528031c6f0510f7339";
+    sha512 = "265eef505216f70d50ebb95a6b23983d0b70430320e7e2dcf497127890d7bbdff1c49c64790010c85b8e3fe0da5c90e95b2d44fb1adca64b1755428ccb2b91a2";
   };
 
   meta = {
-    changelog = "https://www.mozilla.org/en-US/firefox/${lib.removeSuffix "esr" version}/releasenotes/";
+    changelog = "https://www.mozilla.org/en-US/firefox/${version}/releasenotes/";
     description = "Web browser built from Firefox source tree";
     homepage = "http://www.mozilla.com/en-US/firefox/";
-    maintainers = with lib.maintainers; [ hexa ];
+    maintainers = with lib.maintainers; [
+      lovesegfault
+      hexa
+    ];
     platforms = lib.platforms.unix;
     badPlatforms = lib.platforms.darwin;
     broken = stdenv.buildPlatform.is32bit;
@@ -30,11 +33,9 @@ buildMozillaMach rec {
     mainProgram = "firefox";
   };
   tests = {
-    inherit (nixosTests) firefox-esr-128;
+    inherit (nixosTests) firefox;
   };
   updateScript = callPackage ../update.nix {
-    attrPath = "firefox-esr-128-unwrapped";
-    versionPrefix = "128";
-    versionSuffix = "esr";
+    attrPath = "firefox-unwrapped";
   };
 }
