@@ -97,6 +97,7 @@ let
       ./programs/distrobox.nix
       ./programs/earthly.nix
       ./programs/eclipse.nix
+      ./programs/element-desktop.nix
       ./programs/emacs.nix
       ./programs/eww.nix
       ./programs/eza.nix
@@ -332,6 +333,7 @@ let
       ./services/cachix-agent.nix
       ./services/caffeine.nix
       ./services/cbatticon.nix
+      ./services/clipcat.nix
       ./services/cliphist.nix
       ./services/clipman.nix
       ./services/clipmenu.nix
