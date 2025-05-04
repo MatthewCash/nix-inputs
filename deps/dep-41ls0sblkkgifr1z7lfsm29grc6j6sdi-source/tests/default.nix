@@ -375,6 +375,7 @@ import nmtSrc {
       ./modules/programs/gnome-terminal
       ./modules/programs/hexchat
       ./modules/programs/hyprlock
+      ./modules/programs/i3bar-river
       ./modules/programs/i3blocks
       ./modules/programs/i3status-rust
       ./modules/programs/imv
@@ -442,6 +443,7 @@ import nmtSrc {
       ./modules/services/lieer
       ./modules/services/linux-wallpaperengine
       ./modules/services/lxqt-policykit-agent
+      ./modules/services/mako
       ./modules/services/mopidy
       ./modules/services/mpd
       ./modules/services/mpd-mpris
