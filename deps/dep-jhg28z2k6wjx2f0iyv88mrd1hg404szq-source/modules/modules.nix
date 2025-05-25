@@ -216,6 +216,7 @@ let
       ./programs/numbat.nix
       ./programs/nushell.nix
       ./programs/obs-studio.nix
+      ./programs/obsidian.nix
       ./programs/octant.nix
       ./programs/offlineimap.nix
       ./programs/oh-my-posh.nix
@@ -267,6 +268,7 @@ let
       ./programs/sesh.nix
       ./programs/sftpman.nix
       ./programs/sioyek.nix
+      ./programs/sketchybar.nix
       ./programs/skim.nix
       ./programs/sm64ex.nix
       ./programs/smug.nix
@@ -470,6 +472,7 @@ let
       ./services/vdirsyncer.nix
       ./services/volnoti.nix
       ./services/way-displays.nix
+      ./services/wayvnc.nix
       ./services/window-managers/awesome.nix
       ./services/window-managers/bspwm/default.nix
       ./services/window-managers/fluxbox.nix
