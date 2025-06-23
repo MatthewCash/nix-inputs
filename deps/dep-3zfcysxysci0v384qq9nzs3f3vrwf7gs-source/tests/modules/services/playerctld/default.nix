@@ -1,1 +1,0 @@
-{ playerctld-basic = ./basic.nix; }

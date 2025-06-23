@@ -1,1 +1,0 @@
-{ awscli = ./awscli.nix; }

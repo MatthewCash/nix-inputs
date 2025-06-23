@@ -1,1 +1,0 @@
-{ niriswitcher-program = ./niriswitcher.nix; }
