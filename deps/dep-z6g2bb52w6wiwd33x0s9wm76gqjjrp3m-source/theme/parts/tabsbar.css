@@ -10,6 +10,7 @@
 	--tab-border-radius: var(--gnome-button-radius) !important;	
 	--tab-hover-background-color: var(--gnome-hover-color) !important;
 	--tab-selected-bgcolor: var(--gnome-selected-color) !important;
+	--tab-pinned-container-margin-inline-expanded: calc(var(--gnome-toolbar-padding) / 2) !important;
 	
 	--gnome-tabbar-tab-close-overlay-bg: var(--gnome-tabbar-tab-hover-background);
 
@@ -76,18 +77,14 @@
 	/* Vertical */
 	&[orient="vertical"] {
 		--tabstrip-inner-border: 1px solid var(--gnome-border-color) !important;
-		grid-gap: var(--gnome-toolbar-spacing) !important;
+		grid-gap: 0 !important;
 
 		&[expanded] {
 			--tab-inner-inline-margin: var(--gnome-toolbar-padding) !important;
-			--tab-pinned-container-margin-inline-expanded:var(--gnome-toolbar-padding) !important;
-
-			#vertical-pinned-tabs-container {
-				gap:  var(--gnome-toolbar-padding) !important;
-			}
 		}
 
-		#tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button {
+		#tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button,
+		#vertical-tabs-newtab-button {
 			margin-block: var(--gnome-toolbar-padding) !important;
 		}
 	}
@@ -185,12 +182,7 @@ spacer[part=overflow-start-indicator], spacer[part=overflow-end-indicator] {
 			--tab-selected-bgcolor: var(--gnome-tabbar-tab-active-background-contrast) !important;
 			--gnome-tabbar-tab-close-overlay-bg: var(--gnome-tabbar-tab-active-background-contrast) !important;
 		}
-	}
-
-	/* Tweak margins on expanded vertical pinned tabs */
-	#tabbrowser-tabs[orient="vertical"][expanded] &[pinned] {
-		padding-block-start: var(--gnome-toolbar-padding) !important;
-	}
+	}	
 
 	/* Horizontal tabs only */
 	#tabbrowser-tabs[orient="horizontal"] & {
@@ -214,7 +206,7 @@ spacer[part=overflow-start-indicator], spacer[part=overflow-end-indicator] {
 				&:not([style^="max-width"]):not([pinned]),
 				&[style^="max-width: 100px !important;"]:not([pinned]) {
 					max-width: 100% !important;
-					--tab-min-width: 131px !important;
+					--tab-min-width-pref: 131px !important;
 				}
 				&:not([style^="max-width"]):not([pinned]):not([fadein]),
 				&[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]) {
@@ -256,11 +248,6 @@ spacer[part=overflow-start-indicator], spacer[part=overflow-end-indicator] {
 	/* Fix margins on horizontal tabs */
 	#tabbrowser-tabs[orient="horizontal"] & {
 		margin-block: 0 !important;
-	}
-
-	/* Tweak margins on expanded vertical pinned tabs */
-	#tabbrowser-tabs[orient="vertical"][expanded] #vertical-pinned-tabs-container & {
-		margin: 0 !important;
 	}
 	
 	/* Add solid bg on tabs dnd */
@@ -729,6 +716,8 @@ tab-group {
 	height: 16px !important;
 	opacity: 1 !important;
 	width: 16px !important;
+	overflow: visible !important;
+	border-radius: initial !important;
 }
 :root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button) + #tabbrowser-tabs {
 	border-inline-start: 0 !important;
@@ -737,7 +726,7 @@ tab-group {
 }
 
 /* OPTIONAL: Hide single tab */
-@media -moz-pref("gnomeTheme.hideSingleTab") {
+@media -moz-pref("gnomeTheme.hideSingleTab") and (not -moz-pref("sidebar.verticalTabs")) {
 	#tabbrowser-tabs:not(:has(tab:not([hidden="true"]) ~ tab:not([hidden="true"]))) {
 		:is(tab, tab ~ toolbarbutton, tab ~ #tabbrowser-arrowscrollbox-periphery) {
 			visibility: collapse;
@@ -794,12 +783,10 @@ tab-group {
 			inset: 0 !important;
 		}
 		tab-group {
-			.tab-background {
-				flex-direction: column-reverse !important;
-			}
 			.tab-group-line {
 				margin-block-end: 0 !important;
 				margin-block-start: calc(var(--gnome-toolbar-padding) * -1) !important;
+				top: 0 !important;
 			}
 		}
 

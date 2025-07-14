@@ -30,7 +30,7 @@ Matrix room: [#firefox-gnome-theme:matrix.org](https://matrix.to/#/#firefox-gnom
 
 ### Firefox versions support
 
-The `master` branch of this repo supports the current Firefox stable release `136`.
+The `master` branch of this repo supports the current Firefox stable release `137`.
 
 Theme versions compatible with older Firefox releases are preserved as git tags.
 
@@ -48,7 +48,8 @@ The most friendly way to get this theme is using the **Add Water** app.
 
 To install this theme, you can run this command, which uses *curl* to download a script that will also download the latest released version of the theme (not the master version) and run the **auto-install** script for you.
 
-> **Warning**: Always be careful when running scripts from the Internet.
+> [!WARNING]
+> Always be careful when running scripts from the Internet.
 
 ```sh
 curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
@@ -76,8 +77,7 @@ This theme provides two installation scripts in addition to the curled one.
 
 ### Auto install script
 
-This script will look for Firefox profiles from various known locations (`~/.mozilla/firefox/`, Flatpak, Snap, etc) and install the theme in each one. 
-It will also enable a color variant for your GTK theme if it exists.
+This script will look for Firefox profiles from various known locations (`~/.mozilla/firefox/`, Flatpak, Snap, etc) and install the theme in each one.
 
 You can execute it by running:
 
@@ -177,7 +177,7 @@ git checkout v$(firefox --version | cut -d ' ' -f 3 | cut -d '.' -f 1) # Using F
 </details>
 
 ## Required Firefox preferences
-We provide a **user.js** configuration file in `configuration/user.js` that enable some preferences required by this theme to work.
+We provide a **user.js** configuration file in `configuration/user.js` that enables some preferences required by this theme to work.
 
 You should already have this file installed if you followed one of the installation methods, but in any case be sure this preferences are enabled under `about:config`:
 
@@ -296,15 +296,8 @@ Optional features can be enabled by creating new `boolean` preferences in `about
 
 We also have optional features to enable support for some Firefox extensions.
 
-> **Be aware that extensions support are maintained by the community, so requests to support new extensions are not allowed and the included ones could get broken until someone shows up to fix them.**
-
-- **Tab center reborn support** `gnomeTheme.extensions.tabCenterReborn`
-
-	Enable the vertical tab trough the extension : [Tab Center Reborn](https://addons.mozilla.org/en-US/firefox/addon/tabcenter-reborn/).
-
-	> **Note:** You also need to copy the contents of the file `configuration/extensions/tab-center-reborn.css` into the settings page of Tabcenter-reborn..\
-	> **Note2:** You can also maintain the vertical tab always open with `gnomeTheme.extensions.tabCenterReborn.alwaysOpen`
- 	> **Note2:** You can disable animation by disabling animation into the extension and adding the flags `gnomeTheme.extensions.tabCenterReborn.animationDisabled`
+> [!WARNING]
+> Note that extension support is maintained by the community, so requests to support new extensions are not allowed, and the included extensions may be broken until someone shows up to fix them.
 
 - **Adaptive Tab Bar Colour support** `gnomeTheme.extensions.adaptiveTabBarColour`
 
@@ -358,4 +351,4 @@ any specific license on your code.
 Developed by **[Rafael Mardojai CM](https://github.com/rafaelmardojai)** and [contributors](https://github.com/rafaelmardojai/firefox-gnome-theme/graphs/contributors). Based on **[Luna Kurame](https://github.com/lunakurame/firefox-gnome-theme)**'s original work.
 
 ## Donate
-If you want to support development, consider donating via [PayPal](https://paypal.me/RafaelMardojaiCM). Also consider donating upstream, [Firefox](https://donate.mozilla.org/) & [GNOME](https://www.gnome.org/support-gnome/).
+If you want to support development, consider donating via [PayPal](https://paypal.me/RafaelMardojaiCM). Also consider donating upstream, [Firefox](https://donate.mozilla.org/) & [GNOME](https://www.gnome.org/donate/).
