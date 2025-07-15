@@ -759,11 +759,11 @@
     },
     "nixpkgsUnstable": {
       "locked": {
-        "lastModified": 1751984180,
-        "narHash": "sha256-LwWRsENAZJKUdD3SpLluwDmdXY9F45ZEgCb0X+xgOL0=",
+        "lastModified": 1752480373,
+        "narHash": "sha256-JHQbm+OcGp32wAsXTE/FLYGNpb+4GLi5oTvCxwSoBOA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9807714d6944a957c2e036f84b0ff8caf9930bc0",
+        "rev": "62e0f05ede1da0d54515d4ea8ce9c733f12d9f08",
         "type": "github"
       },
       "original": {
@@ -776,7 +776,7 @@
     "original-owl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-OX8Dnx6gaeNP9est/hZTOje/6Fc79bIMkMUCj09voSI=",
+        "narHash": "sha256-tvNiE5ux/FqAa6vBXV5kURwv3nE+VHS5x4+0x/5u04E=",
         "type": "file",
         "url": "https://www.beonex.com/owl/owl.xpi"
       },
@@ -794,11 +794,11 @@
         "original-owl": "original-owl"
       },
       "locked": {
-        "lastModified": 1752077543,
-        "narHash": "sha256-ydPIUZnCIGXPIOVaHAmLQyKBo3MlkkWrQ0QanSZHPa0=",
+        "lastModified": 1752556640,
+        "narHash": "sha256-lgicOeA/iM24wbY70uc1FQPXzCKjS2YF6bGvIHyQfBY=",
         "owner": "MatthewCash",
         "repo": "owl-patched",
-        "rev": "5a010ab96fc73cea2bb50ebf8cc4c29fa50aeb8f",
+        "rev": "a48d15ce6e34fdf94263e19f96f3b5f1daccac77",
         "type": "github"
       },
       "original": {
