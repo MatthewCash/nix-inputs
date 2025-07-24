@@ -1,3 +1,0 @@
-{
-  opencode-settings = ./settings.nix;
-}
