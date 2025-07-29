@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: Home Manager\n"
 "Report-Msgid-Bugs-To: https://github.com/nix-community/home-manager/issues\n"
 "POT-Creation-Date: 2025-07-22 10:59+0200\n"
-"PO-Revision-Date: 2024-05-25 11:09+0000\n"
-"Last-Translator: TANIGUCHI Kohei <a.d.xvii.kal.mai@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/home-manager/"
-"cli/ja/>\n"
-"Language: ja\n"
+"PO-Revision-Date: 2025-07-29 05:02+0000\n"
+"Last-Translator: jarre johansson <jarre@johansson.today>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/home-manager/cli/"
+"fi/>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. translators: For example: "home-manager: missing argument for --cores"
 #: home-manager/home-manager:16
 msgid "%s: missing argument for %s"
-msgstr "%s: %s の引数がありません"
+msgstr "%s: puuttuva argumentti kohteelle %s"
 
 #. translators: For example: "home-manager: --rollback can only be used after switch"
 #: home-manager/home-manager:22
@@ -31,7 +31,7 @@ msgstr ""
 
 #: home-manager/home-manager:71
 msgid "No configuration file found at %s"
-msgstr "%s に設定ファイルが見つかりません"
+msgstr "Kokoonpanotiedostoa ei löydy %s:sta"
 
 #. translators: The first '%s' specifier will be replaced by either
 #. 'home.nix' or 'flake.nix'.
@@ -41,16 +41,16 @@ msgid ""
 "Keeping your Home Manager %s in %s is deprecated,\n"
 "please move it to %s"
 msgstr ""
-"Home Managerの %s の %s への保管は非推奨となりました\n"
-"%s へ移動させてください"
+"Home Managerin %s pitäminen %s:ssa on vanhentunut.\n"
+"ole hyvä ja siirrä se %s:een"
 
 #: home-manager/home-manager:99
 msgid "No configuration file found. Please create one at %s"
-msgstr "設定ファイルがありません。ファイルを %s に作ってください"
+msgstr "Kokoonpanotiedostoa ei löytynyt. Luo sellainen %s:lla"
 
 #: home-manager/home-manager:114
 msgid "Home Manager not found at %s."
-msgstr "%s にHome Managerが見つかりません。"
+msgstr "Home Manageria ei löytynyt sijainnista %s."
 
 #. translators: This message will be seen by very few users that likely are familiar with English. So feel free to leave this untranslated.
 #: home-manager/home-manager:122
@@ -58,8 +58,6 @@ msgid ""
 "The fallback Home Manager path %s has been deprecated and a file/directory "
 "was found there."
 msgstr ""
-"フォールバックの Home Manager のパス %s は非推奨ですが、そこにファイルまたは"
-"ディレクトリがあります。"
 
 #. translators: This message will be seen by very few users that likely are familiar with English. So feel free to leave this untranslated.
 #: home-manager/home-manager:125
@@ -82,59 +80,40 @@ msgid ""
 "\n"
 "     $ rm -r \"%s\""
 msgstr ""
-"この警告が表示されないようにするには、以下のどれかを行ってください。\n"
-"\n"
-"1. Home Manager にそのパスを使うよう伝えます。例えば\n"
-"\n"
-"     { programs.home-manager.path = \"%s\"; }\n"
-"\n"
-"   を設定に追加します。\n"
-"\n"
-"   もし Home Manager を直接インポートしているのであれば、 Home Manager パッ"
-"ケージを呼び出すときに `path` パラメーターを使って\n"
-"\n"
-"     pkgs.callPackage /path/to/home-manager-package { path = \"%s\"; }\n"
-"\n"
-"   のようにできます。\n"
-"\n"
-"2. 非推奨のパスにあるものを削除します。\n"
-"\n"
-"     $ rm -r \"%s\""
 
 #: home-manager/home-manager:153
 msgid "Sanity checking Nix"
-msgstr "Nixの健全性検査中です"
+msgstr "Nixin eheys tarkistetaan"
 
 #: home-manager/home-manager:173
 msgid "Could not find suitable profile directory, tried %s and %s"
-msgstr ""
-"適切なプロファイル ディレクトリが見つかりませんでした。%s と %s を試しました"
+msgstr "Sopivaa profiilihakemistoa ei löytynyt, yritettiin %s ja %s"
 
 #. translators: Here "flake" is a noun that refers to the Nix Flakes feature.
 #: home-manager/home-manager:230
 msgid "Can't inspect options of a flake configuration"
-msgstr "flake設定のオプションを検査できません"
+msgstr "Flake-konfiguraation asetuksia ei voi tarkastella"
 
 #: home-manager/home-manager:305 home-manager/home-manager:328
 #: home-manager/home-manager:734 home-manager/home-manager:1237
 msgid "%s: unknown option '%s'"
-msgstr "%s: 不明なオプション '%s'"
+msgstr "%s: tuntematon optio '%s'"
 
 #: home-manager/home-manager:310 home-manager/home-manager:1238
 msgid "Run '%s --help' for usage help"
-msgstr "'%s --help' でヘルプを参照することができます"
+msgstr "Aja '%s --help' saadaksesi käyttöohjeita"
 
 #: home-manager/home-manager:336 home-manager/home-manager:441
 msgid "The file %s already exists, leaving it unchanged..."
-msgstr "%s は既に存在します。変更せずに続行しています..."
+msgstr "Tiedosto %s on jo olemassa, jätetään se muuttumattomaksi..."
 
 #: home-manager/home-manager:338 home-manager/home-manager:443
 msgid "Creating %s..."
-msgstr "%s を作成中です..."
+msgstr "Luodaan tiedostoa %s..."
 
 #: home-manager/home-manager:487
 msgid "Creating initial Home Manager generation..."
-msgstr "Home Managerの世代を初期化しています..."
+msgstr "Luodaan alkuperäistä Home Manager -generaatiota..."
 
 #. translators: The "%s" specifier will be replaced by a file path.
 #: home-manager/home-manager:492
@@ -146,13 +125,6 @@ msgid ""
 "to configure Home Manager. Run 'man home-configuration.nix' to\n"
 "see all available options."
 msgstr ""
-"全てが完了しました！ Home-managerはインストール済みで、\n"
-"\n"
-"    %s\n"
-"\n"
-"でHome Managerの設定を編集することができるはずです。利用可能なオプションを参"
-"照するには\n"
-"'man home-configuration.nix' を実行してください。"
 
 #. translators: The "%s" specifier will be replaced by a URL.
 #: home-manager/home-manager:497
@@ -163,17 +135,11 @@ msgid ""
 "\n"
 "if the error seems to be the fault of Home Manager."
 msgstr ""
-"おっと、インストールに失敗しました！このエラーがHome Managerの欠陥によって生"
-"じたと考えられる場合は、\n"
-"\n"
-"    %s\n"
-"\n"
-"というissueを立ててください。"
 
 #. translators: Here "flake" is a noun that refers to the Nix Flakes feature.
 #: home-manager/home-manager:508
 msgid "Can't instantiate a flake configuration"
-msgstr "flake設定を初期化できません"
+msgstr "Flake-konfiguraatiota ei voi luoda"
 
 #: home-manager/home-manager:584
 msgid ""
@@ -183,21 +149,24 @@ msgid_plural ""
 "There are %d unread and relevant news items.\n"
 "Read them by running the command \"%s news\"."
 msgstr[0] ""
-"未読のお知らせが%d件あります。\n"
-"\"%s news\"コマンドで確認できます。"
+"Sinulla on %d lukematon ja oleellinen uutisartikkeli.\n"
+"Lue se ajamalla komento \"%s news\"."
+msgstr[1] ""
+"Sinulla on %d lukematonta ja oleellista uutisartikkelia.\n"
+"Lue ne ajamalla komento \"%s news\"."
 
 #: home-manager/home-manager:598
 msgid "Unknown \"news.display\" setting \"%s\"."
-msgstr "\"news.display\"に\"%s\"という設定は存在しません。"
+msgstr "Tuntematon asetus \"news.display\" \"%s\"."
 
 #: home-manager/home-manager:606
 #, sh-format
 msgid "Please set the $EDITOR or $VISUAL environment variable"
-msgstr "環境変数 $EDITOR または $VISUAL を設定してください"
+msgstr "Aseta $EDITOR- tai $VISUAL-ympäristömuuttujaksi"
 
 #: home-manager/home-manager:624
 msgid "Cannot run build in read-only directory"
-msgstr "読み込み専用ディレクトリ内ではbuild（作成）できません"
+msgstr "Käännöstä ei voi suorittaa kirjoitussuojatussa hakemistossa"
 
 #: home-manager/home-manager:787
 msgid "The configuration did not contain the specialisation \"%s\""
@@ -205,85 +174,62 @@ msgstr ""
 
 #: home-manager/home-manager:841
 msgid "No generation with ID %s"
-msgstr "ID %s を持つ世代はありません"
+msgstr "ID:llä %s ei löytynyt yhtään versiota"
 
 #: home-manager/home-manager:843
 msgid "Cannot remove the current generation %s"
-msgstr "現在使用中の世代 %s は削除できません"
+msgstr "Nykyistä generaatiota %s ei voi poistaa"
 
 #: home-manager/home-manager:845
 msgid "Removing generation %s"
-msgstr "世代 %s を削除中です"
+msgstr "Generaatio %s poistetaan"
 
 #: home-manager/home-manager:866
 msgid "No generations to expire"
-msgstr "期限切れで削除される世代はありません"
+msgstr "Ei vanhentuvia versioita"
 
 #: home-manager/home-manager:877
 msgid "No home-manager packages seem to be installed."
-msgstr "home-managerパッケージがインストールされていないようです。"
+msgstr "Näyttää siltä, ettei yhtään home-manager-pakettia ole asennettu."
 
 #: home-manager/home-manager:962
 msgid "Unknown argument %s"
-msgstr "不明な引数 %s"
+msgstr "Tuntematon argumentti %s"
 
 #: home-manager/home-manager:987
 msgid "This will remove Home Manager from your system."
-msgstr "この操作によってHome Managerはシステムから削除されます。"
+msgstr "Tämä poistaa Home Managerin järjestelmästäsi."
 
 #: home-manager/home-manager:990
 msgid "This is a dry run, nothing will actually be uninstalled."
-msgstr "これはdry run （予行練習）で、実際にはアンインストールは行われません。"
+msgstr "Tämä on kuivaharjoitus, mitään ei oikeasti poisteta."
 
 #: home-manager/home-manager:994
 msgid "Really uninstall Home Manager?"
-msgstr "本当にHome Managerをアンインストールしますか？"
+msgstr "Haluatko varmasti poistaa Home Managerin?"
 
 #: home-manager/home-manager:1000
 msgid "Switching to empty Home Manager configuration..."
-msgstr "空のHome Managerの設定に切り替えています..."
+msgstr "Vaihdetaan tyhjään Home Manager -konfiguraatioon..."
 
 #: home-manager/home-manager:1015
 msgid "Yay!"
-msgstr "イェイ！"
+msgstr "Jes!"
 
 #: home-manager/home-manager:1020
 msgid "Home Manager is uninstalled but your home.nix is left untouched."
 msgstr ""
-"Home Managerはアンインストールされましたが、home.nixはそのまま残してありま"
-"す。"
+"Home Manager on poistettu, mutta home.nix-tiedostosi jää koskemattomaksi."
 
 #: home-manager/home-manager:1285
 msgid "expire-generations expects one argument, got %d."
 msgstr ""
-"expire-generations は一つしか引数を取らないところ、%d 個が与えられました。"
 
 #: home-manager/home-manager:1310
 msgid "Unknown command: %s"
-msgstr "不明なコマンド: %s"
+msgstr "Tuntematon komento: %s"
 
 #: home-manager/install.nix:21
 msgid "This derivation is not buildable, please run it using nix-shell."
-msgstr "この派生はビルドできません。nix-shellを使って実行してください。"
-
-#, sh-format
-#~ msgid "Please set the $EDITOR environment variable"
-#~ msgstr "$EDITOR環境変数を設定してください"
-
-#~ msgid "Sorry, this command is not yet supported in flake setup"
-#~ msgstr ""
-#~ "申し訳ありませんが、このコマンドはflake設定ではまだ対応されていません"
-
-#~ msgid "Creating initial Home Manager configuration..."
-#~ msgstr "Home Managerの設定を初期化しています..."
-
-#~ msgid "Remove all Home Manager generations?"
-#~ msgstr "Home-managerの全ての世代を削除しますか？"
-
-#~ msgid "All generations are now eligible for garbage collection."
-#~ msgstr "全ての世代がガベージコレクションの対象になりました。"
-
-#~ msgid "Leaving generations but they may still be garbage collected."
-#~ msgstr ""
-#~ "世代を残すようにしますが、やはりガベージコレクションで回収されるかもしれま"
-#~ "せん。"
+msgstr ""
+"Tätä derivointia ei voi rakentaa suoraan, suorita se käyttämällä nix-shelliä."
