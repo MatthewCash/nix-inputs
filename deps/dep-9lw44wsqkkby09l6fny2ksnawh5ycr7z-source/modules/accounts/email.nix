@@ -114,6 +114,28 @@ let
     };
   };
 
+  authenticationOption = mkOption {
+    type = types.nullOr (
+      types.either types.str (
+        types.enum [
+          "anonymous"
+          "apop"
+          "clear"
+          "cram_md5"
+          "digest_md5"
+          "gssapi"
+          "login"
+          "ntlm"
+          "plain"
+          "xoauth2"
+        ]
+      )
+    );
+    default = null;
+    example = "plain";
+    description = "The authentication mechanism.";
+  };
+
   imapModule = types.submodule {
     options = {
       host = mkOption {
@@ -133,6 +155,8 @@ let
           `null` then the default port is used.
         '';
       };
+
+      authentication = authenticationOption;
 
       tls = mkOption {
         type = tlsModule;
@@ -193,6 +217,8 @@ let
           `null` then the default port is used.
         '';
       };
+
+      authentication = authenticationOption;
 
       tls = mkOption {
         type = tlsModule;
@@ -329,13 +355,14 @@ let
 
         flavor = mkOption {
           type = types.enum [
-            "plain"
-            "gmail.com"
-            "runbox.com"
+            "davmail"
             "fastmail.com"
-            "yandex.com"
-            "outlook.office365.com"
+            "gmail.com"
             "migadu.com"
+            "outlook.office365.com"
+            "plain"
+            "runbox.com"
+            "yandex.com"
           ];
           default = "plain";
           description = ''
@@ -590,6 +617,20 @@ let
           smtp = {
             host = "mail.runbox.com";
             port = if config.smtp.tls.useStartTls then 587 else 465;
+          };
+        })
+
+        (mkIf (config.flavor == "davmail") {
+          imap = {
+            host = "localhost";
+            port = 1143;
+            authentication = "login";
+          };
+          smtp = {
+            host = "localhost";
+            port = 1025;
+            tls.enable = false;
+            authentication = "plain";
           };
         })
       ];
