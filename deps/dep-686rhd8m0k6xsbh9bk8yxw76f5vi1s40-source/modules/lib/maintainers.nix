@@ -145,6 +145,12 @@
     github = "elanora96";
     githubId = 27848938;
   };
+  epixtm = {
+    name = "Epix";
+    email = "kami@epix.icu";
+    github = "epixtm";
+    githubId = 168025607;
+  };
   fendse = {
     email = "46252070+Fendse@users.noreply.github.com";
     github = "Fendse";
@@ -218,6 +224,12 @@
     matrix = "@janik0:matrix.org";
     github = "Janik-Haag";
     githubId = 80165193;
+  };
+  joker9944 = {
+    name = "Felix von Arx";
+    email = "github@shroud.mozmail.com";
+    github = "Joker9944";
+    githubId = 9194199;
   };
   jonringer = {
     email = "jonringer117@gmail.com";
