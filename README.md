@@ -1,5 +1,8 @@
 # nix-inputs
 
+> [!IMPORTANT]
+> I no longer use this repo to consolidate my flake inputs.
+
 Flake inputs for [nixos-config](https://github.com/MatthewCash/nixos-config)
 
 Current inputs size: <!---size-->`572M`<!---/size-->
